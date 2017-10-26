@@ -15,6 +15,7 @@ namespace POP_SF_10_2015.Model
         public int PIB { get; set; }
         public int  MaticniBroj { get; set; }
         public string BrojZiroRacuna { get; set; }
+        public string Sajt { get; set; }
 
 
 

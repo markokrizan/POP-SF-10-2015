@@ -1,0 +1,2 @@
+﻿1|Ne|Stolica1|101|12000|3|Stolica
+2|Ne|Sto1|201|15000|4|Sto
