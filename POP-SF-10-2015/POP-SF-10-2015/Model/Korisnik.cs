@@ -20,6 +20,7 @@ namespace POP_SF_10_2015.Model
         public string Lozinka { get; set; }
         public TipKorisnika TipKorisnika { get; set; }
 
+        /*
         public Korisnik(int ID, string Ime, string Prezime, string KorIme, string Lozinka, TipKorisnika tipKorisnika)
         {
             this.ID = ID;
@@ -31,7 +32,7 @@ namespace POP_SF_10_2015.Model
         }
 
        
-
+        */
 
 
 

@@ -12,14 +12,6 @@ namespace POP_SF_10_2015.Model
     
 
 
-        /*
-        public TipNamestaja(int ID, bool Obrisan, string Naziv)
-        {
-            this.ID = ID;
-            this.Obrisan = Obrisan;
-            this.Naziv = Naziv;
-        }
-
-         */
+        
     }
 }
