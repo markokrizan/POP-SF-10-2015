@@ -46,4 +46,11 @@
     <Cena>0</Cena>
     <KolicinaUMagacinu>0</KolicinaUMagacinu>
   </Namestaj>
+  <Namestaj>
+    <ID>1</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>najnoviji namestaj</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+  </Namestaj>
 </ArrayOfNamestaj>

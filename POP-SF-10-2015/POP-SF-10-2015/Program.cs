@@ -73,15 +73,26 @@ namespace POP_SF_10_2015
             Console.ReadLine();
             */
 
-            List<Namestaj> namestaj = Projekat.Instance.Namestaj;
+
+            //sav namestaj
+            //List<Namestaj> namestaj = Projekat.Instance.Namestaj;
+            List<Korisnik> korisnici = Projekat.Instance.Korisnici;
 
 
-
+            /*
             //dodavanje:
 
-            namestaj.Add(new Namestaj() { ID = 1, Naziv = "Novi namestaj" });
+            namestaj.Add(new Namestaj() { ID = 1, Naziv = "najnoviji namestaj" });
             Projekat.Instance.Namestaj = namestaj;
-                       
+
+            */
+           
+
+            korisnici.Add(new Korisnik() { ID = 3, Ime = "Jovana", Prezime = "Jovanovic", KorIme = "jocaj", Lozinka = "j789", TipKorisnika = TipKorisnika.Administrator });
+            
+            Projekat.Instance.Korisnici = korisnici;
+
+            
 
             //uradi ostale, pretragu, logovanje
 
@@ -92,9 +103,9 @@ namespace POP_SF_10_2015
 
 
 
-            foreach(var stavka in namestaj)
+            foreach (var stavka in korisnici)
             {
-                Console.WriteLine($"{stavka.Naziv}");
+                Console.WriteLine($"{stavka.Ime}");
             }
             Console.ReadLine();
 

@@ -22,7 +22,9 @@ namespace POP_SF_10_2015.Util
             //kao paramatre using dajemo samo one promenjive koje hocemo da postoje samo u njegovom bloku
             //po zavrsetku ide dispose
             //za gasenje serijalajzera da ne bi doslo do nekonzistencije, da jedan proces koristi dok drugi ne moze
-
+        
+        //serialize - pisi
+        //deserialize - citaj
 
         
         public static void Serialize<T>(string fileName, List<T> objToSerialize) where T : class
