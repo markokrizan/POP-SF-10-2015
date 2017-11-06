@@ -11,7 +11,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="GUI\" />
+    <Compile Remove="GUI\**" />
+    <EmbeddedResource Remove="GUI\**" />
+    <None Remove="GUI\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="3.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="UI\MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 
 </Project>

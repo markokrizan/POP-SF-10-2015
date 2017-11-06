@@ -7,11 +7,7 @@
     <Sifra>234234234</Sifra>
     <Cena>28</Cena>
     <KolicinaUMagacinu>3</KolicinaUMagacinu>
-    <TipNamestaja>
-      <ID>1</ID>
-      <Obrisan>false</Obrisan>
-      <Naziv>Podna lamba</Naziv>
-    </TipNamestaja>
+    <TipNamestaja>1</TipNamestaja>
   </Namestaj>
   <Namestaj>
     <ID>1</ID>
@@ -20,85 +16,7 @@
     <Sifra>23423425645</Sifra>
     <Cena>20</Cena>
     <KolicinaUMagacinu>2</KolicinaUMagacinu>
-    <TipNamestaja>
-      <ID>1</ID>
-      <Obrisan>false</Obrisan>
-      <Naziv>Podna lamba</Naziv>
-    </TipNamestaja>
+    <TipNamestaja>2</TipNamestaja>
   </Namestaj>
-  <Namestaj>
-    <ID>2</ID>
-    <Obrisan>false</Obrisan>
-    <Naziv>Lampursdfsina</Naziv>
-    <Sifra>234233425645</Sifra>
-    <Cena>220</Cena>
-    <KolicinaUMagacinu>32</KolicinaUMagacinu>
-    <TipNamestaja>
-      <ID>1</ID>
-      <Obrisan>false</Obrisan>
-      <Naziv>Podna lamba</Naziv>
-    </TipNamestaja>
-  </Namestaj>
-  <Namestaj>
-    <ID>1</ID>
-    <Obrisan>false</Obrisan>
-    <Naziv>Novi namestaj</Naziv>
-    <Cena>0</Cena>
-    <KolicinaUMagacinu>0</KolicinaUMagacinu>
-  </Namestaj>
-  <Namestaj>
-    <ID>1</ID>
-    <Obrisan>false</Obrisan>
-    <Naziv>najnoviji namestaj</Naziv>
-    <Cena>0</Cena>
-    <KolicinaUMagacinu>0</KolicinaUMagacinu>
-  </Namestaj>
-  <Namestaj>
-    <ID>1</ID>
-    <Obrisan>false</Obrisan>
-    <Naziv>asdasd</Naziv>
-    <Sifra>123fdf</Sifra>
-    <Cena>12222</Cena>
-    <KolicinaUMagacinu>1</KolicinaUMagacinu>
-  </Namestaj>
-  <Namestaj>
-    <ID>1</ID>
-    <Obrisan>false</Obrisan>
-    <Naziv>sdfsdf</Naziv>
-    <Sifra>sdf123</Sifra>
-    <Cena>222222</Cena>
-    <KolicinaUMagacinu>11</KolicinaUMagacinu>
-  </Namestaj>
-  <Namestaj>
-    <ID>3</ID>
-    <Obrisan>false</Obrisan>
-    <Naziv>sdfsdf</Naziv>
-    <Sifra>324sdfsdf</Sifra>
-    <Cena>3333333</Cena>
-    <KolicinaUMagacinu>33</KolicinaUMagacinu>
-  </Namestaj>
-  <Namestaj>
-    <ID>1</ID>
-    <Obrisan>false</Obrisan>
-    <Naziv>sugavastolica</Naziv>
-    <Sifra>123fsdfsdf</Sifra>
-    <Cena>2222</Cena>
-    <KolicinaUMagacinu>11</KolicinaUMagacinu>
-  </Namestaj>
-  <Namestaj>
-    <ID>1</ID>
-    <Obrisan>false</Obrisan>
-    <Naziv>scvxcvxcv</Naziv>
-    <Sifra>12sdsd</Sifra>
-    <Cena>555555</Cena>
-    <KolicinaUMagacinu>223</KolicinaUMagacinu>
-  </Namestaj>
-  <Namestaj>
-    <ID>1</ID>
-    <Obrisan>false</Obrisan>
-    <Naziv>sdfsdf22</Naziv>
-    <Sifra>213asd</Sifra>
-    <Cena>222</Cena>
-    <KolicinaUMagacinu>123123</KolicinaUMagacinu>
-  </Namestaj>
+  
 </ArrayOfNamestaj>

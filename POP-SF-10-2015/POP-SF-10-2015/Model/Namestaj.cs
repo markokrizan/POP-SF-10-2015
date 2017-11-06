@@ -12,7 +12,8 @@ namespace POP_SF_10_2015.Model
     public string Sifra { get; set; }
     public double Cena { get; set; }
     public int KolicinaUMagacinu { get; set; }
-    public TipNamestaja TipNamestaja { get; set; }
+        //promeni svuda ovde iz tipnamestaja u int
+    public int IDTipaNamestaja { get; set; }
     //public Akcija Akcija { get; set; }
 
 

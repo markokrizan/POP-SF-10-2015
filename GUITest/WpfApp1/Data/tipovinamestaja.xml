@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ArrayOfTipNamestaja xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TipNamestaja>
+    <ID>1</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>Podna lamba</Naziv>
+  </TipNamestaja>
+  <TipNamestaja>
+    <ID>2</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>lampetina</Naziv>
+  </TipNamestaja>
+  </ArrayOfTipNamestaja>
+

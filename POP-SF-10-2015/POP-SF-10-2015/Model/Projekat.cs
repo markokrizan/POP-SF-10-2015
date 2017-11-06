@@ -31,16 +31,18 @@ namespace POP_SF_10_2015.Model
 
 
 
-
+        //ovo su ustvari propertiji, samo metoda koja ima get set
         public  List<Namestaj> Namestaj
         {
             get {
-                //atribut namestaj(lista) ce biti ono sto procitas
+                
+                //nova lista = projekat.instanca.nestoizmodela
                 this.namestaj = GenericSerializer.Deserialize<Namestaj>("namestaj.xml");
                 return this.namestaj;
             }
             set {
-                //uzmi sad to
+                
+                //projekat.instanca.nestoizmodela = nova lista
                 this.namestaj = value;
                 GenericSerializer.Serialize<Namestaj>("namestaj.xml", this.namestaj);
             }

@@ -62,6 +62,12 @@
     </Compile>
     <Compile Include="Model\Salon.cs" />
     <Compile Include="Model\TipNamestaja.cs" />
+    <Compile Include="UI\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\NamestajWindow.xaml.cs">
+      <DependentUpon>NamestajWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Util\GenericSerializer.cs" />
     <Page Include="GUI\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -83,6 +89,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\DodajNamestaj.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\NamestajWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -119,6 +133,9 @@
   <ItemGroup>
     <Resource Include="Data\korisnici.xml" />
     <Resource Include="Data\namestaj.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\tipovinamestaja.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

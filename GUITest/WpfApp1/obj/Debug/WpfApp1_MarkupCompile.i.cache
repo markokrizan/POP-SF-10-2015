@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\GUITestPR\WpfApp1\WpfApp1\obj\Debug\
+C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\GUITest\WpfApp1\obj\Debug\
 WpfApp1
 none
 false
 DEBUG;TRACE
-C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\GUITestPR\WpfApp1\WpfApp1\App.xaml
-3-333373439
+C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\GUITest\WpfApp1\App.xaml
+5-1773280528
 
-20312774542
+22805899513
 131569487696
-GUI\MainWindow.xaml;GUI\Login.xaml;GUI\DodajNamestaj.xaml;
+GUI\MainWindow.xaml;GUI\Login.xaml;GUI\DodajNamestaj.xaml;UI\MainWindow.xaml;UI\NamestajWindow.xaml;
 
 True
 
