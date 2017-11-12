@@ -11,7 +11,7 @@
         <Button x:Name="btnPrikaziNamestaj" Content="Prikazi" HorizontalAlignment="Left" Height="31" Margin="70,48,0,0" VerticalAlignment="Top" Width="101" Click="btnNamestaj_Click"/>
         <Button x:Name="btnDodajNamestaj" Content="Dodaj" HorizontalAlignment="Left" Height="31" Margin="70,95,0,0" VerticalAlignment="Top" Width="101" Click="dodajNamTest_Click"/>
         <Button x:Name="btnIzmeniNamestaj" Content="Izmeni" HorizontalAlignment="Left" Height="31" Margin="70,143,0,0" VerticalAlignment="Top" Width="101" Click="dodajNamTest_Click"/>
-        <Button x:Name="btnObrisiNamestaj" Content="Obrisi" HorizontalAlignment="Left" Height="31" Margin="70,193,0,0" VerticalAlignment="Top" Width="101" Click="dodajNamTest_Click"/>
+        <Button x:Name="btnObrisiNamestaj" Content="Obrisi" HorizontalAlignment="Left" Height="31" Margin="70,193,0,0" VerticalAlignment="Top" Width="101" Click="ObrisiNamestaj_Click"/>
         <GroupBox Header="Namestaj" HorizontalAlignment="Left" Height="226" Margin="44,22,0,0" VerticalAlignment="Top" Width="153"/>
 
     </Grid>

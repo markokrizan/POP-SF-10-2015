@@ -2,6 +2,7 @@
 using POP_SF_10_2015.Util;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
 
+        private ObservableCollection<Namestaj> listaNamestaja { get; set; }
         
 
 
@@ -34,21 +36,26 @@ namespace WpfApp1
             tabela.AutoGenerateColumns = true;
             tabela.ColumnWidth = new DataGridLength(1,
                 DataGridLengthUnitType.Star);
+            listaNamestaja = new ObservableCollection<Namestaj>(Projekat.Instance.Namestaj);
+            tabela.ItemsSource = listaNamestaja;
 
         }
 
         private void btnNamestaj_Click(object sender, RoutedEventArgs e)
         {
-            
 
-            
-            tabela.ItemsSource = Projekat.Instance.Namestaj;
-            Osvezi();
+
+
+            //tabela.ItemsSource = Projekat.Instance.Namestaj;
+            tabela.ItemsSource = listaNamestaja;
+            //Osvezi();
         }
 
-        public void Osvezi()
+        public void Osvezi(List<Namestaj> list)
         {
-            tabela.Items.Refresh();
+            //tabela.Items.Refresh();
+            listaNamestaja = new ObservableCollection<Namestaj>(list);
+            tabela.ItemsSource = listaNamestaja;
         }
 
         
@@ -66,6 +73,20 @@ namespace WpfApp1
 
         }
 
-        
+
+
+        private void ObrisiNamestaj_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+            foreach (DataGridViewRow item in this.tabela.SelectedRows)
+            {
+                tabela.Rows.RemoveAt(item.Index);
+            }
+
+            */
+        }
+
+
+
     }
 }

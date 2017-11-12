@@ -34,6 +34,7 @@ namespace WpfApp1.GUI
         private void btnDodaj_Click(object sender, RoutedEventArgs e)
         {
             List<Namestaj> privremenaLista = Projekat.Instance.Namestaj;
+            
             Namestaj nam = new Namestaj()
             {
                 ID = int.Parse(tbID.Text),
@@ -45,8 +46,9 @@ namespace WpfApp1.GUI
             };
 
             privremenaLista.Add(nam);
+           
             Projekat.Instance.Namestaj = privremenaLista;
-            referencaNaMain.Osvezi();
+            referencaNaMain.Osvezi(Projekat.Instance.Namestaj);
             this.Close();
 
             /*

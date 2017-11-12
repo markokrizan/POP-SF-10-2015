@@ -6,8 +6,8 @@
     <Naziv>Svetlo</Naziv>
     <Sifra>234234234</Sifra>
     <Cena>28</Cena>
-    <KolicinaUMagacinu>3</KolicinaUMagacinu>
-    <TipNamestaja>1</TipNamestaja>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>1</IDTipaNamestaja>
   </Namestaj>
   <Namestaj>
     <ID>1</ID>
@@ -15,8 +15,43 @@
     <Naziv>Lampurina</Naziv>
     <Sifra>23423425645</Sifra>
     <Cena>20</Cena>
-    <KolicinaUMagacinu>2</KolicinaUMagacinu>
-    <TipNamestaja>2</TipNamestaja>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>2</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>0</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>noviNamestaj</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>1</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>1</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>sdfsdf</Naziv>
+    <Sifra>123asda</Sifra>
+    <Cena>222222</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>2</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>1</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>adasd</Naziv>
+    <Sifra>123asdfas</Sifra>
+    <Cena>1233333</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>1</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>1</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>asdf</Naziv>
+    <Sifra>123asdfsdf</Sifra>
+    <Cena>20000</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>2</IDTipaNamestaja>
   </Namestaj>
   
 </ArrayOfNamestaj>
