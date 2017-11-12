@@ -1,3 +1,0 @@
-﻿100|Petar|Petrovic|pekip|p123|2
-101|Jovana|Jovanovic|jocaj|j789|2
-102|Sava|Savanovic|savas|s456|1

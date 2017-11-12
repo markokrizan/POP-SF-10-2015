@@ -1,2 +1,0 @@
-﻿1|Ne|Sastavljanje|1000
-2|Ne|Dostava|1500
