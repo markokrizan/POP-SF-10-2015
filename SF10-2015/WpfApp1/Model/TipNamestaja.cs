@@ -29,5 +29,12 @@ namespace POP_SF_10_2015.Model
 
         
 
+
+        public override string ToString()
+        {
+            return Naziv;
+        }
+
+
     }
 }

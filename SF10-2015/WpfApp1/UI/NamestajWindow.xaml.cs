@@ -48,18 +48,41 @@ namespace WpfApp1.UI
 
             //da kada koristis ovu formu za izmenu, da bude vec popunjeno
             tbNaziv.Text = namestaj.Naziv;
+
+            //napuni combo box
+            foreach(var tipNamestaja in Projekat.Instance.TipoviNamestaja)
+            {
+                cbTipNamestaja.Items.Add(tipNamestaja);
+            }
+
+            //da bude setovan kombo box za izmenu
+            //cbTipNamestaja.Items vraca object moras da konvertujes
+            foreach(TipNamestaja tipNamestaja in cbTipNamestaja.Items)
+            {
+                if(tipNamestaja.ID == namestaj.IDTipaNamestaja)
+                {
+                    cbTipNamestaja.SelectedItem = tipNamestaja;
+                }
+            }
+            
         }
 
         private void sacuvajIzmene(object sender, RoutedEventArgs e)
         {
             List<Namestaj> postojeciNamestaj = Projekat.Instance.Namestaj;
+            Namestaj namestajZaIzmenu = null;
+            int tipNamestajaId = ((TipNamestaja)cbTipNamestaja.SelectedItem).ID;
+            
 
             switch(operacija)
             {
                 case Operacija.DODAVANJE:
                     var noviNamestaj = new Namestaj()
                     {
-                        Naziv = tbNaziv.Text
+                        ID = postojeciNamestaj.Count + 1,
+                        Naziv = tbNaziv.Text,
+                        //ID = listaNamestaja.Count + 1;
+                        IDTipaNamestaja = tipNamestajaId
                     };
                     postojeciNamestaj.Add(noviNamestaj);
                     break;
@@ -71,10 +94,21 @@ namespace WpfApp1.UI
                     {
                         if(n.ID == namestaj.ID)
                         {
+                            /*
                             n.Naziv = tbNaziv.Text;
                             break;
+                            */
+                            namestajZaIzmenu = n;
                         }
                     }
+
+                    namestajZaIzmenu.Naziv = tbNaziv.Text;
+                    namestajZaIzmenu.IDTipaNamestaja = tipNamestajaId;
+
+                   
+
+
+
 
                     break;
                 

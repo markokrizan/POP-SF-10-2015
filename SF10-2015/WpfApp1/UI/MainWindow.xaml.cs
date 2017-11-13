@@ -28,11 +28,17 @@ namespace WpfApp1.UI
 
         private void OsveziPrikaz()
         {
+            //ocsti dodaj ponovo
             listBoxNamestaj.Items.Clear();
 
             foreach(var namestaj in Projekat.Instance.Namestaj)
             {
-                listBoxNamestaj.Items.Add(namestaj);
+                //ako nije logicki obrisan onda ga dodaj
+                if(namestaj.Obrisan == false)
+                {
+                    listBoxNamestaj.Items.Add(namestaj);
+                }
+               
             }
 
             //da uvek bude prvi selektovan da nema null selekcije
@@ -53,7 +59,11 @@ namespace WpfApp1.UI
             };
 
             var namestajProzor = new NamestajWindow(noviNamestaj, NamestajWindow.Operacija.DODAVANJE);
-            namestajProzor.Show();
+            //umesto samo show show dialog da bi presao na metodu osvezavanja
+            namestajProzor.ShowDialog();
+
+            //ovim azurira prikaz sasvim ok
+            OsveziPrikaz();
         }
 
         private void IzmeniNamestaj(object sender, RoutedEventArgs e)
@@ -62,14 +72,33 @@ namespace WpfApp1.UI
             var selektovaniNamestaj = (Namestaj)listBoxNamestaj.SelectedItem;
 
             var namestajProzor = new NamestajWindow(selektovaniNamestaj, NamestajWindow.Operacija.IZMENA);
-            namestajProzor.Show();
+            namestajProzor.ShowDialog();
+
+            OsveziPrikaz();
         }
 
-        
+        private void ObrisiNamestaj(object sender, RoutedEventArgs e)
+        {
+            //selected item je object pa uradi cast
+            var izabraniNamestaj = (Namestaj)listBoxNamestaj.SelectedItem;
+            var ListaNamestaja = Projekat.Instance.Namestaj;
+            if (MessageBox.Show($"Da li ste sigurni da zelite da izbrisete: {izabraniNamestaj.Naziv}?", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                Namestaj namestaj = null;
 
+                foreach(var n in ListaNamestaja)
+                {
+                    if(n.ID == izabraniNamestaj.ID)
+                    {
+                        namestaj = n;
+                    }
+                }
+                namestaj.Obrisan = true;
 
+                Projekat.Instance.Namestaj = ListaNamestaja;
 
-
-
+                OsveziPrikaz();
+            } 
+        }
     }
 }

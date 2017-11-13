@@ -132,6 +132,21 @@ namespace POP_SF_10_2015.Model
         }
 
 
+        public static Namestaj GetById(int id)
+        {
+            foreach (var namestaj in Projekat.Instance.Namestaj)
+            {
+                if (namestaj.ID == id)
+                {
+                    return namestaj;
+                }
+
+            }
+            return null;
+
+        }
+
+
     }
 
 }

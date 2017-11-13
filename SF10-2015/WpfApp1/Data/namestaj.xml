@@ -3,14 +3,14 @@
   <Namestaj>
     <ID>1</ID>
     <Obrisan>false</Obrisan>
-    <Naziv>Svetlo</Naziv>
+    <Naziv>Lampurinas</Naziv>
     <Sifra>234234234</Sifra>
     <Cena>28</Cena>
     <KolicinaUMagacinu>0</KolicinaUMagacinu>
     <IDTipaNamestaja>1</IDTipaNamestaja>
   </Namestaj>
   <Namestaj>
-    <ID>1</ID>
+    <ID>2</ID>
     <Obrisan>false</Obrisan>
     <Naziv>Lampurina</Naziv>
     <Sifra>23423425645</Sifra>
@@ -19,7 +19,7 @@
     <IDTipaNamestaja>2</IDTipaNamestaja>
   </Namestaj>
   <Namestaj>
-    <ID>0</ID>
+    <ID>3</ID>
     <Obrisan>false</Obrisan>
     <Naziv>noviNamestaj</Naziv>
     <Cena>0</Cena>
@@ -27,7 +27,7 @@
     <IDTipaNamestaja>1</IDTipaNamestaja>
   </Namestaj>
   <Namestaj>
-    <ID>1</ID>
+    <ID>4</ID>
     <Obrisan>false</Obrisan>
     <Naziv>sdfsdf</Naziv>
     <Sifra>123asda</Sifra>
@@ -36,8 +36,8 @@
     <IDTipaNamestaja>2</IDTipaNamestaja>
   </Namestaj>
   <Namestaj>
-    <ID>1</ID>
-    <Obrisan>false</Obrisan>
+    <ID>5</ID>
+    <Obrisan>true</Obrisan>
     <Naziv>adasd</Naziv>
     <Sifra>123asdfas</Sifra>
     <Cena>1233333</Cena>
@@ -45,7 +45,7 @@
     <IDTipaNamestaja>1</IDTipaNamestaja>
   </Namestaj>
   <Namestaj>
-    <ID>1</ID>
+    <ID>6</ID>
     <Obrisan>false</Obrisan>
     <Naziv>asdf</Naziv>
     <Sifra>123asdfsdf</Sifra>
@@ -53,5 +53,53 @@
     <KolicinaUMagacinu>0</KolicinaUMagacinu>
     <IDTipaNamestaja>2</IDTipaNamestaja>
   </Namestaj>
-  
+  <Namestaj>
+    <ID>7</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>markidjani</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>1</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>8</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>marko</Naziv>
+    <Sifra>asd123</Sifra>
+    <Cena>222222</Cena>
+    <KolicinaUMagacinu>11</KolicinaUMagacinu>
+    <IDTipaNamestaja>1</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>9</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>lopusina</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>2</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>10</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>sdfsdfsdfsdf</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>1</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>11</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>sdfsdfsdf</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>0</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>12</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>najnovijinoviji</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>1</IDTipaNamestaja>
+  </Namestaj>
 </ArrayOfNamestaj>
