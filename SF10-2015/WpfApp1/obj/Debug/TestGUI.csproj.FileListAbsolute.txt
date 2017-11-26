@@ -41,7 +41,6 @@ C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\GU
 C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\GUITest\WpfApp1\obj\Debug\UI\NamestajWindow.g.cs
 C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\GUITest\WpfApp1\obj\Debug\UI\NamestajWindow.baml
 C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\obj\Debug\TestGUI.csprojResolveAssemblyReference.cache
-C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\obj\Debug\GUI\MainWindow.g.cs
 C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\obj\Debug\GUI\Login.g.cs
 C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\obj\Debug\GUI\DodajNamestaj.g.cs
 C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\obj\Debug\UI\MainWindow.g.cs
@@ -54,7 +53,6 @@ C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF
 C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\bin\Debug\WpfApp1.exe.config
 C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\bin\Debug\WpfApp1.exe
 C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\bin\Debug\WpfApp1.pdb
-C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\obj\Debug\GUI\MainWindow.baml
 C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\obj\Debug\GUI\Login.baml
 C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\obj\Debug\GUI\DodajNamestaj.baml
 C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\obj\Debug\UI\MainWindow.baml
@@ -63,3 +61,7 @@ C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF
 C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\obj\Debug\WpfApp1.Properties.Resources.resources
 C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\obj\Debug\TestGUI.csproj.GenerateResource.Cache
 C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\obj\Debug\TestGUI.csproj.CoreCompileInputs.cache
+C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\obj\Debug\GUI\MainWindowABC.g.cs
+C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\obj\Debug\GUI\MainWindowABC.baml
+C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\obj\Debug\UI\SalonInfoWindow.g.cs
+C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\obj\Debug\UI\SalonInfoWindow.baml

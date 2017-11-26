@@ -3,17 +3,27 @@
   <TipNamestaja>
     <ID>0</ID>
     <Obrisan>false</Obrisan>
-    <Naziv>Podna lamba</Naziv>
+    <Naziv>Stolica</Naziv>
   </TipNamestaja>
   <TipNamestaja>
     <ID>1</ID>
     <Obrisan>false</Obrisan>
-    <Naziv>lampetina</Naziv>
+    <Naziv>Sto</Naziv>
   </TipNamestaja>
   <TipNamestaja>
     <ID>2</ID>
     <Obrisan>false</Obrisan>
-    <Naziv>lampuretina</Naziv>
+    <Naziv>Kauc</Naziv>
   </TipNamestaja>
- </ArrayOfTipNamestaja>
+  <TipNamestaja>
+    <ID>3</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>Fotelja</Naziv>
+  </TipNamestaja>
+  <TipNamestaja>
+    <ID>3</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>Sofa</Naziv>
+  </TipNamestaja>
+</ArrayOfTipNamestaja>
 

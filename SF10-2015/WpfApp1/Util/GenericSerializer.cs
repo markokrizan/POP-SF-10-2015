@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using System.Xml.Serialization;
@@ -18,28 +19,32 @@ namespace POP_SF_10_2015.Util
         //genericka metoda jer se moze koristiti za bilo koji tip
         //prima ime fajla i taj genericki T objekat
 
-            //USING
-            //kao paramatre using dajemo samo one promenjive koje hocemo da postoje samo u njegovom bloku
-            //po zavrsetku ide dispose
-            //za gasenje serijalajzera da ne bi doslo do nekonzistencije, da jedan proces koristi dok drugi ne moze
-        
+        //USING
+        //kao paramatre using dajemo samo one promenjive koje hocemo da postoje samo u njegovom bloku
+        //po zavrsetku ide dispose
+        //za gasenje serijalajzera da ne bi doslo do nekonzistencije, da jedan proces koristi dok drugi ne moze
+
         //serialize - pisi
         //deserialize - citaj
 
-        
-        public static void Serialize<T>(string fileName, List<T> objToSerialize) where T : class
+
+
+
+
+  
+        public static void Serialize<T>(string fileName, ObservableCollection<T> objToSerialize) where T : class
         {
             //try tab tab
             try
             {
                 //ocekuje tip sa kojim radi
 
-                var serializer = new XmlSerializer(typeof(List<T>));
+                var serializer = new XmlSerializer(typeof(ObservableCollection<T>));
 
 
                 //serializacija - razbijanje podataka na stream 0 i 1
                 //   ../../ da se vratim 2 foldera gore
-                
+
                 //Stream Writer je taj koji zauzima resurse, pa je on kandidat za using
                 using (var sw = new StreamWriter($@"../../Data/{fileName}"))
                 {
@@ -58,14 +63,14 @@ namespace POP_SF_10_2015.Util
             }
         }
 
-        public static List<T> Deserialize<T>(string fileName) where T : class
+        public static ObservableCollection<T> Deserialize<T>(string fileName) where T : class
         {
             //try tab tab
             try
             {
                 //ocekuje tip sa kojim radi
 
-                var serializer = new XmlSerializer(typeof(List<T>));
+                var serializer = new XmlSerializer(typeof(ObservableCollection<T>));
 
 
                 //serializacija - razbijanje podataka na stream 0 i 1
@@ -75,7 +80,7 @@ namespace POP_SF_10_2015.Util
                 //naziv parametra: vrednost
                 using (var sw = new StreamReader($@"../../Data/{fileName}"))
                 {
-                    return (List<T>)serializer.Deserialize(sw);
+                    return (ObservableCollection<T>)serializer.Deserialize(sw);
                 }
 
             }

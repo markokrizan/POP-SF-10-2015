@@ -1,6 +1,7 @@
 ﻿using POP_SF_10_2015.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,7 +34,7 @@ namespace WpfApp1.GUI
 
         private void btnDodaj_Click(object sender, RoutedEventArgs e)
         {
-            List<Namestaj> privremenaLista = Projekat.Instance.Namestaj;
+            ObservableCollection<Namestaj> privremenaLista = Projekat.Instance.Namestaj;
             
             Namestaj nam = new Namestaj()
             {
@@ -48,7 +49,7 @@ namespace WpfApp1.GUI
             privremenaLista.Add(nam);
            
             Projekat.Instance.Namestaj = privremenaLista;
-            referencaNaMain.Osvezi(Projekat.Instance.Namestaj);
+            //referencaNaMain.Osvezi(Projekat.Instance.Namestaj);
             this.Close();
 
             /*

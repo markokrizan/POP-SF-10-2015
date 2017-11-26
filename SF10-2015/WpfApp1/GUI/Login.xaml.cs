@@ -21,6 +21,8 @@ namespace WpfApp1.GUI
     /// </summary>
     public partial class Login : Window
     {
+        
+
         public Login()
         {
             InitializeComponent();
@@ -52,5 +54,8 @@ namespace WpfApp1.GUI
 
             }
         }
+
+         
+
     }
 }

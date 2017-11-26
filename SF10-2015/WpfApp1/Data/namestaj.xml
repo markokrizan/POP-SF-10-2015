@@ -2,8 +2,8 @@
 <ArrayOfNamestaj xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Namestaj>
     <ID>1</ID>
-    <Obrisan>false</Obrisan>
-    <Naziv>Lampurinas</Naziv>
+    <Obrisan>true</Obrisan>
+    <Naziv>aaaaaa</Naziv>
     <Sifra>234234234</Sifra>
     <Cena>28</Cena>
     <KolicinaUMagacinu>0</KolicinaUMagacinu>
@@ -11,8 +11,8 @@
   </Namestaj>
   <Namestaj>
     <ID>2</ID>
-    <Obrisan>false</Obrisan>
-    <Naziv>Lampurina</Naziv>
+    <Obrisan>true</Obrisan>
+    <Naziv>bbbbbbbb</Naziv>
     <Sifra>23423425645</Sifra>
     <Cena>20</Cena>
     <KolicinaUMagacinu>0</KolicinaUMagacinu>
@@ -20,86 +20,63 @@
   </Namestaj>
   <Namestaj>
     <ID>3</ID>
-    <Obrisan>false</Obrisan>
-    <Naziv>noviNamestaj</Naziv>
-    <Cena>0</Cena>
-    <KolicinaUMagacinu>0</KolicinaUMagacinu>
-    <IDTipaNamestaja>1</IDTipaNamestaja>
-  </Namestaj>
-  <Namestaj>
-    <ID>4</ID>
-    <Obrisan>false</Obrisan>
-    <Naziv>sdfsdf</Naziv>
-    <Sifra>123asda</Sifra>
-    <Cena>222222</Cena>
-    <KolicinaUMagacinu>0</KolicinaUMagacinu>
-    <IDTipaNamestaja>2</IDTipaNamestaja>
-  </Namestaj>
-  <Namestaj>
-    <ID>5</ID>
     <Obrisan>true</Obrisan>
-    <Naziv>adasd</Naziv>
-    <Sifra>123asdfas</Sifra>
-    <Cena>1233333</Cena>
-    <KolicinaUMagacinu>0</KolicinaUMagacinu>
-    <IDTipaNamestaja>1</IDTipaNamestaja>
-  </Namestaj>
-  <Namestaj>
-    <ID>6</ID>
-    <Obrisan>false</Obrisan>
-    <Naziv>asdf</Naziv>
-    <Sifra>123asdfsdf</Sifra>
-    <Cena>20000</Cena>
-    <KolicinaUMagacinu>0</KolicinaUMagacinu>
-    <IDTipaNamestaja>2</IDTipaNamestaja>
-  </Namestaj>
-  <Namestaj>
-    <ID>7</ID>
-    <Obrisan>false</Obrisan>
-    <Naziv>markidjani</Naziv>
-    <Cena>0</Cena>
-    <KolicinaUMagacinu>0</KolicinaUMagacinu>
-    <IDTipaNamestaja>1</IDTipaNamestaja>
-  </Namestaj>
-  <Namestaj>
-    <ID>8</ID>
-    <Obrisan>true</Obrisan>
-    <Naziv>marko</Naziv>
-    <Sifra>asd123</Sifra>
-    <Cena>222222</Cena>
-    <KolicinaUMagacinu>11</KolicinaUMagacinu>
-    <IDTipaNamestaja>1</IDTipaNamestaja>
-  </Namestaj>
-  <Namestaj>
-    <ID>9</ID>
-    <Obrisan>true</Obrisan>
-    <Naziv>lopusina</Naziv>
-    <Cena>0</Cena>
-    <KolicinaUMagacinu>0</KolicinaUMagacinu>
-    <IDTipaNamestaja>2</IDTipaNamestaja>
-  </Namestaj>
-  <Namestaj>
-    <ID>10</ID>
-    <Obrisan>true</Obrisan>
-    <Naziv>sdfsdfsdfsdf</Naziv>
-    <Cena>0</Cena>
-    <KolicinaUMagacinu>0</KolicinaUMagacinu>
-    <IDTipaNamestaja>1</IDTipaNamestaja>
-  </Namestaj>
-  <Namestaj>
-    <ID>11</ID>
-    <Obrisan>true</Obrisan>
-    <Naziv>sdfsdfsdf</Naziv>
+    <Naziv>cccccccccc</Naziv>
     <Cena>0</Cena>
     <KolicinaUMagacinu>0</KolicinaUMagacinu>
     <IDTipaNamestaja>0</IDTipaNamestaja>
   </Namestaj>
   <Namestaj>
-    <ID>12</ID>
-    <Obrisan>false</Obrisan>
-    <Naziv>najnovijinoviji</Naziv>
+    <ID>4</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>ddddddd</Naziv>
     <Cena>0</Cena>
     <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>0</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>5</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>Obicna stolica</Naziv>
+    <Sifra>100</Sifra>
+    <Cena>15999</Cena>
+    <KolicinaUMagacinu>5</KolicinaUMagacinu>
+    <IDTipaNamestaja>0</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>6</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>Neobicna stolica</Naziv>
+    <Sifra>101</Sifra>
+    <Cena>16599</Cena>
+    <KolicinaUMagacinu>3</KolicinaUMagacinu>
+    <IDTipaNamestaja>0</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>7</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>Katedra</Naziv>
+    <Sifra>201</Sifra>
+    <Cena>25000</Cena>
+    <KolicinaUMagacinu>2</KolicinaUMagacinu>
     <IDTipaNamestaja>1</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>8</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>Lenjivac</Naziv>
+    <Sifra>301</Sifra>
+    <Cena>50000</Cena>
+    <KolicinaUMagacinu>2</KolicinaUMagacinu>
+    <IDTipaNamestaja>2</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>9</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>Direktorska</Naziv>
+    <Sifra>401</Sifra>
+    <Cena>45000</Cena>
+    <KolicinaUMagacinu>7</KolicinaUMagacinu>
+    <IDTipaNamestaja>3</IDTipaNamestaja>
   </Namestaj>
 </ArrayOfNamestaj>
