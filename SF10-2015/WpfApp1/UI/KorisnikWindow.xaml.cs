@@ -21,12 +21,12 @@ namespace WpfApp1.UI
     /// <summary>
     /// Interaction logic for NamestajWindow.xaml
     /// </summary>
-    public partial class NamestajWindow : Window
+    public partial class KorisnikWindow : Window
     {
 
-        private Namestaj namestaj;
+        private Korisnik korisnik;
         private Operacija operacija;
-        ICollectionView viewCompoTipovi;
+        
 
         public enum Operacija
         {
@@ -34,7 +34,7 @@ namespace WpfApp1.UI
             IZMENA
         };
 
-        public NamestajWindow(Namestaj namestaj, Operacija operacija)
+        public KorisnikWindow(Korisnik korisnik, Operacija operacija)
         {
             //this.namestaj = namestaj;
 
@@ -46,45 +46,35 @@ namespace WpfApp1.UI
 
 
             //inicijalizacija vrednosti pomocu bindinga
-            this.namestaj = namestaj;
+            this.korisnik = korisnik;
             this.operacija = operacija;
 
 
 
 
-            viewCompoTipovi = CollectionViewSource.GetDefaultView(Projekat.Instance.TipoviNamestaja);
-            viewCompoTipovi.Filter = filterTipova;
 
-            bool filterTipova(object item)
-            {
-                TipNamestaja tn = item as TipNamestaja;
-                return !tn.Obrisan;
-            }
-
-            cbTipNamestaja.ItemsSource = viewCompoTipovi;
-
-
-            //DataContext je ustvari momenat kada se komponenta mapira na objekat namestaja koji je prosledjen
-            //two way binding podrazumevan
-            //povezan samo objekat i komponenta ne i xml
-            cbTipNamestaja.DataContext = namestaj;
-            //cbTipNamestaja.SelectedIndex = 1;
-            cbTipNamestaja.SelectedItem = 0;
-            //konkretan properti je u xaml-u (Bindig Path = "Naziv")
-            //ako je objekat u objektu moze Binding Path = Adresa.Ulica npr
-            tbNaziv.DataContext = namestaj;
-            tbSifra.DataContext = namestaj;
-            tbCena.DataContext = namestaj;
-            tbKolicina.DataContext = namestaj;
+            cbTipKorisnika.ItemsSource = Enum.GetValues(typeof(TipKorisnika)).Cast<TipKorisnika>();
+                      
+            tbIme.DataContext = korisnik;
+            tbPrezime.DataContext = korisnik;
+            tbKorisnicko.DataContext = korisnik;
+            tbLozinka.DataContext = korisnik;
         }
 
 
-              
+        
+
+        
+
+
+
+        
+        
         private void sacuvajIzmene(object sender, RoutedEventArgs e)
         {
 
             
-            var listaNamestaja = Projekat.Instance.Namestaj;
+            var listaKorisnika = Projekat.Instance.Korisnici;
            
         
             this.DialogResult = true;
@@ -92,8 +82,8 @@ namespace WpfApp1.UI
             switch(operacija)
             {
                 case Operacija.DODAVANJE:
-                    namestaj.ID = listaNamestaja.Count + 1;
-                    listaNamestaja.Add(namestaj);
+                    korisnik.ID = listaKorisnika.Count + 1;
+                    listaKorisnika.Add(korisnik);
                     
                     
                   
@@ -105,13 +95,16 @@ namespace WpfApp1.UI
                 case Operacija.IZMENA:
 
                     
-                    foreach(var n in listaNamestaja)
+                    foreach(var k in listaKorisnika)
                     {
-                        if(n.ID == namestaj.ID)
+                        if(k.ID == korisnik.ID)
                         {
                             
-                            n.IDTipaNamestaja = namestaj.IDTipaNamestaja;
-                            n.Naziv = namestaj.Naziv;
+                            k.Ime = korisnik.Ime;
+                            k.Prezime = korisnik.Prezime;
+                            k.KorIme = korisnik.KorIme;
+                            k.Lozinka = korisnik.Lozinka;
+
                             break;
                         }
                     }
@@ -122,7 +115,7 @@ namespace WpfApp1.UI
             }
 
             //nakon svih izmena serijalizuj, znaci prvo radimo sa temp listom, menjamo je kolko treba i onda se pregazi glavna kolekcija seterom iz Projekat
-            GenericSerializer.Serialize("namestaj.xml", listaNamestaja);
+            GenericSerializer.Serialize("korisnici.xml", listaKorisnika);
             this.Close();
         }
 

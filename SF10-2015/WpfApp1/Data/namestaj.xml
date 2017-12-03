@@ -7,7 +7,7 @@
     <Sifra>234234234</Sifra>
     <Cena>28</Cena>
     <KolicinaUMagacinu>0</KolicinaUMagacinu>
-    <IDTipaNamestaja>1</IDTipaNamestaja>
+    <IDTipaNamestaja>0</IDTipaNamestaja>
   </Namestaj>
   <Namestaj>
     <ID>2</ID>
@@ -16,7 +16,7 @@
     <Sifra>23423425645</Sifra>
     <Cena>20</Cena>
     <KolicinaUMagacinu>0</KolicinaUMagacinu>
-    <IDTipaNamestaja>2</IDTipaNamestaja>
+    <IDTipaNamestaja>0</IDTipaNamestaja>
   </Namestaj>
   <Namestaj>
     <ID>3</ID>
@@ -24,59 +24,210 @@
     <Naziv>cccccccccc</Naziv>
     <Cena>0</Cena>
     <KolicinaUMagacinu>0</KolicinaUMagacinu>
-    <IDTipaNamestaja>0</IDTipaNamestaja>
+    <IDTipaNamestaja>1</IDTipaNamestaja>
   </Namestaj>
   <Namestaj>
     <ID>4</ID>
     <Obrisan>true</Obrisan>
-    <Naziv>ddddddd</Naziv>
+    <Naziv>asdfasdfasdf</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>2</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>5</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>asdfasdf</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>2</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>6</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>asdfgdfgdfgdfg</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>2</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>7</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>njiiiiiiiiiiiiiiiii</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>4</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>8</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>uuuuuuuuuuuuuuuuu</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>5</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>9</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>ghghgh</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>6</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>10</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>g</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>7</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>11</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>sdfsdfsf</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>8</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>12</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>sg</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>9</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>13</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>sdfsdf</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>10</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>14</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>asfasfasfasfasf</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>11</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>15</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>fdfgdfg</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>12</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>16</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>aaa</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>14</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>17</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>a</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>13</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>18</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>b</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>15</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>19</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>c</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>15</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>20</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>Stolica11</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>17</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>21</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>Stolica22</Naziv>
     <Cena>0</Cena>
     <KolicinaUMagacinu>0</KolicinaUMagacinu>
     <IDTipaNamestaja>0</IDTipaNamestaja>
   </Namestaj>
   <Namestaj>
-    <ID>5</ID>
+    <ID>22</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>Stolica33</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>0</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>23</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>Krevet11</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>18</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>24</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>Krevet22</Naziv>
+    <Cena>0</Cena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <IDTipaNamestaja>18</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>25</ID>
     <Obrisan>false</Obrisan>
-    <Naziv>Obicna stolica</Naziv>
+    <Naziv>Dream</Naziv>
     <Sifra>100</Sifra>
-    <Cena>15999</Cena>
-    <KolicinaUMagacinu>5</KolicinaUMagacinu>
-    <IDTipaNamestaja>0</IDTipaNamestaja>
+    <Cena>8500</Cena>
+    <KolicinaUMagacinu>2</KolicinaUMagacinu>
+    <IDTipaNamestaja>17</IDTipaNamestaja>
   </Namestaj>
   <Namestaj>
-    <ID>6</ID>
+    <ID>26</ID>
     <Obrisan>false</Obrisan>
-    <Naziv>Neobicna stolica</Naziv>
+    <Naziv>Roto</Naziv>
     <Sifra>101</Sifra>
-    <Cena>16599</Cena>
-    <KolicinaUMagacinu>3</KolicinaUMagacinu>
-    <IDTipaNamestaja>0</IDTipaNamestaja>
+    <Cena>7800</Cena>
+    <KolicinaUMagacinu>4</KolicinaUMagacinu>
+    <IDTipaNamestaja>17</IDTipaNamestaja>
   </Namestaj>
   <Namestaj>
-    <ID>7</ID>
+    <ID>27</ID>
     <Obrisan>false</Obrisan>
-    <Naziv>Katedra</Naziv>
-    <Sifra>201</Sifra>
-    <Cena>25000</Cena>
-    <KolicinaUMagacinu>2</KolicinaUMagacinu>
-    <IDTipaNamestaja>1</IDTipaNamestaja>
+    <Naziv>Lei</Naziv>
+    <Sifra>205</Sifra>
+    <Cena>16999</Cena>
+    <KolicinaUMagacinu>4</KolicinaUMagacinu>
+    <IDTipaNamestaja>21</IDTipaNamestaja>
   </Namestaj>
   <Namestaj>
-    <ID>8</ID>
+    <ID>28</ID>
     <Obrisan>false</Obrisan>
-    <Naziv>Lenjivac</Naziv>
-    <Sifra>301</Sifra>
-    <Cena>50000</Cena>
-    <KolicinaUMagacinu>2</KolicinaUMagacinu>
-    <IDTipaNamestaja>2</IDTipaNamestaja>
-  </Namestaj>
-  <Namestaj>
-    <ID>9</ID>
-    <Obrisan>false</Obrisan>
-    <Naziv>Direktorska</Naziv>
+    <Naziv>Lampurina</Naziv>
     <Sifra>401</Sifra>
-    <Cena>45000</Cena>
-    <KolicinaUMagacinu>7</KolicinaUMagacinu>
-    <IDTipaNamestaja>3</IDTipaNamestaja>
+    <Cena>3999</Cena>
+    <KolicinaUMagacinu>1</KolicinaUMagacinu>
+    <IDTipaNamestaja>23</IDTipaNamestaja>
   </Namestaj>
 </ArrayOfNamestaj>

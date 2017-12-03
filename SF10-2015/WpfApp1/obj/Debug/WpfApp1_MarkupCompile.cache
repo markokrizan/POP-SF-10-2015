@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\App.xaml
-61115456963
+8-119622298
 
-191850318723
+21-264849962
 131569487696
-GUI\MainWindowABC.xaml;GUI\Login.xaml;GUI\DodajNamestaj.xaml;UI\MainWindow.xaml;UI\NamestajWindow.xaml;UI\SalonInfoWindow.xaml;
+UI\Login.xaml;UI\MainWindow.xaml;UI\KorisnikWindow.xaml;UI\AkcijeWindow.xaml;UI\UsugeWindow.xaml;UI\TipWindow.xaml;UI\NamestajWindow.xaml;UI\SalonInfoWindow.xaml;
 
 False
 

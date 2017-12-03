@@ -2,6 +2,7 @@
 <ArrayOfKorisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Korisnik>
     <ID>1</ID>
+    <Obrisan>false</Obrisan>
     <Ime>Petar</Ime>
     <Prezime>Petrovic</Prezime>
     <KorIme>pekip</KorIme>
@@ -10,6 +11,7 @@
   </Korisnik>
   <Korisnik>
     <ID>2</ID>
+    <Obrisan>false</Obrisan>
     <Ime>Sava</Ime>
     <Prezime>Savanovic</Prezime>
     <KorIme>savas</KorIme>
@@ -18,10 +20,16 @@
   </Korisnik>
   <Korisnik>
     <ID>3</ID>
+    <Obrisan>false</Obrisan>
     <Ime>Jovana</Ime>
     <Prezime>Jovanovic</Prezime>
     <KorIme>jocaj</KorIme>
     <Lozinka>j789</Lozinka>
+    <TipKorisnika>Administrator</TipKorisnika>
+  </Korisnik>
+  <Korisnik>
+    <ID>4</ID>
+    <Obrisan>true</Obrisan>
     <TipKorisnika>Administrator</TipKorisnika>
   </Korisnik>
 </ArrayOfKorisnik>

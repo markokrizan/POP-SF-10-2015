@@ -5,7 +5,7 @@ using System.Text;
 
 namespace POP_SF_10_2015.Model
 {
-    public class TipNamestaja: INotifyPropertyChanged
+    public class TipNamestaja:ICloneable, INotifyPropertyChanged
     {
 
         private int id;
@@ -70,8 +70,14 @@ namespace POP_SF_10_2015.Model
 
         }
 
-        
-
+        public object Clone()
+        {
+            TipNamestaja kopija = new TipNamestaja();
+            kopija.ID = ID;
+            kopija.Obrisan = Obrisan;
+            kopija.Naziv = Naziv;           
+            return kopija;
+        }
 
         public override string ToString()
         {
@@ -82,9 +88,7 @@ namespace POP_SF_10_2015.Model
         {
 
             if (PropertyChanged != null)
-            {
-                //this, sam namestaj menja dogadjaj
-                //parametri kao kod svake standardne metode koja hendluje dogadjaj
+            {              
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }

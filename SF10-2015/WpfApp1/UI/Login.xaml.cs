@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1.UI;
 
 namespace WpfApp1.GUI
 {
@@ -27,6 +28,7 @@ namespace WpfApp1.GUI
         {
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            
         }
 
         private void LoginBTN_Click(object sender, RoutedEventArgs e)
@@ -38,9 +40,9 @@ namespace WpfApp1.GUI
             {
                 if(kor.KorIme == tbUName.Text && kor.Lozinka == tbPass.Password)
                 {
-                     
+
                     MainWindow mw = new MainWindow();
-                    mw.Show();
+                    mw.Show();                   
                     this.Close();
                     break;
                 }

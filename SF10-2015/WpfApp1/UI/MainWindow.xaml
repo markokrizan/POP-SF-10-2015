@@ -8,8 +8,8 @@
         Title="Salon Namestaja" Height="500" Width="700"
         ResizeMode="NoResize"
         WindowState="Normal"
-        Background="Azure"
-        Icon="../Images/furniture-md.png"
+        Background="White"
+        Icon="../Images/furniture-md.png" Foreground="Black"
         >
 
     <Grid>
@@ -26,8 +26,48 @@
         </DockPanel>
         <TabControl Margin="0,25,-0.4,0.2" Padding="0,0,0,0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
-            <TabItem Header="Namestaj" Margin="0,0,-2,-11" >
+            <TabItem Header="Prodaja" Margin="10,0,-12,-11" >
+                <Canvas VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,3,0,-3.6">
+                    <Canvas.Background>
+                        <ImageBrush/>
+                    </Canvas.Background>
+                    <Grid >
+
+
+                    </Grid>
+                    <Label Content="Pretrazi namestaj:" Canvas.Left="26" Canvas.Top="57" RenderTransformOrigin="0.521,0.515"/>
+                    <TextBox Name ="tbPretragaNamestaj" Height="23" Canvas.Left="130" TextWrapping="Wrap" Text="" Canvas.Top="60" Width="137"/>
+                    <DataGrid ColumnWidth="*" LoadingRow="DataGrid_LoadingRow" CanUserAddRows="false" IsReadOnly="True" AutoGenerateColumns="True" Name="dgPretragaNamestaj" Height="68" Canvas.Left="10" Canvas.Top="96" Width="420" AutoGeneratingColumn="dgPretragaNamestaj_AutoGeneratingColumn"/>
+                    <Label Content="Pretrazi usluge:" Canvas.Left="39" Canvas.Top="202" RenderTransformOrigin="0.521,0.515"/>
+                    <TextBox Name ="tbPretragaUsluge" Height="23" Canvas.Left="130" TextWrapping="Wrap" Text="" Canvas.Top="205" Width="137"/>
+                    <DataGrid ColumnWidth="*" LoadingRow="DataGrid_LoadingRow" CanUserAddRows="false" IsReadOnly="True" AutoGenerateColumns="True" Name="dgPretragaUsluge" Height="68" Canvas.Left="10" Canvas.Top="243" Width="420" AutoGeneratingColumn="dgPretragaUsluge_AutoGeneratingColumn"/>
+                    <Button Content="Trazi" Canvas.Left="267" Canvas.Top="60" Width="33" Click="PretraziNamestaj" Height="23"/>
+                    <Button Content="Trazi" Canvas.Left="267" Canvas.Top="205" Width="33" Click="PretraziUsluge" RenderTransformOrigin="0.618,1.23" Height="23"/>
+                    <Button  Canvas.Left="435" Canvas.Top="111" Width="30" Height="33" Click="DodajNamestajURacun">
+                        <Image Source="../Images/Cart.png" />
+                    </Button>
+                    <Button  Canvas.Left="435" Canvas.Top="262" Width="30" Height="33" Click="DodajUsluguURacun">
+                        <Image Source="../Images/Cart.png" />
+                    </Button>
+                    <Label Content="Racun:" Canvas.Left="562" Canvas.Top="54"/>
+                    <ListBox Name="lbRacun" Height="195" Canvas.Left="520" Canvas.Top="96" Width="151"/>
+                    <Button Content="Zavrsi prodaju" Canvas.Left="520" Canvas.Top="291" Width="151"/>
+                    <Button Content="Izlaz" FontSize="15" Click="Izlaz" Height="39" Canvas.Left="603.84" Canvas.Top="367" Width="68.16"/>
+
+
+
+
+                </Canvas>
+
+
+
+            </TabItem>
+
+            <TabItem Header="Namestaj" Margin="199,0,-201,-11" >
                 <Canvas VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Canvas.Background>
+                        <ImageBrush/>
+                    </Canvas.Background>
                     <Grid >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="61.6"/>
@@ -43,13 +83,13 @@
                             <RowDefinition Height="23*"/>
                             <RowDefinition Height="7*"/>
                         </Grid.RowDefinitions>
-                        <!--<ListBox Name="listBoxNamestaj" Grid.Row="0" FontSize="15"></ListBox> -->
+
 
                         <Button Grid.Row="1" Content="Dodaj" FontSize="15" Margin="41.6,366,454.2,-150" Click="DodajNamestaj" Grid.ColumnSpan="4" Grid.Column="1"/>
                         <Button Grid.Row="1" Content="Izmeni" FontSize="15" Margin="0,366,335.2,-150" Click="IzmeniNamestaj" Grid.Column="4" HorizontalAlignment="Right" Width="104"/>
                         <Button Grid.Row="1" Content="Obrisi" FontSize="15" Margin="12,366,48.4,-150" Click="ObrisiNamestaj" Grid.ColumnSpan="2"/>
                         <Button Grid.Row="1" Content="Izlaz" FontSize="15" Margin="381.84,367,19.2,-150" Click="Izlaz" Grid.Column="4"/>
-                        <DataGrid Name="dgNamestaj" CanUserAddRows="false" AutoGenerateColumns="False" HorizontalAlignment="Stretch" Height="246" VerticalAlignment="Top" Width="692" Margin="-1,10,0.2,0" Grid.ColumnSpan="5" Grid.Row="1"/>
+                        <DataGrid  Name="dgNamestaj" LoadingRow="DataGrid_LoadingRow" CanUserAddRows="false" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Stretch" Height="246" VerticalAlignment="Top" Width="692" Margin="-1,10,0.2,0" Grid.ColumnSpan="5" Grid.Row="1" AutoGeneratingColumn="dgNamestaj_AutoGeneratingColumn" />
 
 
                     </Grid>
@@ -61,11 +101,157 @@
 
 
             </TabItem>
-            <TabItem Header="Usluge" Margin="3,0,-30.6,-11" />
-            <TabItem Header="Prodaja" Margin="31.6,0,-59.6,-11" />
+
+            <TabItem Header="Tip Namestaja" Margin="206,0,-234.4,-11">
+                <Canvas VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Canvas.Background>
+                        <ImageBrush/>
+                    </Canvas.Background>
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="61.6"/>
+                            <ColumnDefinition Width="41.2"/>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="164*"/>
+                        </Grid.ColumnDefinitions>
 
 
 
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="23*"/>
+                            <RowDefinition Height="7*"/>
+                        </Grid.RowDefinitions>
+
+
+                        <Button Grid.Row="1" Content="Dodaj" FontSize="15" Margin="41.6,366,454.2,-150"  Grid.ColumnSpan="4" Grid.Column="1" Click="DodajTip" />
+                        <Button Grid.Row="1" Content="Izmeni" FontSize="15" Margin="0,366,335.2,-150"  Grid.Column="4" HorizontalAlignment="Right" Width="104" Click="IzmeniTip"   />
+                        <Button Grid.Row="1" Content="Obrisi" FontSize="15" Margin="12,366,48.4,-150"  Grid.ColumnSpan="2" Click="ObrisiTip"  />
+                        <Button Grid.Row="1" Content="Izlaz" FontSize="15" Margin="381.84,367,19.2,-150" Click="Izlaz" Grid.Column="4"/>
+                        <DataGrid Name="dgTipNamestaja" LoadingRow="DataGrid_LoadingRow" CanUserAddRows="false" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Stretch" Height="246" VerticalAlignment="Top" Width="692" Margin="-1,10,0.2,0" Grid.ColumnSpan="5" Grid.Row="1" AutoGeneratingColumn="dgTipNamestaja_AutoGeneratingColumn"  />
+
+
+                    </Grid>
+
+
+
+                </Canvas>
+
+
+
+            </TabItem>
+
+
+            <TabItem Header="Usluge" Margin="237.4,0,-265,-11" >
+                <Canvas VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Canvas.Background>
+                        <ImageBrush/>
+                    </Canvas.Background>
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="61.6"/>
+                            <ColumnDefinition Width="41.2"/>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="164*"/>
+                        </Grid.ColumnDefinitions>
+
+
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="23*"/>
+                            <RowDefinition Height="7*"/>
+                        </Grid.RowDefinitions>
+
+
+                        <Button Grid.Row="1" Content="Dodaj" FontSize="15" Margin="41.6,366,454.2,-150"  Grid.ColumnSpan="4" Grid.Column="1" Click="DodajUslugu"/>
+                        <Button Grid.Row="1" Content="Izmeni" FontSize="15" Margin="0,366,335.2,-150"  Grid.Column="4" HorizontalAlignment="Right" Width="104" Click="IzmeniUslugu" />
+                        <Button Grid.Row="1" Content="Obrisi" FontSize="15" Margin="12,366,48.4,-150"  Grid.ColumnSpan="2" Click="ObrisiUslugu" />
+                        <Button Grid.Row="1" Content="Izlaz" FontSize="15" Margin="381.84,367,19.2,-150" Click="Izlaz" Grid.Column="4"/>
+                        <DataGrid Name="dgUsluge" LoadingRow="DataGrid_LoadingRow" CanUserAddRows="false" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Stretch" Height="246" VerticalAlignment="Top" Width="692" Margin="-1,10,0.2,0" Grid.ColumnSpan="5" Grid.Row="1" AutoGeneratingColumn="dgUsluge_AutoGeneratingColumn" />
+
+
+                    </Grid>
+
+
+
+                </Canvas>
+
+            </TabItem>
+
+            <TabItem Header="Akcije" Margin="268,0,-294.8,-11" >
+                <Canvas VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Canvas.Background>
+                        <ImageBrush/>
+                    </Canvas.Background>
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="61.6"/>
+                            <ColumnDefinition Width="41.2"/>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="164*"/>
+                        </Grid.ColumnDefinitions>
+
+
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="23*"/>
+                            <RowDefinition Height="7*"/>
+                        </Grid.RowDefinitions>
+
+
+                        <Button Grid.Row="1" Content="Dodaj" FontSize="15" Margin="41.6,366,454.2,-150"  Grid.ColumnSpan="4" Grid.Column="1" Click="DodajAkciju"/>
+                        <Button Grid.Row="1" Content="Izmeni" FontSize="15" Margin="0,366,335.2,-150"  Grid.Column="4" HorizontalAlignment="Right" Width="104" Click="IzmeniAkciju" />
+                        <Button Grid.Row="1" Content="Obrisi" FontSize="15" Margin="12,366,48.4,-150"  Grid.ColumnSpan="2" Click="ObrisiAkciju" />
+                        <Button Grid.Row="1" Content="Izlaz" FontSize="15" Margin="381.84,367,19.2,-150" Click="Izlaz" Grid.Column="4"/>
+                        <DataGrid  Name="dgAkcije" LoadingRow="DataGrid_LoadingRow" CanUserAddRows="false" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Stretch" Height="246" VerticalAlignment="Top" Width="692" Margin="-1,10,0.2,0" Grid.ColumnSpan="5" Grid.Row="1" AutoGeneratingColumn="dgAkcije_AutoGeneratingColumn" />
+
+
+                    </Grid>
+
+
+
+                </Canvas>
+
+            </TabItem>
+
+            <TabItem Header="Korisnici" Margin="297.8,0,-325.8,-11" >
+                <Canvas VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Canvas.Background>
+                        <ImageBrush/>
+                    </Canvas.Background>
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="61.6"/>
+                            <ColumnDefinition Width="41.2"/>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="164*"/>
+                        </Grid.ColumnDefinitions>
+
+
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="23*"/>
+                            <RowDefinition Height="7*"/>
+                        </Grid.RowDefinitions>
+
+
+                        <Button Grid.Row="1" Content="Dodaj" FontSize="15" Margin="41.6,366,454.2,-150"  Grid.ColumnSpan="4" Grid.Column="1" Click="DodajKorisnika"/>
+                        <Button Grid.Row="1" Content="Izmeni" FontSize="15" Margin="0,366,335.2,-150"  Grid.Column="4" HorizontalAlignment="Right" Width="104" Click="IzmeniKorisnika" />
+                        <Button Grid.Row="1" Content="Obrisi" FontSize="15" Margin="12,366,48.4,-150"  Grid.ColumnSpan="2" Click="ObrisiKorisnika" />
+                        <Button Grid.Row="1" Content="Izlaz" FontSize="15" Margin="381.84,367,19.2,-150" Click="Izlaz" Grid.Column="4"/>
+                        <DataGrid Name="dgKorisnici" LoadingRow="DataGrid_LoadingRow" CanUserAddRows="false" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Stretch" Height="246" VerticalAlignment="Top" Width="692" Margin="-1,10,0.2,0" Grid.ColumnSpan="5" Grid.Row="1" AutoGeneratingColumn="dgKorisnici_AutoGeneratingColumn" />
+
+
+                    </Grid>
+
+
+
+                </Canvas>
+
+            </TabItem>
 
         </TabControl>
 

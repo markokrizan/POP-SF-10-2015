@@ -1,40 +1,138 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace POP_SF_10_2015.Model
 {
-
     public enum TipKorisnika
     {
-        //vidi jos ovo za int
-        Administrator = 1,
-        Prodavac = 2
+        
+        Administrator,
+        Prodavac
     }
-    public class Korisnik
-    {
-        public int ID { get; set; }
-        public string Ime { get; set; }
-        public string Prezime { get; set; }
-        public string KorIme { get; set; }
-        public string Lozinka { get; set; }
-        public TipKorisnika TipKorisnika { get; set; }
 
-        /*
-        public Korisnik(int ID, string Ime, string Prezime, string KorIme, string Lozinka, TipKorisnika tipKorisnika)
+    public class Korisnik : ICloneable, INotifyPropertyChanged
+    {
+       
+
+        private int id;
+        private bool obrisan;
+        private string ime;
+        private string prezime;
+        private string korime;
+        private string lozinka;
+        private TipKorisnika tipkorisnika;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public int ID
         {
-            this.ID = ID;
-            this.Ime = Ime;
-            this.Prezime = Prezime;
-            this.KorIme = KorIme;
-            this.Lozinka = Lozinka;
-            this.TipKorisnika = tipKorisnika;
+            get
+            {
+                return id;
+            }
+            set
+            {
+                id = value;
+                OnPropertyChanged("ID");
+            }
+        }
+        public bool Obrisan
+        {
+            get
+            {
+                return obrisan;
+            }
+            set
+            {
+                obrisan = value;
+                OnPropertyChanged("Obrisan");
+            }
+        }
+        public string Ime
+        {
+            get
+            {
+                return ime;
+            }
+            set
+            {
+                ime = value;
+                OnPropertyChanged("Ime");
+            }
+        }
+        public string Prezime
+        {
+            get
+            {
+                return prezime;
+            }
+            set
+            {
+                prezime = value;
+                OnPropertyChanged("Prezime");
+            }
+        }
+        public string KorIme
+        {
+            get
+            {
+                return korime;
+            }
+            set
+            {
+                korime = value;
+                OnPropertyChanged("KorIme");
+            }
+        }
+        public string Lozinka
+        {
+            get
+            {
+                return lozinka;
+            }
+            set
+            {
+                lozinka = value;
+                OnPropertyChanged("Lozinka");
+            }
+        }
+        public TipKorisnika TipKorisnika
+        {
+            get
+            {
+                return tipkorisnika;
+            }
+            set
+            {
+                tipkorisnika = value;
+                OnPropertyChanged("TipKorisnika");
+            }
         }
 
-       
-        */
+        protected void OnPropertyChanged(string propertyName)
+        {
 
+            if (PropertyChanged != null)
+            {
+                //this, sam namestaj menja dogadjaj
+                //parametri kao kod svake standardne metode koja hendluje dogadjaj
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
 
-
+        public object Clone()
+        {
+            Korisnik kopija = new Korisnik();
+            kopija.ID = ID;
+            kopija.Obrisan = Obrisan;
+            kopija.Ime = Ime;
+            kopija.Prezime = Prezime;
+            kopija.KorIme = KorIme;
+            kopija.Lozinka = Lozinka;
+            kopija.TipKorisnika = TipKorisnika;
+            return kopija;
+        }
     }
 }

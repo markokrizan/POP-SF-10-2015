@@ -9,24 +9,18 @@ namespace POP_SF_10_2015.Model
     public class Namestaj:ICloneable, INotifyPropertyChanged
     {
 
-        //dodao za binding
-        //dodao private na polja
-
-
+        
         //OVO SU SVOJSTVA, A DOLE SU METODE USTVARI KOJE IM PRISTUPAJU I MENJAJU IH GETERIMA I SETERIMA
         private int id;
         private bool obrisan;
         private string naziv;
         private string sifra;
         private double cena;
-        private int kolicinaumagacinu;
-
-        //verovatno i za jedan i za drugi treba
+        private int kolicinaumagacinu;       
         private int idtipanamestaja;
         private TipNamestaja tipNamestaja;
 
         
-
         //polje
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -41,19 +35,7 @@ namespace POP_SF_10_2015.Model
 
         }
 
-        /*
-        public Namestaj(int id, bool obrisan, string naziv, string sifra, double cena, 
-            int kolicinaumagacinu, int idtipanamestaja)
-        {
-            this.id = id;
-            this.obrisan = obrisan;
-            this.naziv = naziv;
-            this.sifra = sifra;
-            this.cena = cena;
-            this.kolicinaumagacinu = kolicinaumagacinu;
-            this.idtipanamestaja = idtipanamestaja;
-        }
-        */
+        
         
         //propfull tab tab
         public int ID
@@ -132,6 +114,8 @@ namespace POP_SF_10_2015.Model
 
         //da preskoci pisanje u xml da ne ude objekat u objektu
         [XmlIgnore]
+
+
         public TipNamestaja TipNamestaja
         {
             get
@@ -139,7 +123,7 @@ namespace POP_SF_10_2015.Model
                 //kada kazes namestaj.tipnamestaja uvuci ce samo id
                 if(tipNamestaja == null)
                 {
-                    tipNamestaja = TipNamestaja.GetById(idtipanamestaja);
+                    return tipNamestaja = TipNamestaja.GetById(idtipanamestaja);
                 }
                 return tipNamestaja;
             }
@@ -147,10 +131,14 @@ namespace POP_SF_10_2015.Model
             {
                 tipNamestaja = value;
                 idtipanamestaja = tipNamestaja.ID;
-
                 OnPropertyChanged("TipNamestaja");
             }
+
         }
+
+
+
+        
 
 
         public int IDTipaNamestaja
@@ -169,10 +157,7 @@ namespace POP_SF_10_2015.Model
                 OnPropertyChanged("IDTIpaNamestaja");
             }
         }
-        //stavi tip namestaja int 
-        //public Akcija Akcija { get; set; }
-
-        //da kada se poziva namestaj se ne poziva difolt toString metoda koja ispisuje namestpace.imeobjekta, nego je overrajdujemo ovako
+        
 
 
 
@@ -180,25 +165,12 @@ namespace POP_SF_10_2015.Model
 
         public override string ToString()
         {
-            return $"{Naziv}, {Cena}, {TipNamestaja.GetById(IDTipaNamestaja).Naziv}";
+            return $"{Naziv}, {Cena}";
         }
 
 
 
-        //izmenio metodu 
-
-        /*
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged(string name)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if(handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(name));
-            }
-        }
-        */
+        
 
 
         public static Namestaj GetById(int id)

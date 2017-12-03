@@ -16,33 +16,23 @@ namespace POP_SF_10_2015.Model
         //odma instanciramo
         public static Projekat Instance { get;  } = new Projekat();
 
-        //promenio za namestaj i tip namestaja iz liste u obsevable collection, isto i u serijalajzeru
+        
         public ObservableCollection<Namestaj> Namestaj;
-        //public ObservableCollection<Namestaj> NamestajNaStanju;
+        public ObservableCollection<DodatneUsluge> Usluge;
         public ObservableCollection<Korisnik> Korisnici;
         public ObservableCollection<TipNamestaja> TipoviNamestaja;
-        //i za ostale
-        //private List<DodatneUsluge> dodatneUsluge = new List<DodatneUsluge>();
-        //private List<Akcija> akcije = new List<Akcija>();
+        public ObservableCollection<Akcija> Akcije;
+
+
 
         private Projekat()
         {
-            //ovi objekti MORAJU biti postojani ne sme da se koristi nova kolekcija, jer se gubi veza sa mapiranjem, mozes ih prazniti i puniti
-            //ali ne ih menjati drugima
+            //ovi objekti MORAJU biti postojani ne sme da se koristi nova kolekcija, jer se gubi veza sa mapiranjem, mozes ih prazniti i puniti          
             Namestaj = new ObservableCollection<Namestaj>(GenericSerializer.Deserialize<Namestaj>("namestaj.xml"));
-            
-            /*
-            NamestajNaStanju = new ObservableCollection<Namestaj>();
-            foreach(Namestaj nam in Namestaj)
-            {
-                if (nam.Obrisan == false)
-                {
-                    NamestajNaStanju.Add(nam);
-                }
-            }
-            */
-
+            Usluge = new ObservableCollection<DodatneUsluge>(GenericSerializer.Deserialize<DodatneUsluge>("dodatneusluge.xml"));
             TipoviNamestaja = new ObservableCollection<TipNamestaja>(GenericSerializer.Deserialize<TipNamestaja>("tipovinamestaja.xml"));
+            Korisnici = new ObservableCollection<Korisnik>(GenericSerializer.Deserialize<Korisnik>("korisnici.xml"));
+            Akcije = new ObservableCollection<Akcija>(GenericSerializer.Deserialize<Akcija>("akcije.xml"));
 
         }
 

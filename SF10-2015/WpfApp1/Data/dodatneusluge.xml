@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfDodatneUsluge xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <DodatneUsluge>
+    <ID>0</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>Sklapanje</Naziv>
+    <Cena>1000</Cena>
+  </DodatneUsluge>
+  <DodatneUsluge>
+    <ID>1</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>Dostava</Naziv>
+    <Cena>2000</Cena>
+  </DodatneUsluge>
+  <DodatneUsluge>
+    <ID>3</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>razjeb</Naziv>
+    <Cena>5</Cena>
+  </DodatneUsluge>
+  <DodatneUsluge>
+    <ID>4</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>Popravka</Naziv>
+    <Cena>3500</Cena>
+  </DodatneUsluge>
+</ArrayOfDodatneUsluge>

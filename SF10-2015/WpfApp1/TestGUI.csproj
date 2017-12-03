@@ -54,16 +54,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="GUI\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\DodajNamestaj.xaml.cs">
-      <DependentUpon>DodajNamestaj.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Model\Salon.cs" />
     <Compile Include="Model\TipNamestaja.cs" />
+    <Compile Include="UI\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\KorisnikWindow.xaml.cs">
+      <DependentUpon>KorisnikWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AkcijeWindow.xaml.cs">
+      <DependentUpon>AkcijeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UsugeWindow.xaml.cs">
+      <DependentUpon>UsugeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TipWindow.xaml.cs">
+      <DependentUpon>TipWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\NamestajWindow.xaml.cs">
       <DependentUpon>NamestajWindow.xaml</DependentUpon>
@@ -72,10 +81,6 @@
       <DependentUpon>SalonInfoWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Util\GenericSerializer.cs" />
-    <Page Include="GUI\MainWindowABC.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="Model\Akcija.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -83,21 +88,29 @@
     </Compile>
     <Compile Include="Model\DodatneUsluge.cs" />
     <Compile Include="Model\Korisnik.cs" />
-    <Compile Include="GUI\MainWindowABC.xaml.cs">
-      <DependentUpon>MainWindowABC.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="GUI\Login.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="UI\Login.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\DodajNamestaj.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\KorisnikWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\AkcijeWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\UsugeWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\TipWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\NamestajWindow.xaml">
       <SubType>Designer</SubType>
@@ -110,7 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Namestaj.cs" />
-    <Compile Include="Model\Prodaja.cs" />
+    <Compile Include="Model\Racun.cs" />
     <Compile Include="Model\Projekat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -144,11 +157,27 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Data\tipovinamestaja.xml" />
+    <Resource Include="Data\tipovinamestaja.xml">
+      <SubType>Designer</SubType>
+    </Resource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\stunning-wood-table-pattern-trees-patterns-textures-backgrounds-home-design.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\furniture-md.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\dodatneusluge.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\akcije.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Login.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cart.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

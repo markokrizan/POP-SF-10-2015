@@ -4,7 +4,7 @@ using System.Text;
 
 namespace POP_SF_10_2015.Model
 {
-    public class Prodaja
+    public class Racun
     {
         public int ID { get; set; }
         public List<Namestaj> NamestajZaProdaju { get; set; }

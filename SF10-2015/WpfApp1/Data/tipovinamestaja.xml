@@ -1,29 +1,118 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfTipNamestaja xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <TipNamestaja>
     <ID>0</ID>
-    <Obrisan>false</Obrisan>
+    <Obrisan>true</Obrisan>
     <Naziv>Stolica</Naziv>
   </TipNamestaja>
   <TipNamestaja>
     <ID>1</ID>
-    <Obrisan>false</Obrisan>
+    <Obrisan>true</Obrisan>
     <Naziv>Sto</Naziv>
   </TipNamestaja>
   <TipNamestaja>
     <ID>2</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>Kauc</Naziv>
+  </TipNamestaja>
+  <TipNamestaja>
+    <ID>4</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>Gidra</Naziv>
+  </TipNamestaja>
+  <TipNamestaja>
+    <ID>5</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>danijel</Naziv>
+  </TipNamestaja>
+  <TipNamestaja>
+    <ID>6</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>edi</Naziv>
+  </TipNamestaja>
+  <TipNamestaja>
+    <ID>7</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>a</Naziv>
+  </TipNamestaja>
+  <TipNamestaja>
+    <ID>8</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>b</Naziv>
+  </TipNamestaja>
+  <TipNamestaja>
+    <ID>9</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>a</Naziv>
+  </TipNamestaja>
+  <TipNamestaja>
+    <ID>10</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>edi</Naziv>
+  </TipNamestaja>
+  <TipNamestaja>
+    <ID>11</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>a</Naziv>
+  </TipNamestaja>
+  <TipNamestaja>
+    <ID>12</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>b</Naziv>
+  </TipNamestaja>
+  <TipNamestaja>
+    <ID>13</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>Sofa</Naziv>
+  </TipNamestaja>
+  <TipNamestaja>
+    <ID>14</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>Krevet</Naziv>
+  </TipNamestaja>
+  <TipNamestaja>
+    <ID>15</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>Krevet</Naziv>
+  </TipNamestaja>
+  <TipNamestaja>
+    <ID>16</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>Stolica</Naziv>
+  </TipNamestaja>
+  <TipNamestaja>
+    <ID>17</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>Stolica</Naziv>
+  </TipNamestaja>
+  <TipNamestaja>
+    <ID>18</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv>Krevet</Naziv>
+  </TipNamestaja>
+  <TipNamestaja>
+    <ID>19</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>Sofa</Naziv>
+  </TipNamestaja>
+  <TipNamestaja>
+    <ID>20</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>Krevet</Naziv>
+  </TipNamestaja>
+  <TipNamestaja>
+    <ID>21</ID>
     <Obrisan>false</Obrisan>
     <Naziv>Kauc</Naziv>
   </TipNamestaja>
   <TipNamestaja>
-    <ID>3</ID>
+    <ID>22</ID>
     <Obrisan>false</Obrisan>
-    <Naziv>Fotelja</Naziv>
+    <Naziv>Madrac</Naziv>
   </TipNamestaja>
   <TipNamestaja>
-    <ID>3</ID>
+    <ID>23</ID>
     <Obrisan>false</Obrisan>
-    <Naziv>Sofa</Naziv>
+    <Naziv>Lampa</Naziv>
   </TipNamestaja>
 </ArrayOfTipNamestaja>
-
