@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1.DAL;
 
 namespace WpfApp1.UI
 {
@@ -49,14 +50,15 @@ namespace WpfApp1.UI
         {
 
             
-            var listaUsluga = Projekat.Instance.Usluge;                  
+            var listaUsluga = Projekat.Instance.dodatneusluge;                  
             this.DialogResult = true;
 
             switch(operacija)
             {
                 case Operacija.DODAVANJE:
-                    usluga.ID = listaUsluga.Count + 1;
-                    listaUsluga.Add(usluga);                                      
+                    //usluga.ID = listaUsluga.Count + 1;
+                    //listaUsluga.Add(usluga);    
+                    DodatneUslugeDAL.Create(usluga);
                     break;
                    
                 case Operacija.IZMENA:
@@ -69,6 +71,7 @@ namespace WpfApp1.UI
                            
                             u.Naziv = usluga.Naziv;
                             u.Cena = usluga.Cena;
+                            DodatneUslugeDAL.Update(u);
                             break;
                         }
                     }
@@ -77,7 +80,7 @@ namespace WpfApp1.UI
                     break;
                 
             }            
-            GenericSerializer.Serialize("dodatneusluge.xml", listaUsluga);
+            //GenericSerializer.Serialize("dodatneusluge.xml", listaUsluga);
             this.Close();
         }
 

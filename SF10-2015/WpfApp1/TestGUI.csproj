@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,6 +55,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DAL\AkcijaDAL.cs" />
+    <Compile Include="DAL\DodatneUslugeDAL.cs" />
+    <Compile Include="DAL\KorisnikDAL.cs" />
+    <Compile Include="DAL\NamestajDAL.cs" />
+    <Compile Include="DAL\ProdateUslugeDAL.cs" />
+    <Compile Include="DAL\ProdatiNamestajDAL.cs" />
+    <Compile Include="DAL\RacunDAL.cs" />
+    <Compile Include="DAL\SalonDAL.cs" />
+    <Compile Include="DAL\TipNamestajaDAL.cs" />
     <Compile Include="Model\Salon.cs" />
     <Compile Include="Model\TipNamestaja.cs" />
     <Compile Include="UI\Login.xaml.cs">
@@ -151,7 +161,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Data\korisnici.xml" />
+    <Resource Include="Data\korisnici.xml">
+      <SubType>Designer</SubType>
+    </Resource>
     <Resource Include="Data\namestaj.xml">
       <SubType>Designer</SubType>
     </Resource>
@@ -178,6 +190,17 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Cart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\racuni.xml">
+      <SubType>Designer</SubType>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="SQL\kreiraj.sql" />
+    <Content Include="SQL\napuni.sql" />
+    <Content Include="SQL\prikazi.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

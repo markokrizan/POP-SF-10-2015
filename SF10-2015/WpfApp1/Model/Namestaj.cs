@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Text;
 using System.Xml.Serialization;
 
@@ -19,8 +23,10 @@ namespace POP_SF_10_2015.Model
         private int kolicinaumagacinu;       
         private int idtipanamestaja;
         private TipNamestaja tipNamestaja;
+        //private int idakcije;
+        //private Akcija akcija;
 
-        
+
         //polje
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -121,11 +127,15 @@ namespace POP_SF_10_2015.Model
             get
             {
                 //kada kazes namestaj.tipnamestaja uvuci ce samo id
+                
                 if(tipNamestaja == null)
                 {
                     return tipNamestaja = TipNamestaja.GetById(idtipanamestaja);
                 }
                 return tipNamestaja;
+                
+                //return TipNamestaja.GetById(idtipanamestaja);
+                //return tipNamestaja;
             }
             set
             {
@@ -135,12 +145,6 @@ namespace POP_SF_10_2015.Model
             }
 
         }
-
-
-
-        
-
-
         public int IDTipaNamestaja
         {
             get
@@ -165,7 +169,7 @@ namespace POP_SF_10_2015.Model
 
         public override string ToString()
         {
-            return $"{Naziv}, {Cena}";
+            return $"{Naziv}, {TipNamestaja.Naziv}, {Cena}";
         }
 
 
@@ -175,7 +179,7 @@ namespace POP_SF_10_2015.Model
 
         public static Namestaj GetById(int id)
         {
-            foreach (var namestaj in Projekat.Instance.Namestaj)
+            foreach (var namestaj in Projekat.Instance.namestaj)
             {
                 if (namestaj.ID == id)
                 {
@@ -220,11 +224,12 @@ namespace POP_SF_10_2015.Model
             }
         }
 
-
-
+        
+        
         
 
-        
+
+
     }
 
 }

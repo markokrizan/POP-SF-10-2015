@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Text;
 
 namespace POP_SF_10_2015.Model
 {
-    public class Salon
+    public class Salon:INotifyPropertyChanged
     {
         private string naziv;
         private string adresa;
@@ -15,12 +20,14 @@ namespace POP_SF_10_2015.Model
         private string brojziroracuna;
         private string sajt;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public string Naziv {
            
             set
             {
-                this.naziv = value;
-                
+                naziv = value;
+                OnPropertyChanged("Naziv");
             }
             get
             {
@@ -34,7 +41,8 @@ namespace POP_SF_10_2015.Model
             }
             set
             {
-                this.adresa = value;
+                adresa = value;
+                OnPropertyChanged("Adresa");
             }
         }
         public string Telefon {
@@ -44,7 +52,8 @@ namespace POP_SF_10_2015.Model
             }
             set
             {
-                this.telefon = value;
+                telefon = value;
+                OnPropertyChanged("Telefon");
             }
         }
         public string EMail {
@@ -54,7 +63,8 @@ namespace POP_SF_10_2015.Model
             }
             set
             {
-                this.email = value;
+                email = value;
+                OnPropertyChanged("EMail");
             }
         }
         public string PIB {
@@ -64,7 +74,8 @@ namespace POP_SF_10_2015.Model
             }
             set
             {
-                this.pib = value;
+                pib = value;
+                OnPropertyChanged("PIB");
             }
         }
         public string  MaticniBroj {
@@ -74,7 +85,8 @@ namespace POP_SF_10_2015.Model
             }
             set
             {
-                this.maticnibroj = value;
+                maticnibroj = value;
+                OnPropertyChanged("MaticniBroj");
 
             }
         }
@@ -85,7 +97,8 @@ namespace POP_SF_10_2015.Model
             }
             set
             {
-                this.brojziroracuna = value;
+                brojziroracuna = value;
+                OnPropertyChanged("BrojZiroRacuna");
             }
         }
         public string Sajt {
@@ -95,10 +108,12 @@ namespace POP_SF_10_2015.Model
             }
             set
             {
-                this.sajt = value;
+                sajt = value;
+                OnPropertyChanged("Sajt");
             }
         }
 
+        /*
         public Salon()
         {
             this.naziv = "Jugodrvo";
@@ -110,6 +125,24 @@ namespace POP_SF_10_2015.Model
             this.brojziroracuna = "320-000566677465-88";
             this.sajt = "www.jugosalon.rs";
         }
+        */
+
+        
+       
+
+        
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+
+
 
 
 

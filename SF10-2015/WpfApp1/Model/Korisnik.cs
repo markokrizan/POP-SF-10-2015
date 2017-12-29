@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Text;
 
 namespace POP_SF_10_2015.Model
@@ -8,8 +12,8 @@ namespace POP_SF_10_2015.Model
     public enum TipKorisnika
     {
         
-        Administrator,
-        Prodavac
+        Administrator = 1,
+        Prodavac = 2
     }
 
     public class Korisnik : ICloneable, INotifyPropertyChanged
@@ -134,5 +138,11 @@ namespace POP_SF_10_2015.Model
             kopija.TipKorisnika = TipKorisnika;
             return kopija;
         }
+
+
+        
+
+
+
     }
 }

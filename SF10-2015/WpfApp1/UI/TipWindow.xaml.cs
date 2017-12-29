@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1.DAL;
 
 namespace WpfApp1.UI
 {
@@ -48,14 +49,19 @@ namespace WpfApp1.UI
         {
 
             
-            var listaTipova = Projekat.Instance.TipoviNamestaja;                  
+            var listaTipova = Projekat.Instance.tipnamestaja;                  
             this.DialogResult = true;
 
             switch(operacija)
             {
                 case Operacija.DODAVANJE:
-                    tip.ID = listaTipova.Count + 1;
-                    listaTipova.Add(tip);                                      
+
+
+
+
+                    //tip.ID = listaTipova.Count + 1;
+                    //listaTipova.Add(tip);
+                    TipNamestajaDAL.Create(tip);
                     break;
                    
                 case Operacija.IZMENA:
@@ -65,7 +71,8 @@ namespace WpfApp1.UI
                         if(t.ID == tip.ID)
                         {
                                                       
-                            t.Naziv = tip.Naziv;                           
+                            t.Naziv = tip.Naziv;
+                            TipNamestajaDAL.Update(t);
                             break;
                         }
                     }
@@ -73,8 +80,8 @@ namespace WpfApp1.UI
                     
                     break;
                 
-            }            
-            GenericSerializer.Serialize("tipovinamestaja.xml", listaTipova);
+            }
+            
             this.Close();
         }
 

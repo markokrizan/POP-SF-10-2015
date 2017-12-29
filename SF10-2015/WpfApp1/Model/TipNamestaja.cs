@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Text;
 
 namespace POP_SF_10_2015.Model
@@ -58,7 +62,7 @@ namespace POP_SF_10_2015.Model
 
         public static TipNamestaja GetById(int id)
         {
-            foreach(var tipNamestaja in Projekat.Instance.TipoviNamestaja)
+            foreach(var tipNamestaja in Projekat.Instance.tipnamestaja)
             {
                 if(tipNamestaja.ID == id)
                 {
@@ -92,6 +96,59 @@ namespace POP_SF_10_2015.Model
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }

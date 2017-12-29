@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1.DAL;
 
 namespace WpfApp1.UI
 {
@@ -52,7 +53,7 @@ namespace WpfApp1.UI
 
 
 
-            viewCompoTipovi = CollectionViewSource.GetDefaultView(Projekat.Instance.TipoviNamestaja);
+            viewCompoTipovi = CollectionViewSource.GetDefaultView(Projekat.Instance.tipnamestaja);
             viewCompoTipovi.Filter = filterTipova;
 
             bool filterTipova(object item)
@@ -84,7 +85,7 @@ namespace WpfApp1.UI
         {
 
             
-            var listaNamestaja = Projekat.Instance.Namestaj;
+            var listaNamestaja = Projekat.Instance.namestaj;
            
         
             this.DialogResult = true;
@@ -92,9 +93,9 @@ namespace WpfApp1.UI
             switch(operacija)
             {
                 case Operacija.DODAVANJE:
-                    namestaj.ID = listaNamestaja.Count + 1;
-                    listaNamestaja.Add(namestaj);
-                    
+                    //namestaj.ID = listaNamestaja.Count + 1;
+                    //listaNamestaja.Add(namestaj);
+                    NamestajDAL.Create(namestaj);
                     
                   
 
@@ -112,6 +113,7 @@ namespace WpfApp1.UI
                             
                             n.IDTipaNamestaja = namestaj.IDTipaNamestaja;
                             n.Naziv = namestaj.Naziv;
+                            NamestajDAL.Update(n);
                             break;
                         }
                     }
@@ -122,7 +124,7 @@ namespace WpfApp1.UI
             }
 
             //nakon svih izmena serijalizuj, znaci prvo radimo sa temp listom, menjamo je kolko treba i onda se pregazi glavna kolekcija seterom iz Projekat
-            GenericSerializer.Serialize("namestaj.xml", listaNamestaja);
+            //GenericSerializer.Serialize("namestaj.xml", listaNamestaja);
             this.Close();
         }
 

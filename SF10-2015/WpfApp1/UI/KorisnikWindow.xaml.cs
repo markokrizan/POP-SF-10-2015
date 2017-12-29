@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1.DAL;
 
 namespace WpfApp1.UI
 {
@@ -74,7 +75,7 @@ namespace WpfApp1.UI
         {
 
             
-            var listaKorisnika = Projekat.Instance.Korisnici;
+            var listaKorisnika = Projekat.Instance.korisnici;
            
         
             this.DialogResult = true;
@@ -82,9 +83,9 @@ namespace WpfApp1.UI
             switch(operacija)
             {
                 case Operacija.DODAVANJE:
-                    korisnik.ID = listaKorisnika.Count + 1;
-                    listaKorisnika.Add(korisnik);
-                    
+                    //korisnik.ID = listaKorisnika.Count + 1;
+                    //listaKorisnika.Add(korisnik);
+                    KorisnikDAL.Create(korisnik);
                     
                   
 
@@ -104,7 +105,7 @@ namespace WpfApp1.UI
                             k.Prezime = korisnik.Prezime;
                             k.KorIme = korisnik.KorIme;
                             k.Lozinka = korisnik.Lozinka;
-
+                            KorisnikDAL.Update(k);
                             break;
                         }
                     }
@@ -115,7 +116,7 @@ namespace WpfApp1.UI
             }
 
             //nakon svih izmena serijalizuj, znaci prvo radimo sa temp listom, menjamo je kolko treba i onda se pregazi glavna kolekcija seterom iz Projekat
-            GenericSerializer.Serialize("korisnici.xml", listaKorisnika);
+            //GenericSerializer.Serialize("korisnici.xml", listaKorisnika);
             this.Close();
         }
 

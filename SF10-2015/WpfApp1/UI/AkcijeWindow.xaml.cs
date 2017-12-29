@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1.DAL;
 
 namespace WpfApp1.UI
 {
@@ -55,14 +56,15 @@ namespace WpfApp1.UI
         {
 
             
-            var listaAkcija = Projekat.Instance.Akcije;                  
+            var listaAkcija = Projekat.Instance.akcija;                  
             this.DialogResult = true;
 
             switch(operacija)
             {
                 case Operacija.DODAVANJE:
-                    akcija.ID = listaAkcija.Count + 1;
-                    listaAkcija.Add(akcija);                                      
+                    //akcija.ID = listaAkcija.Count + 1;
+                    //listaAkcija.Add(akcija); 
+                    AkcijaDAL.Create(akcija);
                     break;
                    
                 case Operacija.IZMENA:
@@ -72,11 +74,11 @@ namespace WpfApp1.UI
                         if(a.ID == akcija.ID)
                         {
                             
-                           
                             a.Naziv = akcija.Naziv;
                             a.Popust = akcija.Popust;
                             a.DatumPocetka = akcija.DatumPocetka;
                             a.DatumZavrsetka = akcija.DatumZavrsetka;
+                            AkcijaDAL.Update(a);
                             break;
                         }
                     }
@@ -85,7 +87,7 @@ namespace WpfApp1.UI
                     break;
                 
             }            
-            GenericSerializer.Serialize("akcije.xml", listaAkcija);
+            //GenericSerializer.Serialize("akcije.xml", listaAkcija);
             this.Close();
         }
 

@@ -16,6 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1.DAL;
 
 namespace WpfApp1.UI
 {
@@ -30,21 +31,28 @@ namespace WpfApp1.UI
         ICollectionView viewTipovi;
         ICollectionView viewKorisnici;
         ICollectionView viewAkcije;
+        ICollectionView viewRacuni;
 
         //Prodaja:
         ICollectionView viewTrazeniNamestaj;
         ICollectionView viewTrazeneUsluge;
 
-        public MainWindow()
+        Racun trenutniRacun;
+        Korisnik trenutniKorisnik;
+
+        public MainWindow(Korisnik korisnik)
         {
 
             InitializeComponent();
                         
-            viewNamestaj = CollectionViewSource.GetDefaultView(Projekat.Instance.Namestaj);
-            viewUsluge = CollectionViewSource.GetDefaultView(Projekat.Instance.Usluge);
-            viewTipovi = CollectionViewSource.GetDefaultView(Projekat.Instance.TipoviNamestaja);
-            viewKorisnici = CollectionViewSource.GetDefaultView(Projekat.Instance.Korisnici);
-            viewAkcije = CollectionViewSource.GetDefaultView(Projekat.Instance.Akcije);
+            viewNamestaj = CollectionViewSource.GetDefaultView(Projekat.Instance.namestaj);
+            viewUsluge = CollectionViewSource.GetDefaultView(Projekat.Instance.dodatneusluge);
+            viewTipovi = CollectionViewSource.GetDefaultView(Projekat.Instance.tipnamestaja);
+            viewKorisnici = CollectionViewSource.GetDefaultView(Projekat.Instance.korisnici);
+            viewAkcije = CollectionViewSource.GetDefaultView(Projekat.Instance.akcija);
+            viewRacuni = CollectionViewSource.GetDefaultView(Projekat.Instance.racun);
+            trenutniRacun = new Racun();
+            this.trenutniKorisnik = korisnik;
 
 
             //delegat kojem se prosledjuje funkcija
@@ -117,9 +125,47 @@ namespace WpfApp1.UI
             dgAkcije.ItemsSource = viewAkcije;
             dgAkcije.IsSynchronizedWithCurrentItem = true;
             dgAkcije.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
-            
-            
-            
+
+            ////////////SOURCE RACUNI////////////
+            dgRacuni.ItemsSource = viewRacuni;
+            dgRacuni.IsSynchronizedWithCurrentItem = true;
+            dgRacuni.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+
+
+            ////////////SOURCE PRODAJA////////////
+            lblUkupnaCena.DataContext = trenutniRacun;
+            tbKupac.DataContext = trenutniRacun;
+            tbBrojRacuna.DataContext = trenutniRacun;
+
+
+            //PRODAVAC VS ADMIN
+
+            if(trenutniKorisnik.TipKorisnika == TipKorisnika.Prodavac)
+            {
+                btnDodajNamestaj.Visibility = Visibility.Collapsed;
+                btnIzmeniNamestaj.Visibility = Visibility.Collapsed;
+                btnObrisiNamestaj.Visibility = Visibility.Collapsed;
+
+                btnDodajTip.Visibility = Visibility.Collapsed;
+                btnIzmeniTip.Visibility = Visibility.Collapsed;
+                btnObrisiTip.Visibility = Visibility.Collapsed;
+
+                btnDodajUslugu.Visibility = Visibility.Collapsed;
+                btnIzmeniUslugu.Visibility = Visibility.Collapsed;
+                btnObrisiUslugu.Visibility = Visibility.Collapsed;
+
+                btnDodajAkciju.Visibility = Visibility.Collapsed;
+                btnIzmeniAkciju.Visibility = Visibility.Collapsed;
+                btnObrisiAkciju.Visibility = Visibility.Collapsed;
+
+                btnDodajKorisnika.Visibility = Visibility.Collapsed;
+                btnIzmeniKorisnika.Visibility = Visibility.Collapsed;
+                btnObrisiKorisnika.Visibility = Visibility.Collapsed;
+
+            }
+
+
+
 
         }
 
@@ -140,19 +186,21 @@ namespace WpfApp1.UI
             string Unos = tbPretragaNamestaj.Text.ToLower();
             ObservableCollection<Namestaj> listaTrazenogNamestaja = new ObservableCollection<Namestaj>();
 
-            foreach (Namestaj nam in Projekat.Instance.Namestaj)
+            foreach (Namestaj nam in Projekat.Instance.namestaj)
             {
-                /*
+                
                 //ova provera tek kada budu dobri podaci
                 if (nam.Obrisan == false && (nam.Naziv.ToLower() == Unos || nam.Sifra.ToLower() == Unos || nam.TipNamestaja.Naziv.ToLower() == Unos))              
                 {
                     listaTrazenogNamestaja.Add(nam);
                 }
-                */
+                
+                /*
                 if (nam.Obrisan == false && nam.Naziv.ToLower().Contains(Unos))
                 {
                     listaTrazenogNamestaja.Add(nam);
                 }
+                */
 
             }
 
@@ -171,7 +219,7 @@ namespace WpfApp1.UI
             string Unos = tbPretragaUsluge.Text.ToLower();
             ObservableCollection<DodatneUsluge> listaTrazenihUsluga = new ObservableCollection<DodatneUsluge>();
 
-            foreach (DodatneUsluge us in Projekat.Instance.Usluge)
+            foreach (DodatneUsluge us in Projekat.Instance.dodatneusluge)
             {
                 
                 if (us.Obrisan == false && us.Naziv.ToLower().Contains(Unos))
@@ -226,19 +274,16 @@ namespace WpfApp1.UI
 
 
         }
-
-        //List<Namestaj> namestajZaProdaju = new List<Namestaj>();
-        //List<DodatneUsluge> uslugeZaProdaju = new List<DodatneUsluge>();
-
+       
+        //FORMIRANJE RACUNA:
+               
         private void DodajNamestajURacun(object sender, RoutedEventArgs e)
         {
             Namestaj selektovaniNamestaj = (Namestaj)dgPretragaNamestaj.SelectedItem;
             lbRacun.Items.Add(selektovaniNamestaj);
+            trenutniRacun.UkupnaCena = trenutniRacun.UkupnaCena + selektovaniNamestaj.Cena;
+            //trenutniRacun.NamestajZaProdaju.Add(selektovaniNamestaj);
             
-            
-
-
-
 
         }
 
@@ -246,13 +291,128 @@ namespace WpfApp1.UI
         {
             DodatneUsluge selektovanaUsluga = (DodatneUsluge)dgPretragaUsluge.SelectedItem;
             lbRacun.Items.Add(selektovanaUsluga);
-            
+            trenutniRacun.UkupnaCena = trenutniRacun.UkupnaCena + selektovanaUsluga.Cena;
+            //trenutniRacun.DodatneUsluge.Add(selektovanaUsluga);
 
         }
 
+
        
+        
+        private void ZavrsiProdaju(object sender, RoutedEventArgs e)
+        {
+            var listaRacuna = Projekat.Instance.racun;
+
+            trenutniRacun.DatumProdaje = DateTime.Now;
+            //pomocu executeScalar:
+            //trenutniRacun.ID = listaRacuna.Count + 1;
+
+            //uzmi sad one koje si dodao u listBox
+            //Cenu si u menjuvremenu menjao pri dodavanju u listBox
+            var lbRacunKolekcija = lbRacun.Items;
+
+            //id ce se dodati u DAL-u
+            //Dodaj u dve kolekcije:
+
+            foreach(var i in lbRacunKolekcija)
+            {
+                if(i is Namestaj)
+                {
+                    //trenutniRacun.NamestajZaProdaju.Add((Namestaj)i);
+                    ProdatiNamestajDAL.Create((Namestaj)i, trenutniRacun);
+                }
+                else
+                {
+                    //trenutniRacun.DodatneUsluge.Add((DodatneUsluge)i);
+                    ProdateUslugeDAL.Create((DodatneUsluge)i, trenutniRacun);
+                }
+            }
+
+
+            //u dal-u se azurira i model
+            //listaRacuna.Add(trenutniRacun);
+            RacunDAL.Create(trenutniRacun);
+
+            //GenericSerializer.Serialize("racuni.xml", listaRacuna);
+            //RacunDAL.Create(trenutniRacun);
+
+            //ponovo ga setuj na prazan objekat:
+            trenutniRacun = new Racun();
+
+            MessageBox.Show("Prodaja izvrsena");
+            
+            
+        }
+
+
+        //ne radi
+        private void MenuItemDelete_Click(object sender, RoutedEventArgs e)
+        {
+            //zasto ovo radi????
+            lbRacun.Items.RemoveAt(lbRacun.SelectedIndex);
+
+            //index -1 sto znaci da nije selektovano, ali i dalje prvi red radi??
+            int index = lbRacun.SelectedIndex;
+
+            MessageBox.Show(index.ToString());
+            //ListBoxItem listItem = (ListBoxItem)(lbRacun.ItemContainerGenerator.ContainerFromIndex(index));
+
+            //Object ob = lbRacun.Items[index];
+            Object ob = lbRacun.SelectedValue;
+
+            double cenaSelektovanog;
+
+            if(ob is Namestaj)
+            {
+                
+                cenaSelektovanog = (ob as Namestaj).Cena;
+            }
+            else
+            {
+
+                cenaSelektovanog = (ob as DodatneUsluge).Cena;
+            }
+
+            trenutniRacun.UkupnaCena = trenutniRacun.UkupnaCena - cenaSelektovanog;
+
+
+
+        }
+
+
 
         /////////////////////////////TAB PRODAJE////////////////////////////////////////
+
+
+        /////////////////////////////TAB RACUNI////////////////////////////////////////
+
+
+
+
+
+        private void dgRacuni_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            
+            if ((string)e.Column.Header == "ID")
+            {
+                e.Cancel = true;
+            }
+
+            if ((string)e.Column.Header == "NamestajZaProdaju")
+            {
+                e.Cancel = true;
+            }
+
+            if ((string)e.Column.Header == "DodatneUsluge")
+            {
+                e.Cancel = true;
+            }
+
+            
+        }
+
+
+        /////////////////////////////TAB RACUNI////////////////////////////////////////
 
         /////////////////////////////TAB NAMESTAJ////////////////////////////////////////
 
@@ -276,8 +436,8 @@ namespace WpfApp1.UI
                 if (nw.ShowDialog() != true)
                 {
                     //ako show dialog nije jednako true, znaci da je izasao, sto znaci vrati stari objekat na svoje mesto
-                    int index = Projekat.Instance.Namestaj.IndexOf(selektovaniNamestaj);
-                    Projekat.Instance.Namestaj[index] = stari;
+                    int index = Projekat.Instance.namestaj.IndexOf(selektovaniNamestaj);
+                    Projekat.Instance.namestaj[index] = stari;
                 }
 
             }
@@ -290,11 +450,12 @@ namespace WpfApp1.UI
             if (MessageBox.Show($"Da li ste sigurni da zelite da izbrisete: {izabraniNamestaj.Naziv}?", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 //DataGridRow dataGridRow;
-                foreach (var n in Projekat.Instance.Namestaj)
+                foreach (var n in Projekat.Instance.namestaj)
                 {
                     if(n.ID == izabraniNamestaj.ID)
                     {
-                        n.Obrisan = true;                       
+                        //n.Obrisan = true;
+                        NamestajDAL.Delete(n);
                         //dataGridRow = dgNamestaj.ItemContainerGenerator.ContainerFromItem(n) as DataGridRow;
                         //dataGridRow.Visibility = System.Windows.Visibility.Collapsed;
                         // samo refresh view-a
@@ -302,7 +463,7 @@ namespace WpfApp1.UI
                         break;
                     }
                 }
-                GenericSerializer.Serialize("namestaj.xml", Projekat.Instance.Namestaj);              
+                GenericSerializer.Serialize("namestaj.xml", Projekat.Instance.namestaj);              
             } 
             
         }
@@ -359,8 +520,8 @@ namespace WpfApp1.UI
                 if (uw.ShowDialog() != true)
                 {
                     
-                    int index = Projekat.Instance.Usluge.IndexOf(selektovanaUsluga);
-                    Projekat.Instance.Usluge[index] = stara;
+                    int index = Projekat.Instance.dodatneusluge.IndexOf(selektovanaUsluga);
+                    Projekat.Instance.dodatneusluge[index] = stara;
                 }
 
             }
@@ -374,16 +535,18 @@ namespace WpfApp1.UI
             if (MessageBox.Show($"Da li ste sigurni da zelite da izbrisete: {izabranaUsluga.Naziv}?", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 
-                foreach (var u in Projekat.Instance.Usluge)
+                foreach (var u in Projekat.Instance.dodatneusluge)
                 {
                     if (u.ID == izabranaUsluga.ID)
                     {
-                        u.Obrisan = true;                      
+
+                        //u.Obrisan = true;  
+                        DodatneUslugeDAL.Delete(u);
                         viewUsluge.Refresh();
                         break;
                     }
                 }
-                GenericSerializer.Serialize("dodatneusluge.xml", Projekat.Instance.Usluge);
+                //GenericSerializer.Serialize("dodatneusluge.xml", Projekat.Instance.dodatneusluge);
             }
 
         }
@@ -432,8 +595,8 @@ namespace WpfApp1.UI
                 if (tw.ShowDialog() != true)
                 {
                     
-                    int index = Projekat.Instance.TipoviNamestaja.IndexOf(selektovaniTip);
-                    Projekat.Instance.TipoviNamestaja[index] = stari;
+                    int index = Projekat.Instance.tipnamestaja.IndexOf(selektovaniTip);
+                    Projekat.Instance.tipnamestaja[index] = stari;
                 }
 
             }
@@ -449,17 +612,23 @@ namespace WpfApp1.UI
             if (MessageBox.Show($"Da li ste sigurni da zelite da izbrisete: {izabraniTip.Naziv}?", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 
-                foreach (var t in Projekat.Instance.TipoviNamestaja)
+                foreach (var t in Projekat.Instance.tipnamestaja)
                 {
                     if (t.ID == izabraniTip.ID)
                     {
-                        t.Obrisan = true;  
-                        
-                        foreach(var n in Projekat.Instance.Namestaj)
+                        //t.Obrisan = true;
+                        TipNamestajaDAL.Delete(t);
+                        viewTipovi.Refresh();
+
+
+                        foreach (var n in Projekat.Instance.namestaj)
                         {
                             if(n.TipNamestaja == t)
                             {
-                                n.Obrisan = true;
+
+                                //n.Obrisan = true;
+                                //vidi da li ovo valja
+                                NamestajDAL.Delete(n);
                                 viewTipovi.Refresh();
                                 viewNamestaj.Refresh();
                                 break;
@@ -472,8 +641,9 @@ namespace WpfApp1.UI
                 }              
             }
 
-            GenericSerializer.Serialize("tipovinamestaja.xml", Projekat.Instance.TipoviNamestaja);
-            GenericSerializer.Serialize("namestaj.xml", Projekat.Instance.Namestaj);
+            
+            //GenericSerializer.Serialize("tipovinamestaja.xml", Projekat.Instance.tipnamestaja);
+            //GenericSerializer.Serialize("namestaj.xml", Projekat.Instance.namestaj);
 
         }
 
@@ -518,8 +688,8 @@ namespace WpfApp1.UI
                 if (aw.ShowDialog() != true)
                 {
 
-                    int index = Projekat.Instance.Akcije.IndexOf(selektovanaAkcija);
-                    Projekat.Instance.Akcije[index] = stara;
+                    int index = Projekat.Instance.akcija.IndexOf(selektovanaAkcija);
+                    Projekat.Instance.akcija[index] = stara;
                 }
 
             }
@@ -533,16 +703,17 @@ namespace WpfApp1.UI
             if (MessageBox.Show($"Da li ste sigurni da zelite da izbrisete: {izabranaAkcija.Naziv}?", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
 
-                foreach (var a in Projekat.Instance.Akcije)
+                foreach (var a in Projekat.Instance.akcija)
                 {
                     if (a.ID == izabranaAkcija.ID)
                     {
-                        a.Obrisana = true;
+                        //a.Obrisana = true;
+                        AkcijaDAL.Delete(a);
                         viewAkcije.Refresh();
                         break;
                     }
                 }
-                GenericSerializer.Serialize("akcije.xml", Projekat.Instance.Akcije);
+                //GenericSerializer.Serialize("akcije.xml", Projekat.Instance.akcija);
             }
 
         }
@@ -606,8 +777,8 @@ namespace WpfApp1.UI
                 if (kw.ShowDialog() != true)
                 {
 
-                    int index = Projekat.Instance.Korisnici.IndexOf(selektovaniKorisnik);
-                    Projekat.Instance.Korisnici[index] = stari;
+                    int index = Projekat.Instance.korisnici.IndexOf(selektovaniKorisnik);
+                    Projekat.Instance.korisnici[index] = stari;
                 }
 
             }
@@ -621,16 +792,17 @@ namespace WpfApp1.UI
             if (MessageBox.Show($"Da li ste sigurni da zelite da izbrisete: {izabraniKorisnik.Ime}?", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
 
-                foreach (var k in Projekat.Instance.Korisnici)
+                foreach (var k in Projekat.Instance.korisnici)
                 {
                     if (k.ID == izabraniKorisnik.ID)
                     {
-                        k.Obrisan = true;
+                        //k.Obrisan = true;
+                        KorisnikDAL.Delete(k);
                         viewKorisnici.Refresh();
                         break;
                     }
                 }
-                GenericSerializer.Serialize("korisnici.xml", Projekat.Instance.Korisnici);
+                //GenericSerializer.Serialize("korisnici.xml", Projekat.Instance.korisnici);
             }
 
         }
@@ -667,6 +839,11 @@ namespace WpfApp1.UI
             siw.ShowDialog();
         }
 
-        
+        private void Logout(object sender, RoutedEventArgs e)
+        {
+            Login lw = new Login();
+            lw.Show();
+            this.Close();
+        }
     }
 }

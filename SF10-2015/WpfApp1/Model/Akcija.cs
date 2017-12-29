@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Text;
 
 namespace POP_SF_10_2015.Model
@@ -115,7 +119,47 @@ namespace POP_SF_10_2015.Model
             kopija.DatumZavrsetka = DatumZavrsetka;
             return kopija;
         }
+
+        public static Akcija GetById(int id)
+        {
+            foreach (var akcija in Projekat.Instance.akcija)
+            {
+                if (akcija.ID == id)
+                {
+                    return akcija;
+                }
+
+            }
+            return null;
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
-    
+
 }

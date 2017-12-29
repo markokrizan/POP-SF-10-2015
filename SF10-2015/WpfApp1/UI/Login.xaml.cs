@@ -15,13 +15,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfApp1.UI;
 
-namespace WpfApp1.GUI
+namespace WpfApp1.UI
 {
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
     public partial class Login : Window
     {
+
+        private Korisnik korisnik;
         
 
         public Login()
@@ -33,31 +35,51 @@ namespace WpfApp1.GUI
 
         private void LoginBTN_Click(object sender, RoutedEventArgs e)
         {
-            //var listaKorisnici = GenericSerializer.Deserialize<Korisnik>("korisnici.xml");
-            var listaKorisnici = Projekat.Instance.Korisnici;
+            string uname = tbUName.Text.Trim();
+            string pass = tbPass.Password.Trim();
 
-            foreach(Korisnik kor in listaKorisnici)
+            if (uname == "" || pass == "")
             {
-                if(kor.KorIme == tbUName.Text && kor.Lozinka == tbPass.Password)
-                {
+                tbUName.Text = "";
+                tbPass.Password = "";
+                MessageBox.Show("Niste uneli sve podatke!");
 
-                    MainWindow mw = new MainWindow();
-                    mw.Show();                   
-                    this.Close();
-                    break;
-                }
-                else
-                {
-                    tbUName.Text = "";
-                    tbPass.Password = "";   
-                    MessageBox.Show("Niste uneli dobre podatke!");
-                    break;
-                }
+            }else if(CredCheck(uname,pass) == true)
+            {
+                MainWindow mw = new MainWindow(korisnik);
+                //mw.Owner = this;
+                mw.Show();
+                this.Close();
 
             }
+            else
+
+            {
+                tbUName.Text = "";
+                tbPass.Password = "";
+                MessageBox.Show("Niste uneli dobre podatke!");
+            }
+
+          
+            
         }
 
-         
+        
+        public Boolean CredCheck(String korisnicko, String sifra)
+        {
+            foreach (Korisnik kor in Projekat.Instance.korisnici)
+            {
+                
+                if (kor.KorIme == korisnicko && kor.Lozinka == sifra)
+                {
+                    korisnik = kor;
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+       
 
     }
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfRacun xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Racun>
+    <ID>1</ID>
+    <DatumProdaje>2017-12-09T17:32:11.6528806+01:00</DatumProdaje>
+    <BrojRacuna>101</BrojRacuna>
+    <Kupac>Petar</Kupac>
+    <UkupnaCena>9800</UkupnaCena>
+  </Racun>
+  <Racun>
+    <ID>2</ID>
+    <DatumProdaje>2017-12-09T19:36:14.8171671+01:00</DatumProdaje>
+    <BrojRacuna>111</BrojRacuna>
+    <Kupac>Marko Markovic</Kupac>
+    <UkupnaCena>18300</UkupnaCena>
+  </Racun>
+</ArrayOfRacun>
