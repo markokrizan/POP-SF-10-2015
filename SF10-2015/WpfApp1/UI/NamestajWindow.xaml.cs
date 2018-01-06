@@ -69,8 +69,12 @@ namespace WpfApp1.UI
             //two way binding podrazumevan
             //povezan samo objekat i komponenta ne i xml
             cbTipNamestaja.DataContext = namestaj;
-            //cbTipNamestaja.SelectedIndex = 1;
-            cbTipNamestaja.SelectedItem = 0;
+
+            //cbTipNamestaja.SelectedIndex = 0;
+            //cbTipNamestaja.SelectedItem = 0;
+            //cbTipNamestaja.SelectedIndex = cbTipNamestaja.Items.Count - 1;
+
+
             //konkretan properti je u xaml-u (Bindig Path = "Naziv")
             //ako je objekat u objektu moze Binding Path = Adresa.Ulica npr
             tbNaziv.DataContext = namestaj;
@@ -84,48 +88,81 @@ namespace WpfApp1.UI
         private void sacuvajIzmene(object sender, RoutedEventArgs e)
         {
 
-            
-            var listaNamestaja = Projekat.Instance.namestaj;
-           
-        
-            this.DialogResult = true;
-
-            switch(operacija)
+            //Validate on exceptions zadaje pocetnu vrednost tipa, pa ako uneses asdf za cenu, a tip joj je int cena je 0, pa odatle ovako
+            //dalje spageti validacija
+            if(namestaj.Cena != 0 && namestaj.Naziv != null && namestaj.Sifra != null && namestaj.KolicinaUMagacinu !=0 )
             {
-                case Operacija.DODAVANJE:
-                    //namestaj.ID = listaNamestaja.Count + 1;
-                    //listaNamestaja.Add(namestaj);
-                    NamestajDAL.Create(namestaj);
-                    
-                  
-
-                    break;
-                   
+                var listaNamestaja = Projekat.Instance.namestaj;
 
 
-                case Operacija.IZMENA:
+                this.DialogResult = true;
 
-                    
-                    foreach(var n in listaNamestaja)
-                    {
-                        if(n.ID == namestaj.ID)
+                switch (operacija)
+                {
+                    case Operacija.DODAVANJE:
+                        //namestaj.ID = listaNamestaja.Count + 1;
+                        //listaNamestaja.Add(namestaj);
+
+                      
+                        
+
+
+                        NamestajDAL.Create(namestaj);
+
+
+
+                        break;
+
+
+
+                    case Operacija.IZMENA:
+
+
+                        foreach (var n in listaNamestaja)
                         {
-                            
-                            n.IDTipaNamestaja = namestaj.IDTipaNamestaja;
-                            n.Naziv = namestaj.Naziv;
-                            NamestajDAL.Update(n);
-                            break;
+                            if (n.ID == namestaj.ID)
+                            {
+
+                                n.IDTipaNamestaja = namestaj.IDTipaNamestaja;
+                                n.Naziv = namestaj.Naziv;
+                                NamestajDAL.Update(n);
+                                break;
+                            }
                         }
-                    }
 
-                    
-                    break;
-                
+
+                        break;
+
+                }
+
+                //nakon svih izmena serijalizuj, znaci prvo radimo sa temp listom, menjamo je kolko treba i onda se pregazi glavna kolekcija seterom iz Projekat
+                //GenericSerializer.Serialize("namestaj.xml", listaNamestaja);
+                this.Close();
             }
-
-            //nakon svih izmena serijalizuj, znaci prvo radimo sa temp listom, menjamo je kolko treba i onda se pregazi glavna kolekcija seterom iz Projekat
-            //GenericSerializer.Serialize("namestaj.xml", listaNamestaja);
-            this.Close();
+            else
+            {
+                if (namestaj.KolicinaUMagacinu == 0)
+                {
+                    //razdvojiti sad dva problema, da li je bas 0 ili je dao nulu validated on exeption
+                    //meh
+                    MessageBox.Show("Uneli ste ili 0 ili karaktere!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                    
+                }
+                if (namestaj.Cena == 0)
+                {
+                    MessageBox.Show("Nismo socijalna ustanova!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                    
+                }
+                if (namestaj.Naziv == null)
+                {
+                    MessageBox.Show("Niste uneli naziv!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (namestaj.Sifra == null)
+                {
+                    MessageBox.Show("Niste uneli sifru!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            
         }
 
         private void Izadji(object sender, RoutedEventArgs e)

@@ -113,8 +113,57 @@ namespace WpfApp1.DAL
         public static void Delete(TipNamestaja tn)
         {
             //setuj ga na true i samo ga prosledi update funkciji
+            /*
             tn.Obrisan = true;
             Update(tn);
+            */
+
+            
+            //radi u bazi ali sada treba i u modelu da se desi ista stvar da bi okinuli refreshovi
+            using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["Platforme"].ConnectionString))
+            {
+                con.Open();
+
+                SqlCommand cmd0 = con.CreateCommand();
+                SqlCommand cmd1 = con.CreateCommand();
+                SqlCommand cmd2 = con.CreateCommand();
+
+                cmd0.CommandText = "UPDATE Namestaj SET Obrisan = 1 WHERE TipNamestajaID = @TipNamestajaID;";
+                cmd1.CommandText = "UPDATE Namestaj SET TipNamestajaID = NULL WHERE TipNamestajaID = @TipNamestajaID;";
+                cmd2.CommandText = "UPDATE TipNamestaja SET Obrisan = 1 WHERE ID = @TipNamestajaID;";
+               
+
+                cmd0.Parameters.AddWithValue("TipNamestajaID", tn.ID);
+                cmd1.Parameters.AddWithValue("TipNamestajaID", tn.ID);
+                cmd2.Parameters.AddWithValue("TipNamestajaID", tn.ID);
+
+
+                cmd0.ExecuteNonQuery();
+                cmd1.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
+
+                //azuriraj i model:
+                foreach(TipNamestaja tip in Projekat.Instance.tipnamestaja)
+                {
+                    if(tip.ID == tn.ID)
+                    {
+                        tip.Obrisan = true;
+                    }
+                }
+
+                foreach(Namestaj nam in Projekat.Instance.namestaj)
+                {
+                    if(nam.IDTipaNamestaja == tn.ID)
+                    {
+                        nam.Obrisan = true;
+                    }
+                }
+
+
+
+            }
+
+            
         }
         #endregion 
 

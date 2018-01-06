@@ -28,12 +28,39 @@
     <IDTipaNamestaja>2</IDTipaNamestaja>
   </Namestaj>
   <Namestaj>
-    <ID>4</ID>
+    <ID>5</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>sdfs</Naziv>
+    <Sifra>3333</Sifra>
+    <Cena>22</Cena>
+    <KolicinaUMagacinu>22</KolicinaUMagacinu>
+    <IDTipaNamestaja>1</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>11</ID>
+    <Obrisan>false</Obrisan>
+    <Naziv>a</Naziv>
+    <Sifra>a</Sifra>
+    <Cena>3333</Cena>
+    <KolicinaUMagacinu>1</KolicinaUMagacinu>
+    <IDTipaNamestaja>1</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>12</ID>
     <Obrisan>true</Obrisan>
-    <Naziv>Radnom ka</Naziv>
-    <Sifra>a104</Sifra>
-    <Cena>12000</Cena>
-    <KolicinaUMagacinu>2</KolicinaUMagacinu>
-    <IDTipaNamestaja>3</IDTipaNamestaja>
+    <Naziv>null</Naziv>
+    <Sifra>null</Sifra>
+    <Cena>1</Cena>
+    <KolicinaUMagacinu>1</KolicinaUMagacinu>
+    <IDTipaNamestaja>2</IDTipaNamestaja>
+  </Namestaj>
+  <Namestaj>
+    <ID>13</ID>
+    <Obrisan>true</Obrisan>
+    <Naziv />
+    <Sifra />
+    <Cena>1</Cena>
+    <KolicinaUMagacinu>1</KolicinaUMagacinu>
+    <IDTipaNamestaja>2</IDTipaNamestaja>
   </Namestaj>
 </ArrayOfNamestaj>

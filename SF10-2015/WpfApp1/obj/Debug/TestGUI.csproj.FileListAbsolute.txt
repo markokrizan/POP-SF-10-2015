@@ -69,3 +69,6 @@ C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF
 C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\obj\Debug\UI\AkcijeWindow.baml
 C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\obj\Debug\UI\Login.g.cs
 C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\obj\Debug\UI\Login.baml
+C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\obj\Debug\WpfApp1_Content.g.cs
+C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\obj\Debug\UI\RacunDetaljiWindow.g.cs
+C:\Users\Freeman\Dropbox\DRUGA GODINA\platforme 17-18\Projekat\POP-SF-10-2015\SF10-2015\WpfApp1\obj\Debug\UI\RacunDetaljiWindow.baml

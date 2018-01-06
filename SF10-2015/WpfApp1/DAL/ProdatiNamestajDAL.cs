@@ -1,7 +1,9 @@
 ﻿using POP_SF_10_2015.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -29,10 +31,13 @@ namespace WpfApp1.DAL
                 //u kompo boksu je samo lista objekata sa overridovanim to string da pokazuje naziv, ali ovde za tip namestaja stize ceo objekat
 
                 //cmd.Parameters.AddWithValue("TipNamestajaID", nam.IDTipaNamestaja);
-                cmd.Parameters.AddWithValue("IDRacuna", nam.ID);
-                cmd.Parameters.AddWithValue("IDNamestaja", rac.ID);
+                cmd.Parameters.AddWithValue("IDRacuna", rac.ID);
+                cmd.Parameters.AddWithValue("IDNamestaja", nam.ID);
 
+
+                cmd.ExecuteScalar();
                 /*
+                 * 
                 //upises u bazu, ali ga vratis da dobijes id da mozes dalje da listas??? vidi to kako 
                 int newId = int.Parse(cmd.ExecuteScalar().ToString()); // ExecuteScalar izvrsava query nad bazom
                 nam.ID = newId;
@@ -48,5 +53,56 @@ namespace WpfApp1.DAL
             return nam;
             
         }
+
+        //funkcija koja ce vaditi za odredjeni racun njene prodate namestaje
+        //koristi ovaj upit:
+        //SELECT * FROM Namestaj WHERE ID IN (SELECT IDNamestaja FROM ProdatiNamestaj WHERE IDRacuna = 8) AND Obrisan != 1;
+        public static ObservableCollection<Namestaj> GetAll(Racun rac)
+        {
+            var namestaj = new ObservableCollection<Namestaj>();
+
+            //tu je ona referenca koju smo otkacili
+            using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["Platforme"].ConnectionString))
+            {
+
+                SqlCommand cmd = con.CreateCommand();
+                //obrisan true 1 false 0
+                cmd.CommandText = "SELECT * FROM Namestaj WHERE ID IN (SELECT IDNamestaja FROM ProdatiNamestaj WHERE IDRacuna = @IDRacuna);";
+                cmd.Parameters.AddWithValue("IDRacuna", rac.ID);
+
+                //ds i adapter samo kada dobavljamo podatke
+                SqlDataAdapter adapter = new SqlDataAdapter();
+
+                //objekat koji moze u sebi da ima vise logickih tabela, objekat u memoriji koji reprezentuje bazu
+                DataSet ds = new DataSet();
+
+                //smesti u data set pod nazivom tabele tipNamestaja
+                adapter.SelectCommand = cmd;
+                adapter.Fill(ds, "Namestaj"); // izvrsava se query nad bazom
+
+                //za svaki red u data setu u tabelama tim i tim
+                foreach (DataRow row in ds.Tables["Namestaj"].Rows)
+                {
+                    var nam = new Namestaj();
+                    //svi su tipa object, zato se radi ToStrint()
+                    nam.ID = int.Parse(row["ID"].ToString());
+                    nam.IDTipaNamestaja = int.Parse(row["TipNamestajaID"].ToString());
+                    //AKCIJA -- dodat default 0
+                    nam.Naziv = row["Naziv"].ToString();
+                    nam.Sifra = row["Sifra"].ToString();
+                    nam.Cena = Double.Parse(row["Cena"].ToString());
+                    nam.KolicinaUMagacinu = Int32.Parse(row["Kolicina"].ToString());
+                    nam.Obrisan = bool.Parse(row["Obrisan"].ToString());
+                    //napuni u svakom prolazu puni kontejnersku kolekciju
+                    namestaj.Add(nam);
+                }
+            }
+
+            //vrati kolekciju
+            return namestaj;
+        }
+
+
+
     }
 }

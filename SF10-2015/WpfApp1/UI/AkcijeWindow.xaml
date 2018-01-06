@@ -19,7 +19,7 @@
         <Label Content="Popust: " FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Height="41" Width="67" Margin="15,76,0,0" RenderTransformOrigin="2.081,1.156"/>
         <Label Content="Pocetak: " FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Height="41" Width="67" Margin="10,126,0,0" RenderTransformOrigin="2.081,1.156"/>
         <Label Content="Kraj: " FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Height="41" Width="67" Margin="35,171,0,0" RenderTransformOrigin="2.081,1.156"/>
-        <TextBox Text ="{Binding Path=Popust}" FontSize="15" HorizontalAlignment="Left" Height="32" Margin="82,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Name="tbPopust"/>
+        <TextBox Text ="{Binding Path=Popust, ValidatesOnExceptions=True}" FontSize="15" HorizontalAlignment="Left" Height="32" Margin="82,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Name="tbPopust"/>
         <!--Eventualno DisplayDate -->
         <DatePicker Name="dpPocetak" SelectedDate="{Binding Path=DatumPocetka}" HorizontalAlignment="Left" Margin="82,126,0,0" VerticalAlignment="Top" Width="124" Height="32"/>
         <DatePicker Name="dpKraj" SelectedDate="{Binding Path=DatumZavrsetka}"  HorizontalAlignment="Left" Margin="82,171,0,0" VerticalAlignment="Top" Width="124" Height="32"/>

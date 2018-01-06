@@ -33,9 +33,13 @@ namespace WpfApp1.UI
         ICollectionView viewAkcije;
         ICollectionView viewRacuni;
 
-        //Prodaja:
+        //Pretraga:
         ICollectionView viewTrazeniNamestaj;
         ICollectionView viewTrazeneUsluge;
+        ICollectionView viewTrazeniKorisnici;
+        ICollectionView viewTrazeniRacuni;
+        ICollectionView viewTrazeneAkcije;
+        ICollectionView viewTrazeniTipovi;
 
         Racun trenutniRacun;
         Korisnik trenutniKorisnik;
@@ -63,8 +67,7 @@ namespace WpfApp1.UI
             viewAkcije.Filter = AkcijeFilter;
 
 
-            //metoda filtera, vraca redove koji nisu obrisani
-            //pokusaj da smanjis malo redudantnost ovde
+            
             bool NamestajFilter(object item)
             {
                 Namestaj nam = item as Namestaj;
@@ -79,8 +82,9 @@ namespace WpfApp1.UI
 
             bool TipoviFilter(object item)
             {
-                TipNamestaja tn = item as TipNamestaja;
+                TipNamestaja tn = item as TipNamestaja;               
                 return !tn.Obrisan;
+                
             }
 
             bool KorisniciFilter(object item)
@@ -181,48 +185,77 @@ namespace WpfApp1.UI
         //ObservableCollection<Namestaj> listaTrazenogNamestaja;
         //ObservableCollection<DodatneUsluge> listaTrazenihUsluga;
 
-        private void PretraziNamestaj(object sender, RoutedEventArgs e)
+        private void PretraziNamestaj()
         {
             string Unos = tbPretragaNamestaj.Text.ToLower();
             ObservableCollection<Namestaj> listaTrazenogNamestaja = new ObservableCollection<Namestaj>();
 
             foreach (Namestaj nam in Projekat.Instance.namestaj)
             {
-                
-                //ova provera tek kada budu dobri podaci
-                if (nam.Obrisan == false && (nam.Naziv.ToLower() == Unos || nam.Sifra.ToLower() == Unos || nam.TipNamestaja.Naziv.ToLower() == Unos))              
+
+                //CONTAINS
+                if (nam.Naziv.ToLower().Trim().Contains(Unos) || nam.Sifra.ToLower().Trim().Contains(Unos) || nam.TipNamestaja.Naziv.ToLower().Trim().Contains(Unos))
                 {
                     listaTrazenogNamestaja.Add(nam);
                 }
-                
-                /*
-                if (nam.Obrisan == false && nam.Naziv.ToLower().Contains(Unos))
-                {
-                    listaTrazenogNamestaja.Add(nam);
-                }
-                */
+
+
 
             }
 
             viewTrazeniNamestaj = CollectionViewSource.GetDefaultView(listaTrazenogNamestaja);
+
+            //umesto u uslovu filter vamo
+            //filter okida stalno tako da vazi dole i za promene u prodaji
+            viewTrazeniNamestaj.Filter = TrazeniNamestajFilter;
+            bool TrazeniNamestajFilter(object item)
+            {
+                Namestaj nam = item as Namestaj;
+                return !nam.Obrisan;
+            }
             dgPretragaNamestaj.ItemsSource = viewTrazeniNamestaj;
             dgPretragaNamestaj.IsSynchronizedWithCurrentItem = true;
             dgPretragaNamestaj.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
             viewTrazeniNamestaj.Refresh();
 
+        }
 
+
+
+        private void PretraziNamestaj(object sender, RoutedEventArgs e)
+        {
+
+            PretraziNamestaj();
 
         }
 
-        private void PretraziUsluge(object sender, RoutedEventArgs e)
+
+        private void tbPretragaNamestaj_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            PretraziNamestaj();
+        }
+
+        /*
+        
+        
+
+
+            //metoda filtera, vraca redove koji nisu obrisani
+            //pokusaj da smanjis malo redudantnost ovde
+       
+
+        
+        */
+
+        private void PretraziUsluge()
         {
             string Unos = tbPretragaUsluge.Text.ToLower();
             ObservableCollection<DodatneUsluge> listaTrazenihUsluga = new ObservableCollection<DodatneUsluge>();
 
             foreach (DodatneUsluge us in Projekat.Instance.dodatneusluge)
             {
-                
-                if (us.Obrisan == false && us.Naziv.ToLower().Contains(Unos))
+
+                if (us.Naziv.ToLower().Contains(Unos))
                 {
                     listaTrazenihUsluga.Add(us);
                 }
@@ -230,11 +263,27 @@ namespace WpfApp1.UI
             }
 
             viewTrazeneUsluge = CollectionViewSource.GetDefaultView(listaTrazenihUsluga);
+            viewTrazeneUsluge.Filter = TrazeneUslugeFilter;
+            bool TrazeneUslugeFilter(object item)
+            {
+                DodatneUsluge du = item as DodatneUsluge;
+                return !du.Obrisan;
+            }
             dgPretragaUsluge.ItemsSource = viewTrazeneUsluge;
             dgPretragaUsluge.IsSynchronizedWithCurrentItem = true;
             dgPretragaUsluge.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
             viewTrazeneUsluge.Refresh();
+        }
 
+        private void PretraziUsluge(object sender, RoutedEventArgs e)
+        {
+
+            PretraziUsluge();
+        }
+
+        private void tbPretragaUsluge_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            PretraziUsluge();
         }
 
         private void dgPretragaNamestaj_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -280,8 +329,27 @@ namespace WpfApp1.UI
         private void DodajNamestajURacun(object sender, RoutedEventArgs e)
         {
             Namestaj selektovaniNamestaj = (Namestaj)dgPretragaNamestaj.SelectedItem;
-            lbRacun.Items.Add(selektovaniNamestaj);
-            trenutniRacun.UkupnaCena = trenutniRacun.UkupnaCena + selektovaniNamestaj.Cena;
+            
+            
+            if(selektovaniNamestaj.KolicinaUMagacinu != 1)
+            {
+                lbRacun.Items.Add(selektovaniNamestaj);
+                trenutniRacun.UkupnaCena = trenutniRacun.UkupnaCena + selektovaniNamestaj.Cena;
+                selektovaniNamestaj.KolicinaUMagacinu = selektovaniNamestaj.KolicinaUMagacinu - 1;
+                NamestajDAL.Update(selektovaniNamestaj);
+                viewTrazeniNamestaj.Refresh();
+                viewNamestaj.Refresh();
+            }else if(selektovaniNamestaj.KolicinaUMagacinu == 1)
+            {
+                lbRacun.Items.Add(selektovaniNamestaj);
+                trenutniRacun.UkupnaCena = trenutniRacun.UkupnaCena + selektovaniNamestaj.Cena;
+                selektovaniNamestaj.KolicinaUMagacinu = selektovaniNamestaj.KolicinaUMagacinu - 1;
+                NamestajDAL.Delete(selektovaniNamestaj);
+                viewTrazeniNamestaj.Refresh();
+                viewNamestaj.Refresh();
+            }
+            
+
             //trenutniRacun.NamestajZaProdaju.Add(selektovaniNamestaj);
             
 
@@ -301,80 +369,135 @@ namespace WpfApp1.UI
         
         private void ZavrsiProdaju(object sender, RoutedEventArgs e)
         {
-            var listaRacuna = Projekat.Instance.racun;
 
-            trenutniRacun.DatumProdaje = DateTime.Now;
-            //pomocu executeScalar:
-            //trenutniRacun.ID = listaRacuna.Count + 1;
+            //Verovatno najveci primer spageti koda ikad napisan
+            //Sramota
+            //Ali radi 
 
-            //uzmi sad one koje si dodao u listBox
-            //Cenu si u menjuvremenu menjao pri dodavanju u listBox
-            var lbRacunKolekcija = lbRacun.Items;
-
-            //id ce se dodati u DAL-u
-            //Dodaj u dve kolekcije:
-
-            foreach(var i in lbRacunKolekcija)
+            if (lbRacun.Items.Count != 0 && trenutniRacun.BrojRacuna != null && trenutniRacun.Kupac != null)
             {
-                if(i is Namestaj)
-                {
-                    //trenutniRacun.NamestajZaProdaju.Add((Namestaj)i);
-                    ProdatiNamestajDAL.Create((Namestaj)i, trenutniRacun);
-                }
-                else
-                {
-                    //trenutniRacun.DodatneUsluge.Add((DodatneUsluge)i);
-                    ProdateUslugeDAL.Create((DodatneUsluge)i, trenutniRacun);
-                }
-            }
+                var listaRacuna = Projekat.Instance.racun;
 
+                trenutniRacun.DatumProdaje = DateTime.Now;
+                //pomocu executeScalar:
+                //trenutniRacun.ID = listaRacuna.Count + 1;
 
-            //u dal-u se azurira i model
-            //listaRacuna.Add(trenutniRacun);
-            RacunDAL.Create(trenutniRacun);
+                //uzmi sad one koje si dodao u listBox
+                //Cenu si u menjuvremenu menjao pri dodavanju u listBox
+                var lbRacunKolekcija = lbRacun.Items;
 
-            //GenericSerializer.Serialize("racuni.xml", listaRacuna);
-            //RacunDAL.Create(trenutniRacun);
-
-            //ponovo ga setuj na prazan objekat:
-            trenutniRacun = new Racun();
-
-            MessageBox.Show("Prodaja izvrsena");
-            
-            
-        }
-
-
-        //ne radi
-        private void MenuItemDelete_Click(object sender, RoutedEventArgs e)
-        {
-            //zasto ovo radi????
-            lbRacun.Items.RemoveAt(lbRacun.SelectedIndex);
-
-            //index -1 sto znaci da nije selektovano, ali i dalje prvi red radi??
-            int index = lbRacun.SelectedIndex;
-
-            MessageBox.Show(index.ToString());
-            //ListBoxItem listItem = (ListBoxItem)(lbRacun.ItemContainerGenerator.ContainerFromIndex(index));
-
-            //Object ob = lbRacun.Items[index];
-            Object ob = lbRacun.SelectedValue;
-
-            double cenaSelektovanog;
-
-            if(ob is Namestaj)
-            {
                 
-                cenaSelektovanog = (ob as Namestaj).Cena;
+
+                RacunDAL.Create(trenutniRacun);
+
+
+                //id ce se dodati u DAL-u
+                //Dodaj u dve kolekcije:
+
+                foreach (var i in lbRacunKolekcija)
+                {
+                    if (i is Namestaj)
+                    {
+                        //trenutniRacun.NamestajZaProdaju.Add((Namestaj)i);
+                        ProdatiNamestajDAL.Create((Namestaj)i, trenutniRacun);
+                    }
+                    else
+                    {
+                        //trenutniRacun.DodatneUsluge.Add((DodatneUsluge)i);
+                        ProdateUslugeDAL.Create((DodatneUsluge)i, trenutniRacun);
+                    }
+                }
+
+                viewRacuni.Refresh();
+
+                //u dal-u se azurira i model
+                //listaRacuna.Add(trenutniRacun);
+
+
+                //RacunDAL.Create(trenutniRacun);
+
+                //GenericSerializer.Serialize("racuni.xml", listaRacuna);
+                //RacunDAL.Create(trenutniRacun);
+
+                //ponovo ga setuj na prazan objekat:
+                trenutniRacun = new Racun();
+                //Racun noviRacun = new Racun();
+                
+
+                MessageBox.Show("Prodaja izvrsena");
+
+                //ocisti posle prodaje da pripremis za drugu:
+                /*
+                tbBrojRacuna.Text = "";
+                tbKupac.Text = "";            
+                lblUkupnaCena.Content = trenutniRacun.UkupnaCena;
+                lbRacun.Items.Clear();
+                */
+                //REBIND:
+                lblUkupnaCena.DataContext = trenutniRacun;
+                tbKupac.DataContext = trenutniRacun;
+                tbBrojRacuna.DataContext = trenutniRacun;
+                lbRacun.Items.Clear();
+                //ocisti sve i pripremi za sledecu prodaju:
+
             }
             else
             {
-
-                cenaSelektovanog = (ob as DodatneUsluge).Cena;
+                if(lbRacun.Items.Count == 0)
+                {
+                    MessageBox.Show("Niste uneli nista u racun!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (trenutniRacun.BrojRacuna == null)
+                {
+                    MessageBox.Show("Niste uneli broj racuna!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (trenutniRacun.Kupac == null)
+                {
+                    MessageBox.Show("Niste uneli ime i prezime kupca!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
 
-            trenutniRacun.UkupnaCena = trenutniRacun.UkupnaCena - cenaSelektovanog;
 
+
+
+
+        }
+
+
+        
+        private void MenuItemDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+            if(lbRacun.Items.Count != 0)
+            {
+                Object selektovani = lbRacun.SelectedValue;
+
+                double cenaSelektovanog;
+
+
+
+                if (selektovani is Namestaj)
+                {
+
+                    cenaSelektovanog = (selektovani as Namestaj).Cena;
+                }
+                else
+                {
+
+                    cenaSelektovanog = (selektovani as DodatneUsluge).Cena;
+                }
+
+                trenutniRacun.UkupnaCena = trenutniRacun.UkupnaCena - cenaSelektovanog;
+
+                lbRacun.Items.Remove(lbRacun.SelectedValue);
+            }
+            else
+            {
+                MessageBox.Show("Nije nista selektovano!");
+            }
+            
+
+            
 
 
         }
@@ -409,6 +532,69 @@ namespace WpfApp1.UI
             }
 
             
+
+
+        }
+
+        private void PretragaRacuna()
+        {
+            //PO DATUMU NALAZI SAMO PRVU????????????
+
+            string Unos = tbPretragaRacuna.Text.ToLower();
+            ObservableCollection<Racun> listaTrazenihRacuna = new ObservableCollection<Racun>();
+
+            foreach (Racun rac in Projekat.Instance.racun)
+            {
+
+                //CONTAINS
+                /*
+                if (rac.Kupac.ToLower().Trim().Contains(Unos) || rac.BrojRacuna.ToLower().Trim().Contains(Unos))
+                {
+                    listaTrazenihRacuna.Add(rac);
+                }
+                */
+
+                try
+                {
+                    if (rac.Kupac.ToLower().Trim().Contains(Unos) || rac.BrojRacuna.ToLower().Trim().Contains(Unos) || rac.DatumProdaje == DateTime.Parse(Unos))
+                    {
+                        listaTrazenihRacuna.Add(rac);
+                    }
+                    /*
+                    if (rac.DatumProdaje == DateTime.Parse(Unos))
+                    {
+                        listaTrazenihRacuna.Add(rac);
+                    }
+                    */
+                }
+                catch
+                {
+
+                }
+
+
+
+
+            }
+
+            viewTrazeniRacuni = CollectionViewSource.GetDefaultView(listaTrazenihRacuna);
+            dgRacuni.ItemsSource = viewTrazeniRacuni;
+            dgRacuni.IsSynchronizedWithCurrentItem = true;
+            dgRacuni.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+        }
+
+
+        private void PretraziRacune(object sender, RoutedEventArgs e)
+        {
+
+            PretragaRacuna();
+
+            
+        }
+
+        private void tbPretragaRacuna_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            PretragaRacuna();
         }
 
 
@@ -463,7 +649,7 @@ namespace WpfApp1.UI
                         break;
                     }
                 }
-                GenericSerializer.Serialize("namestaj.xml", Projekat.Instance.namestaj);              
+                //GenericSerializer.Serialize("namestaj.xml", Projekat.Instance.namestaj);              
             } 
             
         }
@@ -492,6 +678,47 @@ namespace WpfApp1.UI
                 e.Column.Header = "Kolicina";
             }
         }
+
+        private void NamestajGlavniPretraga()
+        {
+            string Unos = tbPretragaNamestaja.Text.ToLower();
+            ObservableCollection<Namestaj> listaTrazenogNamestaja = new ObservableCollection<Namestaj>();
+
+            foreach (Namestaj nam in Projekat.Instance.namestaj)
+            {
+
+                if (nam.Naziv.ToLower().Trim().Contains(Unos) || nam.Sifra.ToLower().Trim().Contains(Unos) || nam.TipNamestaja.Naziv.ToLower().Trim().Contains(Unos))
+                {
+                    listaTrazenogNamestaja.Add(nam);
+                }
+
+            }
+
+            viewTrazeniNamestaj = CollectionViewSource.GetDefaultView(listaTrazenogNamestaja);
+            viewTrazeniNamestaj.Filter = TrazeniNamestajFilter;
+
+            bool TrazeniNamestajFilter(object item)
+            {
+                Namestaj nam = item as Namestaj;
+                return !nam.Obrisan;
+            }
+
+            dgNamestaj.ItemsSource = viewTrazeniNamestaj;
+            dgNamestaj.IsSynchronizedWithCurrentItem = true;
+            dgNamestaj.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            NamestajGlavniPretraga();
+        }
+
+        private void tbPretragaNamestaja_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            NamestajGlavniPretraga();
+        }
+
 
 
         /////////////////////////////TAB NAMESTAJ////////////////////////////////////////
@@ -568,6 +795,48 @@ namespace WpfApp1.UI
             
         }
 
+        private void PretragaUsluga()
+        {
+            string Unos = tbPretragaUsluga.Text.ToLower();
+            ObservableCollection<DodatneUsluge> listaTrazenihUsluga = new ObservableCollection<DodatneUsluge>();
+
+            foreach (DodatneUsluge du in Projekat.Instance.dodatneusluge)
+            {
+
+                if (du.Naziv.ToLower().Contains(Unos))
+                {
+                    listaTrazenihUsluga.Add(du);
+                }
+
+            }
+
+            viewTrazeneUsluge = CollectionViewSource.GetDefaultView(listaTrazenihUsluga);
+            viewTrazeneUsluge.Filter = TrazeneUslugeFilter;
+
+            bool TrazeneUslugeFilter(object item)
+            {
+                DodatneUsluge du = item as DodatneUsluge;
+                return !du.Obrisan;
+            }
+
+            dgUsluge.ItemsSource = viewTrazeneUsluge;
+            dgUsluge.IsSynchronizedWithCurrentItem = true;
+            dgUsluge.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+           
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            PretragaUsluga();
+        }
+
+        private void tbPretragaUsluga_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            PretragaUsluga();
+        }
+
+
+
 
         /////////////////////////////TAB USLUGE////////////////////////////////////////
 
@@ -607,7 +876,7 @@ namespace WpfApp1.UI
         //AKO OBRISES TIP NAMESTAJA, BRISE SE I SAV NAMESTAJ KOJI JE TOG TIPA!
         private void ObrisiTip(object sender, RoutedEventArgs e)
         {
-
+            /*
             var izabraniTip = (TipNamestaja)dgTipNamestaja.SelectedItem;
             if (MessageBox.Show($"Da li ste sigurni da zelite da izbrisete: {izabraniTip.Naziv}?", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
@@ -616,11 +885,7 @@ namespace WpfApp1.UI
                 {
                     if (t.ID == izabraniTip.ID)
                     {
-                        //t.Obrisan = true;
-                        TipNamestajaDAL.Delete(t);
-                        viewTipovi.Refresh();
-
-
+                                     
                         foreach (var n in Projekat.Instance.namestaj)
                         {
                             if(n.TipNamestaja == t)
@@ -629,8 +894,12 @@ namespace WpfApp1.UI
                                 //n.Obrisan = true;
                                 //vidi da li ovo valja
                                 NamestajDAL.Delete(n);
-                                viewTipovi.Refresh();
+                                NamestajDAL.AnulirajTip(t);                              
+                                TipNamestajaDAL.Delete(t);
+                                
+
                                 viewNamestaj.Refresh();
+                                viewTipovi.Refresh();//OVO JAVLJA NULL
                                 break;
 
                             }                                                    
@@ -640,10 +909,23 @@ namespace WpfApp1.UI
                     }                  
                 }              
             }
-
+            */
             
-            //GenericSerializer.Serialize("tipovinamestaja.xml", Projekat.Instance.tipnamestaja);
-            //GenericSerializer.Serialize("namestaj.xml", Projekat.Instance.namestaj);
+            var izabraniTip = (TipNamestaja)dgTipNamestaja.SelectedItem;
+            if (MessageBox.Show($"Da li ste sigurni da zelite da izbrisete: {izabraniTip.Naziv}?", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+
+                foreach(TipNamestaja t in Projekat.Instance.tipnamestaja)
+                {
+                    if(t.ID == izabraniTip.ID)
+                    {
+                        TipNamestajaDAL.Delete(t);
+                        viewTipovi.Refresh();
+                        viewNamestaj.Refresh();
+                    }
+                }
+            }
+            
 
         }
 
@@ -661,6 +943,50 @@ namespace WpfApp1.UI
 
 
         }
+
+        private void PretragaTipova()
+        {
+            string Unos = tbPretragaTipNamestaja.Text.ToLower();
+            ObservableCollection<TipNamestaja> listaTrazenihTipova = new ObservableCollection<TipNamestaja>();
+
+            foreach (TipNamestaja tn in Projekat.Instance.tipnamestaja)
+            {
+
+                if (tn.Naziv.ToLower().Contains(Unos))
+                {
+                    listaTrazenihTipova.Add(tn);
+                }
+
+            }
+
+            viewTrazeniTipovi = CollectionViewSource.GetDefaultView(listaTrazenihTipova);
+            viewTrazeniTipovi.Filter = TrazeniTipoviFilter;
+
+            bool TrazeniTipoviFilter(object item)
+            {
+                TipNamestaja tn = item as TipNamestaja;
+                return !tn.Obrisan;
+            }
+
+            dgTipNamestaja.ItemsSource = viewTrazeniTipovi;
+            dgTipNamestaja.IsSynchronizedWithCurrentItem = true;
+            dgTipNamestaja.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            PretragaTipova();
+        }
+
+        private void tbPretragaTipNamestaja_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            PretragaTipova();
+        }
+
+
+
+
 
         /////////////////////////////TAB TIP NAMESTAJA////////////////////////////////////////
 
@@ -751,6 +1077,60 @@ namespace WpfApp1.UI
 
         }
 
+        private void PretragaAkcija()
+        {
+            string Unos = tbPretragaAkcija.Text.ToLower();
+            ObservableCollection<Akcija> listaTrazenihAkcija = new ObservableCollection<Akcija>();
+
+            foreach (Akcija akc in Projekat.Instance.akcija)
+            {
+
+              
+                try
+                {
+                    if (akc.Naziv.ToLower().Trim().Contains(Unos) || akc.Popust == Int32.Parse(Unos) || akc.DatumPocetka == DateTime.Parse(Unos) || akc.DatumZavrsetka == DateTime.Parse(Unos))
+                    {
+                        listaTrazenihAkcija.Add(akc);
+                    }
+                   
+                }
+                catch
+                {
+
+                }
+
+
+
+
+            }
+
+            viewTrazeneAkcije = CollectionViewSource.GetDefaultView(listaTrazenihAkcija);
+            viewTrazeneAkcije.Filter = TrazeneAkcijeFilter;
+
+            bool TrazeneAkcijeFilter(object item)
+            {
+                Akcija akc = item as Akcija;
+                return !akc.Obrisana;
+            }
+            dgAkcije.ItemsSource = viewTrazeneAkcije;
+            dgAkcije.IsSynchronizedWithCurrentItem = true;
+            dgAkcije.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            PretragaAkcija();
+        }
+
+        private void tbPretragaAkcija_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            PretragaAkcija();
+        }
+
+
+
+
+
         /////////////////////////////TAB AKCIJE////////////////////////////////////////
 
         /////////////////////////////TAB KORISNICI////////////////////////////////////////
@@ -821,7 +1201,63 @@ namespace WpfApp1.UI
                 e.Cancel = true;
             }
 
+            if ((string)e.Column.Header == "KorIme")
+            {
+                e.Column.Header = "Korisnicko Ime";
+            }
 
+            if ((string)e.Column.Header == "TipKorisnika")
+            {
+                e.Column.Header = "Tip Korisnika";
+            }
+
+
+        }
+
+        private void PretragaKorisnika()
+        {
+            string Unos = tbPretragaKorisnika.Text.ToLower();
+            ObservableCollection<Korisnik> listaTrazenihKorisnika = new ObservableCollection<Korisnik>();
+
+            foreach (Korisnik kor in Projekat.Instance.korisnici)
+            {
+
+                if (kor.Ime.ToLower().Contains(Unos) || kor.Prezime.ToLower().Contains(Unos) || kor.KorIme.ToLower().Contains(Unos) || kor.TipKorisnika.ToString().ToLower().Trim().Contains(Unos))
+                {
+                    listaTrazenihKorisnika.Add(kor);
+                }
+
+            }
+
+            viewTrazeniKorisnici = CollectionViewSource.GetDefaultView(listaTrazenihKorisnika);
+            viewTrazeniKorisnici.Filter = TrazeniKorisniciFilter;
+
+            bool TrazeniKorisniciFilter(object item)
+            {
+                Korisnik kor = item as Korisnik;
+                return !kor.Obrisan;
+            }
+
+            dgKorisnici.ItemsSource = viewTrazeniKorisnici;
+            dgKorisnici.IsSynchronizedWithCurrentItem = true;
+            dgKorisnici.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+            //viewTrazeniKorisnici.Refresh();
+        }
+
+
+
+        private void PretraziKorisnike(object sender, RoutedEventArgs e)
+        {
+
+            PretragaKorisnika();
+
+        }
+
+       
+
+        private void tbPretragaKorisnika_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            PretragaKorisnika();
         }
 
         /////////////////////////////TAB KORISNICI////////////////////////////////////////
@@ -845,5 +1281,15 @@ namespace WpfApp1.UI
             lw.Show();
             this.Close();
         }
+
+        private void Detalji_Click(object sender, RoutedEventArgs e)
+        {
+            Racun selektovaniRacun = (Racun)dgRacuni.SelectedItem;
+            RacunDetaljiWindow rdw = new RacunDetaljiWindow(selektovaniRacun);
+            rdw.Owner = this;
+            rdw.Show();
+        }
+
+        
     }
 }

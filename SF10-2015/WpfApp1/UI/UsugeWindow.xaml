@@ -17,6 +17,6 @@
         <Button Content="Sacuvaj" HorizontalAlignment="Right" Click="sacuvajIzmene" Margin="0,253,135,22" Width="90"/>
         <Button Content="Izlaz" HorizontalAlignment="Right" Margin="0,253,32,22" Width="90" RenderTransformOrigin="0.184,0.766" Click="Izadji"/>
         <Label Content="Cena: " FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Height="41" Width="47" Margin="25,76,0,0" RenderTransformOrigin="2.081,1.156"/>
-        <TextBox Text ="{Binding Path=Cena}" FontSize="15" HorizontalAlignment="Left" Height="32" Margin="82,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Name="tbCena"/>
+        <TextBox Text ="{Binding Path=Cena, ValidatesOnExceptions=True}" FontSize="15" HorizontalAlignment="Left" Height="32" Margin="82,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Name="tbCena"/>
     </Grid>
 </Window>

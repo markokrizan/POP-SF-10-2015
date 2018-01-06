@@ -48,41 +48,53 @@ namespace WpfApp1.UI
         private void sacuvajIzmene(object sender, RoutedEventArgs e)
         {
 
-            
-            var listaTipova = Projekat.Instance.tipnamestaja;                  
-            this.DialogResult = true;
-
-            switch(operacija)
+            if(tip.Naziv != null)
             {
-                case Operacija.DODAVANJE:
+                var listaTipova = Projekat.Instance.tipnamestaja;
+                this.DialogResult = true;
+
+                switch (operacija)
+                {
+                    case Operacija.DODAVANJE:
 
 
+                        
 
+                        //tip.ID = listaTipova.Count + 1;
+                        //listaTipova.Add(tip);
+                        TipNamestajaDAL.Create(tip);
+                        break;
 
-                    //tip.ID = listaTipova.Count + 1;
-                    //listaTipova.Add(tip);
-                    TipNamestajaDAL.Create(tip);
-                    break;
-                   
-                case Operacija.IZMENA:
-                   
-                    foreach(var t in listaTipova)
-                    {
-                        if(t.ID == tip.ID)
+                    case Operacija.IZMENA:
+
+                        foreach (var t in listaTipova)
                         {
-                                                      
-                            t.Naziv = tip.Naziv;
-                            TipNamestajaDAL.Update(t);
-                            break;
-                        }
-                    }
+                            if (t.ID == tip.ID)
+                            {
 
-                    
-                    break;
-                
+                                t.Naziv = tip.Naziv;
+                                TipNamestajaDAL.Update(t);
+                                break;
+                            }
+                        }
+
+
+                        break;
+
+                }
+
+                this.Close();
             }
+            else
+            {
+                if (tip.Naziv == null)
+                {
+                    MessageBox.Show("Niste uneli naziv!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+
+
             
-            this.Close();
         }
 
 

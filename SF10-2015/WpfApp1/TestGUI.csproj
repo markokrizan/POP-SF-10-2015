@@ -90,6 +90,9 @@
     <Compile Include="UI\SalonInfoWindow.xaml.cs">
       <DependentUpon>SalonInfoWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\RacunDetaljiWindow.xaml.cs">
+      <DependentUpon>RacunDetaljiWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Util\GenericSerializer.cs" />
     <Compile Include="Model\Akcija.cs" />
     <Compile Include="App.xaml.cs">
@@ -127,6 +130,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\SalonInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\RacunDetaljiWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -198,6 +205,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Resource Include="Images\LogOut.png" />
+    <Resource Include="Images\Info.png" />
+    <Resource Include="Images\Racun.png" />
+    <Resource Include="Images\Delete.png" />
     <Content Include="SQL\kreiraj.sql" />
     <Content Include="SQL\napuni.sql" />
     <Content Include="SQL\prikazi.sql" />

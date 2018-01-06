@@ -10,6 +10,7 @@
         WindowState="Normal"
         Background="White"
         Icon="../Images/furniture-md.png" Foreground="Black"
+        PreviewKeyDown="Window_PreviewKeyDown"
         
         
     >

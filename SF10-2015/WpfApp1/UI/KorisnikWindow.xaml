@@ -16,13 +16,13 @@
         <TextBox Text ="{Binding Path=Ime}" Grid.Row="0" FontSize="15" HorizontalAlignment="Left" Name="tbIme" Width="124" Margin="97,25,0,248"/>
         <Button Content="Sacuvaj" HorizontalAlignment="Right" Click="sacuvajIzmene" Margin="0,253,135,22" Width="90"/>
         <Button Content="Izlaz" HorizontalAlignment="Right" Margin="0,253,32,22" Width="90" RenderTransformOrigin="0.184,0.766" Click="Izadji"/>
-        <Label Content="Prezime: " FontSize="15" VerticalAlignment="Top" Height="43" Margin="25,71,168,0" RenderTransformOrigin="2.081,1.156"/>
-        <Label Content="Korisnicko: " FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Height="41" Width="82" Margin="10,119,0,0" RenderTransformOrigin="2.081,1.156"/>
-        <Label Content="Sifra: " FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Height="41" Width="72" Margin="45,165,0,0" RenderTransformOrigin="2.081,1.156"/>
+        <Label Content="Prezime: " FontSize="15" VerticalAlignment="Top" Height="43" Margin="15,71,163.4,0" RenderTransformOrigin="2.081,1.156"/>
+        <Label Content="Korisnicko: " FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Height="41" Width="82" Margin="3,119,0,0" RenderTransformOrigin="2.081,1.156"/>
+        <Label Content="Sifra: " FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Height="41" Width="72" Margin="35,165,0,0" RenderTransformOrigin="2.081,1.156"/>
         <TextBox Text ="{Binding Path=Prezime}" FontSize="15" HorizontalAlignment="Left" Height="32" Margin="97,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Name="tbPrezime"/>
         <TextBox Text ="{Binding Path=KorIme}" FontSize="15" HorizontalAlignment="Left" Height="32" Margin="97,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Name="tbKorisnicko"/>
         <TextBox Text ="{Binding Path=Lozinka}" FontSize="15" HorizontalAlignment="Left" Height="32" Margin="97,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Name="tbLozinka"/>
-        <Label Content="Tip: " FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Height="41" Width="47" Margin="50,207,0,0" RenderTransformOrigin="2.081,1.156"/>
-        <ComboBox SelectedItem="{Binding Path=TipKorisnika}" Name="cbTipKorisnika"  Margin="97,206,39,69"/>
+        <Label Content="Tip: " FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Height="41" Width="47" Margin="45,207,0,0" RenderTransformOrigin="2.081,1.156"/>
+        <ComboBox SelectedItem="{Binding Path=TipKorisnika}"  Name="cbTipKorisnika"  Margin="97,206,39,69"/>
     </Grid>
 </Window>

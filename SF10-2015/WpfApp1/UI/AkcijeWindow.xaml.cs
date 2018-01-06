@@ -55,40 +55,55 @@ namespace WpfApp1.UI
         private void sacuvajIzmene(object sender, RoutedEventArgs e)
         {
 
-            
-            var listaAkcija = Projekat.Instance.akcija;                  
-            this.DialogResult = true;
-
-            switch(operacija)
+            if(akcija.Naziv != null && akcija.Popust != 0)
             {
-                case Operacija.DODAVANJE:
-                    //akcija.ID = listaAkcija.Count + 1;
-                    //listaAkcija.Add(akcija); 
-                    AkcijaDAL.Create(akcija);
-                    break;
-                   
-                case Operacija.IZMENA:
-                   
-                    foreach(var a in listaAkcija)
-                    {
-                        if(a.ID == akcija.ID)
-                        {
-                            
-                            a.Naziv = akcija.Naziv;
-                            a.Popust = akcija.Popust;
-                            a.DatumPocetka = akcija.DatumPocetka;
-                            a.DatumZavrsetka = akcija.DatumZavrsetka;
-                            AkcijaDAL.Update(a);
-                            break;
-                        }
-                    }
+                var listaAkcija = Projekat.Instance.akcija;
+                this.DialogResult = true;
 
-                    
-                    break;
-                
-            }            
-            //GenericSerializer.Serialize("akcije.xml", listaAkcija);
-            this.Close();
+                switch (operacija)
+                {
+                    case Operacija.DODAVANJE:
+                        //akcija.ID = listaAkcija.Count + 1;
+                        //listaAkcija.Add(akcija); 
+                        AkcijaDAL.Create(akcija);
+                        break;
+
+                    case Operacija.IZMENA:
+
+                        foreach (var a in listaAkcija)
+                        {
+                            if (a.ID == akcija.ID)
+                            {
+
+                                a.Naziv = akcija.Naziv;
+                                a.Popust = akcija.Popust;
+                                a.DatumPocetka = akcija.DatumPocetka;
+                                a.DatumZavrsetka = akcija.DatumZavrsetka;
+                                AkcijaDAL.Update(a);
+                                break;
+                            }
+                        }
+
+
+                        break;
+
+                }
+
+                this.Close();
+            }
+            else
+            {
+                if(akcija.Naziv == null)
+                {
+                    MessageBox.Show("Niste uneli naziv!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if(akcija.Popust == 0)
+                {
+                    MessageBox.Show("Niste uneli dobar popust!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            
+            
         }
 
 

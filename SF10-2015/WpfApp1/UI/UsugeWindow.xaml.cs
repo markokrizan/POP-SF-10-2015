@@ -49,39 +49,61 @@ namespace WpfApp1.UI
         private void sacuvajIzmene(object sender, RoutedEventArgs e)
         {
 
-            
-            var listaUsluga = Projekat.Instance.dodatneusluge;                  
-            this.DialogResult = true;
-
-            switch(operacija)
+            if(usluga.Cena != 0 && usluga.Naziv != null)
             {
-                case Operacija.DODAVANJE:
-                    //usluga.ID = listaUsluga.Count + 1;
-                    //listaUsluga.Add(usluga);    
-                    DodatneUslugeDAL.Create(usluga);
-                    break;
-                   
-                case Operacija.IZMENA:
-                   
-                    foreach(var u in listaUsluga)
-                    {
-                        if(u.ID == usluga.ID)
-                        {
-                            
-                           
-                            u.Naziv = usluga.Naziv;
-                            u.Cena = usluga.Cena;
-                            DodatneUslugeDAL.Update(u);
-                            break;
-                        }
-                    }
+                var listaUsluga = Projekat.Instance.dodatneusluge;
+                this.DialogResult = true;
 
+                switch (operacija)
+                {
+                    case Operacija.DODAVANJE:
+                        //usluga.ID = listaUsluga.Count + 1;
+                        //listaUsluga.Add(usluga);    
+
+
+                        
+
+
+
+                        DodatneUslugeDAL.Create(usluga);
+                        break;
+
+                    case Operacija.IZMENA:
+
+                        foreach (var u in listaUsluga)
+                        {
+                            if (u.ID == usluga.ID)
+                            {
+
+
+                                u.Naziv = usluga.Naziv;
+                                u.Cena = usluga.Cena;
+                                DodatneUslugeDAL.Update(u);
+                                break;
+                            }
+                        }
+
+
+                        break;
+
+                }
+                //GenericSerializer.Serialize("dodatneusluge.xml", listaUsluga);
+                this.Close();
+            }
+            else
+            {
+                if (usluga.Cena == 0)
+                {
+                    MessageBox.Show("Nije dobra cena!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
                     
-                    break;
-                
-            }            
-            //GenericSerializer.Serialize("dodatneusluge.xml", listaUsluga);
-            this.Close();
+                }
+                if (usluga.Naziv == null)
+                {
+                    MessageBox.Show("Niste uneli naziv!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            
+            
         }
 
 

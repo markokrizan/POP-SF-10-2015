@@ -140,6 +140,7 @@ namespace POP_SF_10_2015.Model
             set
             {
                 tipNamestaja = value;
+                //tipNamestaja was null
                 idtipanamestaja = tipNamestaja.ID;
                 OnPropertyChanged("TipNamestaja");
             }

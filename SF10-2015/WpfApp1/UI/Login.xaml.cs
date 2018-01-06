@@ -24,7 +24,7 @@ namespace WpfApp1.UI
     {
 
         private Korisnik korisnik;
-        
+       
 
         public Login()
         {
@@ -35,6 +35,9 @@ namespace WpfApp1.UI
 
         private void LoginBTN_Click(object sender, RoutedEventArgs e)
         {
+
+
+            
             string uname = tbUName.Text.Trim();
             string pass = tbPass.Password.Trim();
 
@@ -64,7 +67,40 @@ namespace WpfApp1.UI
             
         }
 
-        
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                string uname = tbUName.Text.Trim();
+                string pass = tbPass.Password.Trim();
+
+                if (uname == "" || pass == "")
+                {
+                    tbUName.Text = "";
+                    tbPass.Password = "";
+                    MessageBox.Show("Niste uneli sve podatke!");
+
+                }
+                else if (CredCheck(uname, pass) == true)
+                {
+                    MainWindow mw = new MainWindow(korisnik);
+                    //mw.Owner = this;
+                    mw.Show();
+                    this.Close();
+
+                }
+                else
+
+                {
+                    tbUName.Text = "";
+                    tbPass.Password = "";
+                    MessageBox.Show("Niste uneli dobre podatke!");
+                }
+            }
+        }
+
+
+
         public Boolean CredCheck(String korisnicko, String sifra)
         {
             foreach (Korisnik kor in Projekat.Instance.korisnici)

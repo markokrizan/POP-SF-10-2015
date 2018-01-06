@@ -114,7 +114,8 @@ namespace WpfApp1.DAL
 
                 cmd.Parameters.AddWithValue("ID", nam.ID);
 
-                cmd.Parameters.AddWithValue("TipNamestajaID", nam.IDTipaNamestaja);
+                //cmd.Parameters.AddWithValue("TipNamestajaID", nam.IDTipaNamestaja);
+                cmd.Parameters.AddWithValue("TipNamestajaID", nam.TipNamestaja.ID);
                 cmd.Parameters.AddWithValue("Naziv", nam.Naziv);
                 cmd.Parameters.AddWithValue("Sifra", nam.Sifra);
                 cmd.Parameters.AddWithValue("Cena", nam.Cena);
@@ -139,6 +140,34 @@ namespace WpfApp1.DAL
                 }
             }
         }
+
+        public static void AnulirajTip(TipNamestaja tn)
+        {
+            using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["Platforme"].ConnectionString))
+            {
+                con.Open();
+
+                
+                SqlCommand cmd1 = con.CreateCommand();              
+                cmd1.CommandText = "UPDATE Namestaj SET TipNamestajaID = NULL WHERE TipNamestajaID = @TipNamestajaID;";              
+                cmd1.Parameters.AddWithValue("TipNamestajaID", tn.ID);              
+                cmd1.ExecuteNonQuery();
+                
+
+                
+
+
+
+            }
+        }
+
+
+
+
+
+
+
+
 
         public static void Delete(Namestaj nam)
         {
