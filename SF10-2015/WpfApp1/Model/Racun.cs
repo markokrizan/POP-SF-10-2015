@@ -15,7 +15,7 @@ namespace POP_SF_10_2015.Model
         private string kupac;
         private List<DodatneUsluge> dodatneusluge;
         private double ukupnacena;
-        
+        public const double PDV = 0.02;
 
 
 
@@ -103,8 +103,7 @@ namespace POP_SF_10_2015.Model
             }
         }
 
-        //public const double PDV = 0.02;
-        public const double PDV = 0.02;
+        
      
         public double UkupnaCena
         {
@@ -144,6 +143,12 @@ namespace POP_SF_10_2015.Model
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+
+
+        public static double CenaSaPDV(double CenaBezPDV)
+        {
+            return (CenaBezPDV * (1 + PDV));
         }
     }
 }

@@ -105,7 +105,8 @@ namespace WpfApp1.DAL
                     "Ime = @Ime,  " +
                     "Prezime = @Prezime,  " +
                     "KorIme = @KorIme,  " +
-                    "Lozinka = @Lozinka  " +
+                    "Lozinka = @Lozinka,  " +
+                    "TipKorisnika = @TipKorisnika  " +
                     "WHERE ID = @ID; ";
 
                 cmd.Parameters.AddWithValue("ID", kor.ID);
@@ -114,6 +115,8 @@ namespace WpfApp1.DAL
                 cmd.Parameters.AddWithValue("Prezime", kor.Prezime);
                 cmd.Parameters.AddWithValue("KorIme", kor.KorIme);
                 cmd.Parameters.AddWithValue("Lozinka", kor.Lozinka);
+                cmd.Parameters.AddWithValue("TipKorisnika", (int)kor.TipKorisnika);
+
 
                 cmd.ExecuteNonQuery();
 

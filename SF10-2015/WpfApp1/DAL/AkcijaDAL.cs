@@ -120,6 +120,8 @@ namespace WpfApp1.DAL
                     {
                         akcija.Naziv = akc.Naziv;
                         akcija.Obrisana = akc.Obrisana;
+                        akcija.DatumPocetka = akc.DatumPocetka;
+                        akcija.DatumZavrsetka = akc.DatumZavrsetka;
                         break;
                     }
                 }

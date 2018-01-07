@@ -48,7 +48,7 @@ namespace WpfApp1.UI
         {
 
             InitializeComponent();
-                        
+            //MessageBox.Show(DateTime.Now.ToString());            
             viewNamestaj = CollectionViewSource.GetDefaultView(Projekat.Instance.namestaj);
             viewUsluge = CollectionViewSource.GetDefaultView(Projekat.Instance.dodatneusluge);
             viewTipovi = CollectionViewSource.GetDefaultView(Projekat.Instance.tipnamestaja);
@@ -96,11 +96,15 @@ namespace WpfApp1.UI
             bool AkcijeFilter(object item)
             {
                 Akcija akc = item as Akcija;
-                return !akc.Obrisana;
+                return !akc.Obrisana && (Akcija.Uporedi(akc.DatumZavrsetka, DateTime.Now) != "manji");
+                
+                    
             }
 
+           
 
-            
+
+
             ////////////SOURCE NAMESTAJ////////////
             dgNamestaj.ItemsSource = viewNamestaj;            
             //da selected item ne bi bio null
@@ -379,6 +383,8 @@ namespace WpfApp1.UI
                 var listaRacuna = Projekat.Instance.racun;
 
                 trenutniRacun.DatumProdaje = DateTime.Now;
+                trenutniRacun.UkupnaCena = Racun.CenaSaPDV(trenutniRacun.UkupnaCena);
+                
                 //pomocu executeScalar:
                 //trenutniRacun.ID = listaRacuna.Count + 1;
 
@@ -472,7 +478,8 @@ namespace WpfApp1.UI
             {
                 Object selektovani = lbRacun.SelectedValue;
 
-                double cenaSelektovanog;
+                double cenaSelektovanog = 0;
+                
 
 
 
@@ -480,11 +487,24 @@ namespace WpfApp1.UI
                 {
 
                     cenaSelektovanog = (selektovani as Namestaj).Cena;
+                    Namestaj selektovaniNamestaj = selektovani as Namestaj;
+
+                    foreach(Namestaj nam in Projekat.Instance.namestaj)
+                    {
+                        if(nam.ID == selektovaniNamestaj.ID)
+                        {
+                            nam.KolicinaUMagacinu = nam.KolicinaUMagacinu + 1;
+                        }
+                    }
                 }
-                else
+                else if(selektovani is DodatneUsluge)
                 {
 
                     cenaSelektovanog = (selektovani as DodatneUsluge).Cena;
+                }
+                else
+                {
+                    MessageBox.Show("Greska!");
                 }
 
                 trenutniRacun.UkupnaCena = trenutniRacun.UkupnaCena - cenaSelektovanog;
@@ -538,7 +558,7 @@ namespace WpfApp1.UI
 
         private void PretragaRacuna()
         {
-            //PO DATUMU NALAZI SAMO PRVU????????????
+            
 
             string Unos = tbPretragaRacuna.Text.ToLower();
             ObservableCollection<Racun> listaTrazenihRacuna = new ObservableCollection<Racun>();
@@ -546,33 +566,27 @@ namespace WpfApp1.UI
             foreach (Racun rac in Projekat.Instance.racun)
             {
 
-                //CONTAINS
-                /*
-                if (rac.Kupac.ToLower().Trim().Contains(Unos) || rac.BrojRacuna.ToLower().Trim().Contains(Unos))
-                {
-                    listaTrazenihRacuna.Add(rac);
-                }
-                */
-
+               
+                
                 try
                 {
-                    if (rac.Kupac.ToLower().Trim().Contains(Unos) || rac.BrojRacuna.ToLower().Trim().Contains(Unos) || rac.DatumProdaje == DateTime.Parse(Unos))
+                    if (rac.Kupac.ToLower().Trim().Contains(Unos) || rac.BrojRacuna.ToLower().Trim().Contains(Unos) || rac.DatumProdaje.Date == DateTime.Parse(Unos))
                     {
                         listaTrazenihRacuna.Add(rac);
                     }
-                    /*
-                    if (rac.DatumProdaje == DateTime.Parse(Unos))
-                    {
-                        listaTrazenihRacuna.Add(rac);
-                    }
-                    */
+                    
+                                   
                 }
-                catch
+                catch{}
+
+
+                foreach (Namestaj nam in ProdatiNamestajDAL.GetAll(rac))
                 {
-
+                    if (nam.Naziv.Contains(Unos))
+                    {
+                        listaTrazenihRacuna.Add(rac);
+                    }
                 }
-
-
 
 
             }
@@ -1088,16 +1102,13 @@ namespace WpfApp1.UI
               
                 try
                 {
-                    if (akc.Naziv.ToLower().Trim().Contains(Unos) || akc.Popust == Int32.Parse(Unos) || akc.DatumPocetka == DateTime.Parse(Unos) || akc.DatumZavrsetka == DateTime.Parse(Unos))
+                    if (akc.Naziv.ToLower().Trim().Contains(Unos) || akc.Popust == Int32.Parse(Unos) || akc.DatumPocetka.Date == DateTime.Parse(Unos)/* || akc.DatumZavrsetka.Date == DateTime.Parse(Unos)*/)
                     {
                         listaTrazenihAkcija.Add(akc);
                     }
                    
                 }
-                catch
-                {
-
-                }
+                catch { }
 
 
 

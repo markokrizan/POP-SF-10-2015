@@ -55,12 +55,16 @@ namespace WpfApp1.UI
 
             
             //cbTipKorisnika.ItemsSource = (IEnumerable)korisnik;
+
+            //ovo sljaka u jednom pravcu
             cbTipKorisnika.ItemsSource = Enum.GetValues(typeof(TipKorisnika)).Cast<TipKorisnika>();
-                      
+            //cbTipKorisnika.SelectedIndex = 1;  
+            
             tbIme.DataContext = korisnik;
             tbPrezime.DataContext = korisnik;
             tbKorisnicko.DataContext = korisnik;
             tbLozinka.DataContext = korisnik;
+            cbTipKorisnika.DataContext = korisnik;
         }
 
 
@@ -69,7 +73,7 @@ namespace WpfApp1.UI
         private void sacuvajIzmene(object sender, RoutedEventArgs e)
         {
 
-            if(korisnik.Ime != null && korisnik.Prezime != null && korisnik.KorIme != null && korisnik.Lozinka != null)
+            if(korisnik.Ime != null && korisnik.Prezime != null && korisnik.KorIme != null && korisnik.Lozinka != null && korisnik.TipKorisnika != 0)
             {
                 var listaKorisnika = Projekat.Instance.korisnici;
 
@@ -82,7 +86,7 @@ namespace WpfApp1.UI
                         //korisnik.ID = listaKorisnika.Count + 1;
                         //listaKorisnika.Add(korisnik);
 
-
+                        
                         KorisnikDAL.Create(korisnik);
 
 
@@ -93,7 +97,8 @@ namespace WpfApp1.UI
 
                     case Operacija.IZMENA:
 
-
+                        /*
+                        //ovaj foreach doubt?
                         foreach (var k in listaKorisnika)
                         {
                             if (k.ID == korisnik.ID)
@@ -108,14 +113,15 @@ namespace WpfApp1.UI
                                 break;
                             }
                         }
+                        */
 
+                        KorisnikDAL.Update(korisnik);
 
                         break;
 
                 }
 
-                //nakon svih izmena serijalizuj, znaci prvo radimo sa temp listom, menjamo je kolko treba i onda se pregazi glavna kolekcija seterom iz Projekat
-                //GenericSerializer.Serialize("korisnici.xml", listaKorisnika);
+                
                 this.Close();
             }
             else
@@ -136,6 +142,10 @@ namespace WpfApp1.UI
                 if (korisnik.Lozinka == null)
                 {
                     MessageBox.Show("Niste uneli lozinku!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (korisnik.TipKorisnika == 0)
+                {
+                    MessageBox.Show("Niste uneli tip korisnika!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             

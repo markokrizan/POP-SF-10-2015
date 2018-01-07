@@ -117,7 +117,7 @@ namespace WpfApp1.UI
 
                     case Operacija.IZMENA:
 
-
+                        /*
                         foreach (var n in listaNamestaja)
                         {
                             if (n.ID == namestaj.ID)
@@ -125,11 +125,12 @@ namespace WpfApp1.UI
 
                                 n.IDTipaNamestaja = namestaj.IDTipaNamestaja;
                                 n.Naziv = namestaj.Naziv;
-                                NamestajDAL.Update(n);
+                                
                                 break;
                             }
                         }
-
+                        */
+                        NamestajDAL.Update(namestaj);
 
                         break;
 

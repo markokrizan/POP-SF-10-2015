@@ -56,20 +56,13 @@ namespace WpfApp1.UI
 
                 switch (operacija)
                 {
-                    case Operacija.DODAVANJE:
-                        //usluga.ID = listaUsluga.Count + 1;
-                        //listaUsluga.Add(usluga);    
-
-
-                        
-
-
-
+                    case Operacija.DODAVANJE:                          
                         DodatneUslugeDAL.Create(usluga);
                         break;
 
                     case Operacija.IZMENA:
 
+                        /*
                         foreach (var u in listaUsluga)
                         {
                             if (u.ID == usluga.ID)
@@ -78,16 +71,15 @@ namespace WpfApp1.UI
 
                                 u.Naziv = usluga.Naziv;
                                 u.Cena = usluga.Cena;
-                                DodatneUslugeDAL.Update(u);
+                                
                                 break;
                             }
                         }
-
-
+                        */
+                        DodatneUslugeDAL.Update(usluga);
                         break;
 
-                }
-                //GenericSerializer.Serialize("dodatneusluge.xml", listaUsluga);
+                }              
                 this.Close();
             }
             else

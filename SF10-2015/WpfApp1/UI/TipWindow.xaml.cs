@@ -66,18 +66,19 @@ namespace WpfApp1.UI
                         break;
 
                     case Operacija.IZMENA:
-
+                        /*
                         foreach (var t in listaTipova)
                         {
                             if (t.ID == tip.ID)
                             {
 
                                 t.Naziv = tip.Naziv;
-                                TipNamestajaDAL.Update(t);
+                                
                                 break;
                             }
                         }
-
+                        */
+                        TipNamestajaDAL.Update(tip);
 
                         break;
 

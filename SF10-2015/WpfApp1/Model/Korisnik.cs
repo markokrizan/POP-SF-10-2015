@@ -11,17 +11,7 @@ using System.Text;
 namespace POP_SF_10_2015.Model
 {
     public enum TipKorisnika
-    {
-
-        
-
-
-
-
-
-
-
-        
+    {       
         Administrator = 1,
         Prodavac = 2
     }
@@ -29,16 +19,7 @@ namespace POP_SF_10_2015.Model
     public class Korisnik : ICloneable, INotifyPropertyChanged
     {
 
-        /*
-        public IList<TipKorisnika> TipoviKorisnika
-        {
-            get
-            {
-                return Enum.GetValues(typeof(TipKorisnika)).Cast<TipKorisnika>().ToList<TipKorisnika>();
-               
-            }
-        }
-        */
+       
        
 
 

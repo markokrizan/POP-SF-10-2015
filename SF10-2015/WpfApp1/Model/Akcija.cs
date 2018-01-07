@@ -134,6 +134,26 @@ namespace POP_SF_10_2015.Model
 
         }
 
+        public static string Uporedi(DateTime datum1, DateTime datum2)
+        {
+            //odnosi se na datum1
+            int rezultat = DateTime.Compare(datum1.Date, datum2.Date);
+            if(rezultat < 0)
+            {
+                return "manji";
+            }else if(rezultat == 0)
+            {
+                return "jednak";
+            }
+            else
+            {
+                return "veci";
+            }
+
+        }
+
+        
+
 
 
 
