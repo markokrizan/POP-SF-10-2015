@@ -5,7 +5,7 @@ INSERT INTO TipNamestaja  VALUES ('Sofa', 0);
 INSERT INTO Akcije
     VALUES( 0, 'Nije na akciji', 0, '01-1-1800', '01-01-2999');
 INSERT INTO Akcije
-    VALUES( 0, 'Novogodisnja', 10, '01-12-2017', '12-01-2018');
+    VALUES( 0, 'Novogodisnja', 10, '01-12-2017', '01-20-2018');
 
 
 
@@ -17,6 +17,8 @@ INSERT INTO Namestaj (Naziv, Sifra, tipNamestajaID, Cena, Kolicina, Obrisan, Akc
 	VALUES ('Garnitura x', 'a103', 2,  13000, 2, 0, 1);
 INSERT INTO Namestaj (Naziv, Sifra, tipNamestajaID, Cena, Kolicina, Obrisan, AkcijaID)
     VALUES ('Garnitura y', 'a104', 3, 12000, 2, 0, 1);
+INSERT INTO Namestaj (Naziv, Sifra, tipNamestajaID, Cena, Kolicina, Obrisan, AkcijaID)
+    VALUES ('ZaTestiranje', 'a105', 3, 10000, 99, 0, 2);
 
 
 

@@ -433,11 +433,32 @@ namespace WpfApp1.UI
 
         private void DodajUsluguURacun(object sender, RoutedEventArgs e)
         {
+       
             DodatneUsluge selektovanaUsluga = (DodatneUsluge)dgPretragaUsluge.SelectedItem;
-            lbRacun.Items.Add(selektovanaUsluga);
-            trenutniRacun.UkupnaCena = trenutniRacun.UkupnaCena + selektovanaUsluga.Cena;
-            //trenutniRacun.DodatneUsluge.Add(selektovanaUsluga);
 
+            var dosadasnjeUsluge = new ObservableCollection<DodatneUsluge>();
+
+            foreach(var i in lbRacun.Items)
+            {
+                if (i is DodatneUsluge)
+                {
+                    dosadasnjeUsluge.Add((DodatneUsluge)i);
+                }
+            }
+
+            if (dosadasnjeUsluge.Contains(selektovanaUsluga))
+            {
+                MessageBox.Show("Vec ste dodali tu uslugu!");
+            }
+            else
+            {
+                lbRacun.Items.Add(selektovanaUsluga);
+                trenutniRacun.UkupnaCena = trenutniRacun.UkupnaCena + selektovanaUsluga.Cena;
+            }
+            
+
+           
+            
         }
 
 
@@ -663,13 +684,26 @@ namespace WpfApp1.UI
             foreach (Racun rac in Projekat.Instance.racun)
             {
 
-               
                 
+
+
                 try
                 {
                     if (rac.Kupac.ToLower().Trim().Contains(Unos) || rac.BrojRacuna.ToLower().Trim().Contains(Unos) || rac.DatumProdaje.Date == DateTime.Parse(Unos))
                     {
                         listaTrazenihRacuna.Add(rac);
+                    }
+                    else
+                    {
+                        /*
+                        foreach (Namestaj nam in ProdatiNamestajDAL.GetAll(rac))
+                        {
+                            if (nam.Naziv.ToLower().Trim().Contains(Unos))
+                            {
+                                listaTrazenihRacuna.Add(rac);
+                            }
+                        }
+                        */
                     }
                     
                                    
@@ -805,7 +839,7 @@ namespace WpfApp1.UI
             foreach (Namestaj nam in Projekat.Instance.namestaj)
             {
 
-                if (nam.Naziv.ToLower().Trim().Contains(Unos) || nam.Sifra.ToLower().Trim().Contains(Unos) || nam.TipNamestaja.Naziv.ToLower().Trim().Contains(Unos))
+                if (nam.Naziv.ToLower().Trim().Contains(Unos) || nam.Sifra.ToLower().Trim().Contains(Unos) || nam.TipNamestaja.Naziv.ToLower().Trim().Contains(Unos) || nam.Akcija.Naziv.ToLower().Trim().Contains(Unos))
                 {
                     listaTrazenogNamestaja.Add(nam);
                 }
