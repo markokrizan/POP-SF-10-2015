@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:WpfApp1.UI"
         mc:Ignorable="d"
         Title="O Salonu" Height="389.412" Width="300"
-        WindowStartupLocation="CenterOwner">
+        WindowStartupLocation="CenterOwner"
+         Icon="../Images/furniture-md.png" Foreground="Black"
+        >
     <Grid Margin="0,0,0.2,-0.2">
         <Label Content="Osnovni podaci o salonu:" FontWeight="Bold" HorizontalAlignment="Left" Margin="63,105,0,0" VerticalAlignment="Top"/>
         <Image HorizontalAlignment="Left" Height="100" Margin="87,10,0,0" VerticalAlignment="Top" Width="100" Source="../Images/furniture-md.png"/>

@@ -10,7 +10,7 @@
         WindowState="Normal"
         Background="White"
         Icon="../Images/furniture-md.png" Foreground="Black"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterScreen"
         >
 
     <Grid>

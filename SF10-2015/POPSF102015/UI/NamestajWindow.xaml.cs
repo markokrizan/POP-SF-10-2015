@@ -107,7 +107,7 @@ namespace WpfApp1.UI
 
             //Validate on exceptions zadaje pocetnu vrednost tipa, pa ako uneses asdf za cenu, a tip joj je int cena je 0, pa odatle ovako
             //dalje spageti validacija
-            if(namestaj.Cena != 0 && namestaj.Naziv != null && namestaj.Sifra != null && namestaj.KolicinaUMagacinu !=0 && namestaj.Akcija != null && namestaj.KolicinaUMagacinu < 9999999 && namestaj.Cena < 9999999)
+            if(namestaj.Cena > 0 && namestaj.Naziv != null && namestaj.Sifra != null && namestaj.KolicinaUMagacinu > 0 && namestaj.Akcija != null && namestaj.KolicinaUMagacinu < 9999999 && namestaj.Cena < 9999999)
             {
                 var listaNamestaja = Projekat.Instance.namestaj;
 
@@ -159,14 +159,14 @@ namespace WpfApp1.UI
             }
             else
             {
-                if (namestaj.KolicinaUMagacinu == 0)
+                if (namestaj.KolicinaUMagacinu <= 0)
                 {
                     //razdvojiti sad dva problema, da li je bas 0 ili je dao nulu validated on exeption
                     //meh
                     MessageBox.Show("Uneli ste ili 0 ili karaktere!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
                     
                 }
-                if (namestaj.Cena == 0)
+                if (namestaj.Cena <= 0)
                 {
                     MessageBox.Show("Nismo socijalna ustanova!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
                     

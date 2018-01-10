@@ -49,7 +49,7 @@ namespace WpfApp1.UI
         private void sacuvajIzmene(object sender, RoutedEventArgs e)
         {
 
-            if(usluga.Cena != 0 && usluga.Naziv != null && usluga.Cena < 9999999)
+            if(usluga.Cena > 0 && usluga.Naziv != null && usluga.Cena < 9999999)
             {
                 var listaUsluga = Projekat.Instance.dodatneusluge;
                 this.DialogResult = true;
@@ -84,7 +84,7 @@ namespace WpfApp1.UI
             }
             else
             {
-                if (usluga.Cena == 0)
+                if (usluga.Cena <= 0)
                 {
                     MessageBox.Show("Nije dobra cena!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
                     

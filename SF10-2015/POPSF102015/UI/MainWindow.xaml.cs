@@ -344,11 +344,65 @@ namespace WpfApp1.UI
 
 
         }
-       
+
         //FORMIRANJE RACUNA:
+
+        
                
         private void DodajNamestajURacun(object sender, RoutedEventArgs e)
         {
+            Namestaj selektovaniNamestaj = (Namestaj)dgPretragaNamestaj.SelectedItem;
+            int kolicinaZaProdaju;
+
+            if(selektovaniNamestaj != null)
+            {
+                KolicinaWindow kw = new KolicinaWindow(selektovaniNamestaj);
+                kw.Owner = this;
+                kw.ShowDialog();
+                kolicinaZaProdaju = kw.Kolicina;
+                //MessageBox.Show(kw.Kolicina.ToString());
+                for(int i = 0; i <kolicinaZaProdaju; i++)
+                {
+                    if (selektovaniNamestaj.KolicinaUMagacinu >= 1)
+                    {
+                        lbRacun.Items.Add(selektovaniNamestaj);
+                        trenutniRacun.UkupnaCena = trenutniRacun.UkupnaCena + (selektovaniNamestaj.AkcijskaCena(selektovaniNamestaj.Cena, selektovaniNamestaj.Akcija.Popust));
+                        selektovaniNamestaj.KolicinaUMagacinu = selektovaniNamestaj.KolicinaUMagacinu - 1;
+                        NamestajDAL.Update(selektovaniNamestaj);
+                        viewTrazeniNamestaj.Refresh();
+                        viewNamestaj.Refresh();
+                    }
+                    else if (selektovaniNamestaj.KolicinaUMagacinu == 0)
+                    {
+                        /*
+                        lbRacun.Items.Add(selektovaniNamestaj);
+                        trenutniRacun.UkupnaCena = trenutniRacun.UkupnaCena + (selektovaniNamestaj.AkcijskaCena(selektovaniNamestaj.Cena, selektovaniNamestaj.Akcija.Popust));
+                        selektovaniNamestaj.KolicinaUMagacinu = selektovaniNamestaj.KolicinaUMagacinu - 1;
+                        NamestajDAL.Delete(selektovaniNamestaj);
+                        viewTrazeniNamestaj.Refresh();
+                        viewNamestaj.Refresh();
+                        */
+                        MessageBox.Show("Nema ga na stanju!");
+                    }
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Niste nista selektovali!");
+            }
+            
+
+
+
+
+
+
+
+
+
+            /*
+
             Namestaj selektovaniNamestaj = (Namestaj)dgPretragaNamestaj.SelectedItem;
             
             
@@ -369,10 +423,11 @@ namespace WpfApp1.UI
                 viewTrazeniNamestaj.Refresh();
                 viewNamestaj.Refresh();
             }
-            
 
-            //trenutniRacun.NamestajZaProdaju.Add(selektovaniNamestaj);
-            
+
+            //NekiProzor.ShowDialog ce stopirati aplikaciju dok se prozor ne zaustavi
+
+            */
 
         }
 
@@ -394,6 +449,8 @@ namespace WpfApp1.UI
             //Verovatno najveci primer spageti koda ikad napisan
             //Sramota
             //Ali radi 
+            
+        
 
             if (lbRacun.Items.Count != 0 && trenutniRacun.BrojRacuna != null && trenutniRacun.Kupac != null)
             {
@@ -505,15 +562,18 @@ namespace WpfApp1.UI
 
                     
                     Namestaj selektovaniNamestaj = selektovani as Namestaj;
-                    //cenaSelektovanog = selektovaniNamestaj.Cena;
+                    
                     cenaSelektovanog = selektovaniNamestaj.AkcijskaCena(selektovaniNamestaj.Cena, selektovaniNamestaj.Akcija.Popust);
 
+                    
                     foreach (Namestaj nam in Projekat.Instance.namestaj)
                     {
                         if(nam.ID == selektovaniNamestaj.ID)
                         {
                             nam.KolicinaUMagacinu = nam.KolicinaUMagacinu + 1;
+                            NamestajDAL.Update(nam);
                         }
+
                     }
                 }
                 else if(selektovani is DodatneUsluge)

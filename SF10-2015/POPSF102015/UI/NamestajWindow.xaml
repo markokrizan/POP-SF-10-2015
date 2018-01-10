@@ -9,6 +9,7 @@
         ResizeMode="NoResize"
         WindowState="Normal"
         WindowStartupLocation="CenterOwner"
+        Icon="../Images/Edit.png" Foreground="Black"
         >
     <Grid Margin="0,0,-6,-1">
 

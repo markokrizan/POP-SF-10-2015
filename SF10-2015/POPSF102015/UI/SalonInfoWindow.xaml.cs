@@ -44,16 +44,6 @@ namespace WpfApp1.UI
             }
 
 
-            /*
-            Label1.Content = "Naziv: " + salon.Naziv;
-            Label2.Content = "Adresa: " + salon.Adresa;
-            Label3.Content = "Telefon: " + salon.Telefon;
-            Label4.Content = "EMail: " + salon.EMail;
-            Label5.Content = "Sajt: " + salon.Sajt;
-            Label6.Content = "PIB: " + salon.PIB;
-            Label7.Content = "Mat. Broj: " + salon.MaticniBroj;
-            Label8.Content = "Br. Racuna: " + salon.BrojZiroRacuna;
-            */
 
         }
     }

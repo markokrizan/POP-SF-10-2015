@@ -93,6 +93,9 @@
     <Compile Include="UI\RacunDetaljiWindow.xaml.cs">
       <DependentUpon>RacunDetaljiWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\KolicinaWindow.xaml.cs">
+      <DependentUpon>KolicinaWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Util\GenericSerializer.cs" />
     <Compile Include="Model\Akcija.cs" />
     <Compile Include="App.xaml.cs">
@@ -134,6 +137,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\RacunDetaljiWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\KolicinaWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -209,6 +216,8 @@
     <Resource Include="Images\Info.png" />
     <Resource Include="Images\Racun.png" />
     <Resource Include="Images\Delete.png" />
+    <Resource Include="Images\Edit.png" />
+    <Resource Include="Images\Quantity.png" />
     <Content Include="SQL\kreiraj.sql" />
     <Content Include="SQL\napuni.sql" />
     <Content Include="SQL\prikazi.sql" />

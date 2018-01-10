@@ -61,7 +61,7 @@ namespace WpfApp1.UI
         private void sacuvajIzmene(object sender, RoutedEventArgs e)
         {
 
-            if(akcija.Naziv != null && akcija.Popust != 0 && Akcija.Uporedi(akcija.DatumZavrsetka, DateTime.Now) != "manji" && Akcija.Uporedi(akcija.DatumPocetka, akcija.DatumZavrsetka)!= "veci" && akcija.Popust < 90)
+            if(akcija.Naziv != null && akcija.Popust >  0 &&  Akcija.Uporedi(akcija.DatumZavrsetka, DateTime.Now) != "manji" && Akcija.Uporedi(akcija.DatumPocetka, akcija.DatumZavrsetka)!= "veci" && akcija.Popust < 90)
             {
                 var listaAkcija = Projekat.Instance.akcija;
                 this.DialogResult = true;
@@ -105,7 +105,7 @@ namespace WpfApp1.UI
                 {
                     MessageBox.Show("Niste uneli naziv!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                if(akcija.Popust == 0)
+                if(akcija.Popust <= 0)
                 {
                     MessageBox.Show("Niste uneli dobar popust!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
