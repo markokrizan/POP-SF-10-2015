@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WpfApp1.Model;
 
 namespace WpfApp1.DAL
 {
@@ -57,8 +58,12 @@ namespace WpfApp1.DAL
         //funkcija koja ce vaditi za odredjeni racun njene prodate namestaje
         //koristi ovaj upit:
         //SELECT * FROM Namestaj WHERE ID IN (SELECT IDNamestaja FROM ProdatiNamestaj WHERE IDRacuna = 8) AND Obrisan != 1;
+
+
+        
         public static ObservableCollection<Namestaj> GetAll(Racun rac)
         {
+
             var namestaj = new ObservableCollection<Namestaj>();
 
             //tu je ona referenca koju smo otkacili
@@ -100,9 +105,61 @@ namespace WpfApp1.DAL
 
             //vrati kolekciju
             return namestaj;
+
+        }
+
+        
+
+        public static ObservableCollection<StavkaProdaje> StavkeNamestajaPoRacunu(Racun rac)
+        {
+
+            var stavkeProdaje = new ObservableCollection<StavkaProdaje>();
+
+            using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["Platforme"].ConnectionString))
+            {
+
+                SqlCommand cmd = con.CreateCommand();
+                //obrisan true 1 false 0
+                cmd.CommandText = "SELECT IDNamestaja, COUNT(*) AS 'BrojKomada' FROM ProdatiNamestaj WHERE IDRacuna = @IDRacuna GROUP BY IDNamestaja;";
+                cmd.Parameters.AddWithValue("IDRacuna", rac.ID);
+
+                //ds i adapter samo kada dobavljamo podatke
+                SqlDataAdapter adapter = new SqlDataAdapter();
+
+                //objekat koji moze u sebi da ima vise logickih tabela, objekat u memoriji koji reprezentuje bazu
+                DataSet ds = new DataSet();
+
+                //smesti u data set pod nazivom tabele tipNamestaja
+                adapter.SelectCommand = cmd;
+                adapter.Fill(ds, "ProdatiNamestaj"); // izvrsava se query nad bazom
+
+                //za svaki red u data setu u tabelama tim i tim
+                foreach (DataRow row in ds.Tables["ProdatiNamestaj"].Rows)
+                {
+                    StavkaProdaje stavka = new StavkaProdaje();
+
+
+                    foreach(Namestaj nam in Projekat.Instance.namestaj)
+                    {
+                        if (nam.ID == int.Parse(row["IDNamestaja"].ToString()))
+                        {
+                            stavka.Namestaj = nam;
+                        }
+                    }
+
+                    stavka.Kolicina = int.Parse(row["BrojKomada"].ToString());
+
+                   
+
+                    stavkeProdaje.Add(stavka);
+                }
+            }
+
+            return stavkeProdaje;
         }
 
 
+        }
 
-    }
+
 }

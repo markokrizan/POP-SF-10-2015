@@ -636,12 +636,29 @@ namespace WpfApp1.UI
 
         }
 
+        private void Detalji_Click(object sender, RoutedEventArgs e)
+        {
+            Racun selektovaniRacun = (Racun)dgRacuni.SelectedItem;
+            RacunDetaljiWindow rdw = new RacunDetaljiWindow(selektovaniRacun);
+            rdw.Owner = this;
+            rdw.ShowDialog();
+        }
+
         private void PretragaRacuna()
         {
             
 
+
             string Unos = tbPretragaRacuna.Text.ToLower();
             ObservableCollection<Racun> listaTrazenihRacuna = new ObservableCollection<Racun>();
+
+
+            /*
+            while(Unos != "")
+            {
+
+            }
+            */
 
             foreach (Racun rac in Projekat.Instance.racun)
             {
@@ -659,7 +676,7 @@ namespace WpfApp1.UI
                 }
                 catch{}
 
-
+                /*
                 foreach (Namestaj nam in ProdatiNamestajDAL.GetAll(rac))
                 {
                     if (nam.Naziv.Contains(Unos))
@@ -667,6 +684,7 @@ namespace WpfApp1.UI
                         listaTrazenihRacuna.Add(rac);
                     }
                 }
+                */
 
 
             }
@@ -1407,13 +1425,7 @@ namespace WpfApp1.UI
             this.Close();
         }
 
-        private void Detalji_Click(object sender, RoutedEventArgs e)
-        {
-            Racun selektovaniRacun = (Racun)dgRacuni.SelectedItem;
-            RacunDetaljiWindow rdw = new RacunDetaljiWindow(selektovaniRacun);
-            rdw.Owner = this;
-            rdw.Show();
-        }
+       
 
         
     }
