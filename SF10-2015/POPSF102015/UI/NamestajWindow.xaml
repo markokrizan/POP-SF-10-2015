@@ -1,0 +1,30 @@
+﻿<Window x:Class="WpfApp1.UI.NamestajWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.UI"
+        mc:Ignorable="d"
+        Title="Izmeni/Dodaj" Height="370" Width="270"
+        ResizeMode="NoResize"
+        WindowState="Normal"
+        WindowStartupLocation="CenterOwner"
+        >
+    <Grid Margin="0,0,-6,-1">
+
+        <Label Grid.Row="0" Grid.Column="0" Content="Naziv: " FontSize="15" HorizontalAlignment="Left" Width="62" RenderTransformOrigin="0.786,0.671" Margin="20,25,0,209.8"/>
+        <TextBox Text ="{Binding Path=Naziv, ValidatesOnExceptions=True}" Grid.Row="0" FontSize="15" HorizontalAlignment="Left" Name="tbNaziv" Width="124" Margin="82,25,0,278"/>
+        <Button Content="Sacuvaj" HorizontalAlignment="Right" Click="sacuvajIzmene" Margin="0,300,145,6" Width="90"/>
+        <Button Content="Izlaz" HorizontalAlignment="Right" Margin="0,300,39,6" Width="90" RenderTransformOrigin="0.184,0.766" Click="Izadji"/>
+        <Label Content="Tip: " FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Height="41" Width="47" Margin="35,69,0,0" RenderTransformOrigin="2.081,1.156"/>
+        <ComboBox SelectedItem="{Binding Path=TipNamestaja, Mode=OneWayToSource}"  SelectedIndex="1" Name="cbTipNamestaja"  Margin="82,69,55,235"/>
+        <Label Content="Sifra: " FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Height="43" Width="57" Margin="25,112,0,0" RenderTransformOrigin="2.081,1.156"/>
+        <Label Content="Cena: " FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Height="41" Width="47" Margin="25,153,0,0" RenderTransformOrigin="2.081,1.156"/>
+        <Label Content="Kolicina: " FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Height="41" Width="72" Margin="10,194,0,0" RenderTransformOrigin="2.081,1.156"/>
+        <TextBox Text ="{Binding Path=Sifra, ValidatesOnExceptions=True}" FontSize="15" HorizontalAlignment="Left" Height="32" Margin="82,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Name="tbSifra"/>
+        <TextBox Text ="{Binding Path=Cena, ValidatesOnExceptions=True}" FontSize="15" HorizontalAlignment="Left" Height="32" Margin="82,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Name="tbCena"/>
+        <TextBox Text ="{Binding Path=KolicinaUMagacinu, ValidatesOnExceptions=True}"   FontSize="15" HorizontalAlignment="Left" Height="32" Margin="82,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Name="tbKolicina"/>
+        <Label Content="Akcija: " FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Height="41" Width="72" Margin="20,235,0,0" RenderTransformOrigin="2.081,1.156"/>
+        <ComboBox SelectedItem="{Binding Akcija}"  SelectedIndex="1" x:Name="cbAkcija"  Margin="82,235,55,66"/>
+    </Grid>
+</Window>
