@@ -851,6 +851,16 @@ namespace WpfApp1.UI
             dgNamestaj.IsSynchronizedWithCurrentItem = true;
             dgNamestaj.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
 
+           
+            if(Unos == "")
+            {
+                dgNamestaj.ItemsSource = viewNamestaj;
+                dgNamestaj.IsSynchronizedWithCurrentItem = true;
+                dgNamestaj.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+            }
+            
+
+
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
@@ -966,7 +976,14 @@ namespace WpfApp1.UI
             dgUsluge.ItemsSource = viewTrazeneUsluge;
             dgUsluge.IsSynchronizedWithCurrentItem = true;
             dgUsluge.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
-           
+
+            if (Unos == "")
+            {
+                dgUsluge.ItemsSource = viewUsluge;
+                dgUsluge.IsSynchronizedWithCurrentItem = true;
+                dgUsluge.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+            }
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -1117,6 +1134,13 @@ namespace WpfApp1.UI
             dgTipNamestaja.ItemsSource = viewTrazeniTipovi;
             dgTipNamestaja.IsSynchronizedWithCurrentItem = true;
             dgTipNamestaja.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+
+            if(Unos == "")
+            {
+                dgTipNamestaja.ItemsSource = viewTipovi;
+                dgTipNamestaja.IsSynchronizedWithCurrentItem = true;
+                dgTipNamestaja.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+            }
 
         }
 
@@ -1284,6 +1308,13 @@ namespace WpfApp1.UI
             dgAkcije.ItemsSource = viewTrazeneAkcije;
             dgAkcije.IsSynchronizedWithCurrentItem = true;
             dgAkcije.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+
+            if (Unos == "")
+            {
+                dgAkcije.ItemsSource = viewAkcije;
+                dgNamestaj.IsSynchronizedWithCurrentItem = true;
+                dgNamestaj.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -1411,6 +1442,13 @@ namespace WpfApp1.UI
             dgKorisnici.IsSynchronizedWithCurrentItem = true;
             dgKorisnici.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
             //viewTrazeniKorisnici.Refresh();
+
+            if(Unos == "")
+            {
+                dgKorisnici.ItemsSource = viewKorisnici;
+                dgKorisnici.IsSynchronizedWithCurrentItem = true;
+                dgKorisnici.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+            }
         }
 
 
