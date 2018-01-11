@@ -695,30 +695,22 @@ namespace WpfApp1.UI
                     }
                     else
                     {
-                        /*
-                        foreach (Namestaj nam in ProdatiNamestajDAL.GetAll(rac))
-                        {
-                            if (nam.Naziv.ToLower().Trim().Contains(Unos))
-                            {
-                                listaTrazenihRacuna.Add(rac);
-                            }
-                        }
-                        */
+                     
                     }
                     
                                    
                 }
                 catch{}
 
-                /*
+                
                 foreach (Namestaj nam in ProdatiNamestajDAL.GetAll(rac))
                 {
-                    if (nam.Naziv.Contains(Unos))
+                    if (nam.Naziv.ToLower().Trim().Contains(Unos) && Unos != "")
                     {
                         listaTrazenihRacuna.Add(rac);
                     }
                 }
-                */
+                
 
 
             }
